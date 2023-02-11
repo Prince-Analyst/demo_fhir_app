@@ -4,13 +4,5 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [svelte()],
-  optimizeDeps: {
-    exclude: ['medblocks-ui'],
-
-  },
-  server: {
-    fs: {
-      allow: ['..']
-    }
-  }
+  optimizeDeps: {exclude: ["svelte-routing"]}
 })
