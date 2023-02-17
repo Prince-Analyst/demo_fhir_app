@@ -21,6 +21,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.13",
     "axios": "^1.3.2",
+    "cors": "^2.8.5",
     "medblocks-ui": "^0.0.162",
     "postcss": "^8.4.21",
     "svelte-routing": "^1.6.0",

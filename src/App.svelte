@@ -1,10 +1,9 @@
 <script lang="ts">
-  import axios from 'axios';
-  import { Router, Link, Route } from "svelte-routing";
-  import PatientRegistration from './PatientRegistration.svelte';
-  import PractitionerRegistration from './PractitionerRegistration.svelte';
+  import { Router, Route } from "svelte-routing";
+  import PatientRegistration from './Registration/PatientRegistration.svelte';
+  import PractitionerRegistration from "./Registration/PractitionerRegistration.svelte";
   import Layout from "./Layout.svelte";
-  import PatientList from "./Registration/PatientList.svelte";
+  import PatientList from "./PatientList.svelte";
   import PractitionerList from './PractitionerList.svelte';
 
 </script>

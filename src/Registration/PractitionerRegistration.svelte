@@ -2,7 +2,8 @@
     import 'medblocks-ui';
     import '@shoelace-style/shoelace/dist/themes/light.css';
     import './tailwind.css';
-    import { fhir } from './fhir';
+    import { FHIR, openehr } from '../fhir';
+  
     import { onMount } from 'svelte';
   
     let loading: boolean = false;
@@ -12,10 +13,10 @@
     async function handleSubmit(e: any){
       loading = true;
       if (id) {
-          const r = await fhir.put(`/Practitioner/${id}`, { ...e.detail, id })
+          const r = await FHIR.put(`/Practitioner/${id}`, { ...e.detail, id })
           console.log(r.data);
       } else {
-          const r = await fhir.post("/Practitioner", e.detail)
+          const r = await FHIR.post("/Practitioner", e.detail)
           console.log(r.data);
       }
       loading = false;
@@ -23,7 +24,7 @@
   
     onMount(async () => {
       if (id){
-          const r = await fhir.get(`/Practitioner/${id}`)
+          const r = await FHIR.get(`/Practitioner/${id}`)
           const resource = r.data
           form.import(resource)
       }

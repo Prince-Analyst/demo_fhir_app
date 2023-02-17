@@ -1,11 +1,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { fhir } from "./fhir";
+    import { FHIR } from "./fhir";
     import { Link } from "svelte-routing";
 
     let data = [];
     onMount(async () => {
-        const r = await fhir.get("/Practitioner")
+        const r = await FHIR.get("/Practitioner")
         console.log(r)
         data = r.data?.entry;
     });
