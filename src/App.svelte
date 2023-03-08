@@ -2,6 +2,7 @@
   import { Router, Route } from "svelte-routing";
   import PatientRegistration from './Registration/PatientRegistration.svelte';
   import PractitionerRegistration from "./Registration/PractitionerRegistration.svelte";
+  import SignUp from "./Registration/SignUp.svelte";
   import Layout from "./Layout.svelte";
   import PatientList from "./PatientList.svelte";
   import PractitionerList from './PractitionerList.svelte';
@@ -10,6 +11,7 @@
 
 <Router>
   <Layout>
+    <!-- <Route path="/" component={SignUp} /> -->
     <Route path="patients" component="{PatientList}" />
     <Route path="patient"  component="{ PatientRegistration }" />
     <Route path="patient/:id"  component="{ PatientRegistration }" />

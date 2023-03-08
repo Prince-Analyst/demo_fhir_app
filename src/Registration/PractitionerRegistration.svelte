@@ -39,7 +39,7 @@
       class="flex flex-col gap-3" 
       on:mb-submit={handleSubmit}
   >
-    <mb-input path="resourceType" label="Resource Type" />
+    <mb-context path="resourceType" bind="Practitioner" />
     <mb-select type="code" label="Status" path="active">
       <mb-option value="true" label="Active" />
       <mb-option value="false" label="Inactive" />
