@@ -123,7 +123,7 @@
   </div>
   <br>
   <div class="field"> 
-    <mb-select type="code" path="maritalStatus.coding" placeholder="Marital Status"> 
+    <mb-select type="code" path="maritalStatus.coding" placeholder="Marital Status" > 
       <mb-option value="A" label="Annulled" /> 
       <mb-option value="D" label="Divorced" /> 
       <mb-option value="I" label="Interlocutory" /> 
