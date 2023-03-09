@@ -4,7 +4,7 @@
   import PractitionerRegistration from "./Registration/PractitionerRegistration.svelte";
   import SignUp from "./Registration/SignUp.svelte";
   import Layout from "./Layout.svelte";
-  import PatientList from "./PatientList.svelte";
+  import PatientList from "./resourceList/PatientList.svelte";
   import PractitionerList from './PractitionerList.svelte';
 
 </script>

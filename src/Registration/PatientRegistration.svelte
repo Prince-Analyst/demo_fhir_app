@@ -66,7 +66,7 @@
 </script>
 
 
-<h1 class="text-4xl text-purple-900 font-bold font-sans">Patient Registration</h1>
+<h1 class="text-2x font-semibold font-sans">Patient Registration</h1>
 <mb-fhir-form 
     id="form"
     bind:this={form} 
@@ -102,9 +102,9 @@
   <div class="field mb-5">
     <mb-date type="date" label="Date of Birth" placeholder="Date of Birth" path="birthDate" />
   </div>
-
+  <br>
   <div class="field">
-    <mb-buttons type="code" label="Gender" path="gender[0]" >
+    <mb-buttons type="code" label="Gender" path="gender" >
       <mb-option value="male" label="Male" />
       <mb-option value="female" label="Female" />
       <mb-option value="other" label="Other" />
@@ -136,7 +136,7 @@
       <mb-option value="S" label="Never Married" /> 
       <mb-option value="W" label="Widowed" /> 
     </mb-select> 
-  </div> 
+  </div>
   <div class="field">
     <mb-context type="ContactPoint" path="telecom[0].system[0]" bind="phone">
   </div>

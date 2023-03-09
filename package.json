@@ -24,6 +24,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "@macfja/svelte-oauth2": "^1.1.0",
     "axios": "^1.3.2",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
@@ -34,10 +35,15 @@
     "database-js-mysql": "^1.1.3",
     "database-js-postgres": "^1.1.3",
     "database-js-sqlite": "^1.3.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "lit-element": "^3.2.2",
     "magic-string": "^0.30.0",
     "medblocks-ui": "^0.0.162",
+    "node-oauth2-server": "^2.4.0",
+    "pg": "^8.10.0",
     "postgresql": "^0.0.1",
+    "simple-oauth2": "^5.0.0",
     "svelte-fetch": "^0.2.0",
     "svelte-forms": "^2.3.1",
     "svelte-materialify": "^0.3.11",

@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 .pgdata
 .vscode
+.env.ehrbase
+.env.local
 public/vendor/
