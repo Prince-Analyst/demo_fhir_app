@@ -116,7 +116,7 @@
   </div>
   <br>
   <div>
-    <mb-date type="dateTime" path="deceasedDateTime" placeholder="Date of Death" label="Date and Time of Death" />
+    <mb-date time type="dateTime" path="deceasedDateTime" placeholder="Date of Death" label="Date and Time of Death" />
   </div>
   <div class="field">
     <mb-context type="CodeableConcept" path="maritalStatus.coding.system" bind="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus" />
