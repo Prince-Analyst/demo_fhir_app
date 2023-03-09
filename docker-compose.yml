@@ -14,13 +14,15 @@ services:
       hapi.fhir.client_id_strategy: ANY
 
   fhir-db:
-      image: postgres
+      image: postgres:latest
       volumes:
         - fhir-db-data:/var/lib/postgresql/data
       environment:
          POSTGRES_PASSWORD: admin
          POSTGRES_USERNAME: admin
          POSTGRES_DB: hapi_r4
+      ports:
+        - "15432:5432"
 
   ehrbase:
       image: ehrbase/ehrbase:next
@@ -36,13 +38,15 @@ services:
           - "8081:8080"
 
   db:
-      image: postgres
+      image: postgres:latest
       volumes:
           - db-data:/var/lib/postgresql/data
       environment:
           POSTGRES_USER: ehrbase
           POSTGRES_PASSWORD: ehrbase
           POSTGRES_DB: ehrbase
+      ports:
+        - "15433:5432"
 
 volumes:
    fhir-db-data:
