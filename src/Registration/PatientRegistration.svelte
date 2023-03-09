@@ -77,15 +77,16 @@
     <mb-context  path="resourceType" bind="Patient" />
     <!-- <mb-context path="resourceType" bind="Patient" /> -->
   </div>
+  <br>
   <div class="field">
-    <mb-context type="boolean" path="active" bind="true"/>
+    <mb-checkbox type="boolean" path="active" label="Active"/>
     <!-- <mb-select type="boolean" label="Status" path="active"> -->
     <!--   <mb-option value="true" label="Active" /> -->
     <!--   <mb-option value="false" label="Inactive" /> -->
     <!-- </mb-select> -->
   </div>
   <div class="field">
-    <mb-context path="name[0].use[0]" bind="official" />
+    <mb-context type="HumanName" path="name[0].use[0]" bind="official" />
     <!-- <mb-select label="Type" path="name[0].use[0]" .bind=> -->
     <!--   <mb-option value="temp" label="Temp" /> -->
     <!--   <mb-option value="old" label="Old" /> -->
@@ -96,48 +97,92 @@
     <!--   <mb-option value="other" label="Other" /> -->
     <!-- </mb-select> -->
   </div>
+  <br>
   <div class="field">
-    <mb-input path="name[0].prefix" label="Prefix" />
+    <mb-input type="HumanName" path="name[0].prefix" placeholder="Prefix" />
   </div>
+  <br>
   <div class="filed">
-    <mb-input path="name[0].given" label="First Name" />
+    <mb-input type="HumanName" path="name[0].given" placeholder="First Name" />
   </div>
+  <br>
   <div class="field">
-    <mb-input path="name[0].family" label="Last Name" />
+    <mb-input type="HumanName" path="name[0].family" placeholder="Last Name" />
   </div>
+  <br>
   <div class="field">
-    <mb-input path="name[0].suffix" label="Suffix" />
+    <mb-input type="HumanName" path="name[0].suffix" placeholder="Suffix" />
   </div>
-  <div class="field">
-    <mb-date label="Date of Birth" path="birthDate" />
+  <div class="field mb-5">
+    <mb-date type="date" label="Date of Birth" placeholder="Date of Birth" path="birthDate" />
   </div>
+
   <div class="field">
-    <mb-buttons type="code" label="Gender" path="gender" >
+    <mb-buttons type="code" label="Gender" placeholder="Gender" path="gender" >
       <mb-option value="male" label="Male" />
       <mb-option value="female" label="Female" />
       <mb-option value="other" label="Other" />
     </mb-buttons>
   </div>
+  <br>
   <div class="field">
-    <mb-context path="maritalStatus[0].coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus" />
+    <mb-checkbox type="boolean" path="deceasedBoolean" label="Deceased" />
+  </div>
+  <br>
+  <div>
+    <mb-date type="dateTime" path="deceasedDateTime" placeholder="Date of Death" label="Date and Time of Death" />
   </div>
   <div class="field">
-    <mb-select type="code" path="maritalStatus[0].coding[0].code[1]" label="Marital Status">
-      <mb-option value="A" label="Annulled" />
-      <mb-option value="D" label="Divorced" />
-      <mb-option value="I" label="Interlocutory" />
-      <mb-option value="L" label="Legally Separated" />
-      <mb-option value="M" label="Married" />
-      <mb-option value="C" label="Common Law" />
-      <mb-option value="P" label="Polygamous" />
-      <mb-option value="T" label="Domestic Partner" />
-      <mb-option value="U" label="Unmarried" />
-      <mb-option value="S" label="Never Married" />
-      <mb-option value="W" label="Widowed" />
-    </mb-select>
+    <mb-context type="CodeableConcept" path="maritalStatus.coding.system" bind="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus" />
+  </div>
+  <!-- <div> -->
+  <!--   <mb-context path="maritalStatus[1].coding[0].code[0]" bind="S" /> -->
+  <!-- </div> -->
+  <br>
+  <div class="field"> 
+    <mb-select type="code" path="maritalStatus.coding" placeholder="Marital Status"> 
+      <mb-option value="A" label="Annulled" /> 
+      <mb-option value="D" label="Divorced" /> 
+      <mb-option value="I" label="Interlocutory" /> 
+      <mb-option value="L" label="Legally Separated" /> 
+      <mb-option value="M" label="Married" /> 
+      <mb-option value="C" label="Common Law" /> 
+      <mb-option value="P" label="Polygamous" /> 
+      <mb-option value="T" label="Domestic Partner" /> 
+      <mb-option value="U" label="Unmarried" /> 
+      <mb-option value="S" label="Never Married" /> 
+      <mb-option value="W" label="Widowed" /> 
+    </mb-select> 
+  </div> 
+  <!-- <div class="field"> -->
+  <!--   <mb-context type="CodeableConcept" path="maritalStatus.text" bind:textContent={`maritalStatus.coding.code`} /> -->
+  <!-- </div> -->
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[0].system[0]" bind="phone">
+    <!--   <mb-option value="email" label="Email" /> -->
+    <!--   <mb-option value="phone" label="Phone" /> -->
+    <!--   <mb-option value="fax" label="Fax" /> -->
+    <!--   <mb-option value="pager" label="Pager" /> -->
+    <!--   <mb-option value="sms" label="SMS" /> -->
+    <!--   <mb-option value="other" label="Other" /> -->
+    <!-- </mb-c> -->
+  </div>
+
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[0].use[0]" bind="mobile" />
+    <!--   <mb-option value="home" label="Home" /> -->
+    <!--   <mb-option value="work" label="Work" /> -->
+    <!--   <mb-option value="temp" label="Temp" /> -->
+    <!--   <mb-option value="old" label="Old" /> -->
+    <!--   <mb-option value="mobile" label="Mobile" /> -->
+    <!-- </mb-context> -->
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="ContactPoint" path="telecom[0].value[0]" placeholder="Phone Number" />
   </div>
   <div class="field">
-    <mb-context path="telecom[0].system[0]" bind="phone">
+    <mb-context type="ContactPoint" path="telecom[1].system[0]" bind="email">
     <!--   <mb-option value="email" label="Email" /> -->
     <!--   <mb-option value="phone" label="Phone" /> -->
     <!--   <mb-option value="fax" label="Fax" /> -->
@@ -147,38 +192,17 @@
     <!-- </mb-c> -->
   </div>
   <div class="field">
-    <mb-context path="telecom[0].use[0]" bind="mobile" />
+    <mb-context type="ContactPoint" path="telecom[1].use[0]" bind="mobile" />
     <!--   <mb-option value="home" label="Home" /> -->
-    <!--   <mb-option value="work" label="Work" /> -->
+    <!--   <mb-option value="work" label="Work" /> --> 
     <!--   <mb-option value="temp" label="Temp" /> -->
     <!--   <mb-option value="old" label="Old" /> -->
     <!--   <mb-option value="mobile" label="Mobile" /> -->
     <!-- </mb-context> -->
   </div>
+  <br>
   <div class="field">
-    <mb-input path="telecom[0].value[0]" label="Phone Number" />
-  </div>
-  <div class="field">
-    <mb-context path="telecom[1].system[0]" bind="email">
-    <!--   <mb-option value="email" label="Email" /> -->
-    <!--   <mb-option value="phone" label="Phone" /> -->
-    <!--   <mb-option value="fax" label="Fax" /> -->
-    <!--   <mb-option value="pager" label="Pager" /> -->
-    <!--   <mb-option value="sms" label="SMS" /> -->
-    <!--   <mb-option value="other" label="Other" /> -->
-    <!-- </mb-c> -->
-  </div>
-  <div class="field">
-    <mb-context path="telecom[1].use[0]" bind="mobile" />
-    <!--   <mb-option value="home" label="Home" /> -->
-    <!--   <mb-option value="work" label="Work" /> -->
-    <!--   <mb-option value="temp" label="Temp" /> -->
-    <!--   <mb-option value="old" label="Old" /> -->
-    <!--   <mb-option value="mobile" label="Mobile" /> -->
-    <!-- </mb-context> -->
-  </div>
-  <div class="field">
-    <mb-input path="telecom[1].value[0]" label="Email Address" />
+    <mb-input type="ContactPoint" path="telecom[1].value[0]" placeholder="Email Address" />
   </div>
   <!-- <mb-select type="code" path="telecom[1][1].system" label="Contact Type 2"> -->
   <!--   <mb-option value="email" label="Email" /> -->
@@ -197,30 +221,36 @@
   <!-- </mb-select> -->
   <!-- <mb-input path="telecom[1][3].value" label="Value" /> -->
   <div class="field"> 
-    <mb-context path="address[0].use" bind="home" />
+    <mb-context type="	Address" path="address[0].use" bind="home" />
   </div>
   <!--   <mb-option value="postal" label="Postal" /> -->
   <!--   <mb-option value="physical" label="Physical" /> -->
   <!--   <mb-option value="both" label="Both" /> -->
   <!-- </mb-context> -->
   <div class="field">
-    <mb-context path="address[0].type" bind="both" />
+    <mb-context type="	Address" path="address[0].type" bind="both" />
   </div>
+  <br>
   <div class="field" >
-    <mb-input path="address[0].line" label="Line" />
+    <mb-input type="	Address" path="address[0].line" placeholder="Line" />
   </div>
+  <br>
   <div class="field">
-    <mb-input path="address[0].city" label="City"/>
+    <mb-input type="	Address" path="address[0].city" placeholder="City"/>
   </div>
+  <br>
   <div class="field">
-    <mb-input path="address[0].state" label="State" />
+    <mb-input type="	Address" path="address[0].state" placeholder="State" />
   </div>
+  <br>
   <div class="field">
-    <mb-input path="address[0].postalCode" label="Postal Code" />
+    <mb-input type="	Address" path="address[0].postalCode" placeholder="Postal Code" />
   </div>
+  <br>
   <div class="field">
-    <mb-input path="address[0].country" label="Country" />
+    <mb-input type="	Address" path="address[0].country" placeholder="Country" />
   </div>
+  <br>
   <div>
     <mb-submit>
       <sl-button {loading} class="text-blue-600 text-4xl font-bold" type="info">Submit</sl-button>
