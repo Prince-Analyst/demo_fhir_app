@@ -184,6 +184,10 @@
   <div class="field">
     <mb-input type="	Address" path="address[0].country" placeholder="Country" />
   </div>
+  <!-- <br> -->
+  <!-- <div> -->
+  <!--   <mb-multimedia type="photo" label="Photo" path="photo" /> -->
+  <!-- </div> -->
   <br>
   <div>
     <mb-submit>
