@@ -83,7 +83,7 @@
   <mb-context path="type[0].coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/organization-type" />
   <br>
   <div>
-    <mb-text-select type="code" path="type[0].coding[0].code[0]" placeholder="Organization Type" >
+    <mb-text-select type="code" path="type[0].coding[0].code" placeholder="Organization Type" >
         <mb-option value="team" display="team" label="Team" />
         <mb-option value="crs" display="Clinical Research Sponsor" label="Clinical Research Sponsor" />
         <mb-option value="cg" display="Community Group" label="Community Group" />
@@ -96,9 +96,9 @@
   <div class="field" >
     <mb-input path="name" placeholder="Organization Name"/>
   </div>
-  <mb-context path="contact[0].purpose[0].coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/contactentity-type" />
+  <mb-context path="contact.purpose[0].coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/contactentity-type" />
   <br>
-  <mb-select type="code" path="contact[0].purpose[0].coding[0].code" placeholder="Contact Type">
+  <mb-select type="code" path="contact.purpose[0].coding[0].code" placeholder="Contact Type">
     <mb-option value="ADMIN" display="Administrative" label="Administrative" />
     <mb-option value="BILL" display="Billing" label="Billing" />
     <mb-option value="HR" display="Human Resources" label="Human Resources" />
