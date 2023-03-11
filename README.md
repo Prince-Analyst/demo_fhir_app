@@ -1,3 +1,4 @@
+
 # Demo Fhir App
 
 ## About the App
@@ -24,3 +25,5 @@ To run this app: kindly follow the steps
    - `npx tailwindcss init -p`
 3. Start the docker container by running `docker-compose up` or `docker-compose up -d` to run in a detached mode.
 4. Afterwards, run `npm run dev`
+5. To access the **fhir-server**, open [localhost:8090/fhir](localhost:8090/fhir) on your browser.
+6. To access the **ehrbase-server**, open [http://localhost:8080/ehrbase/swagger-ui/index.html#/](http://localhost:8080/ehrbase/swagger-ui/index.html#/)
