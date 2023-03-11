@@ -105,7 +105,7 @@
     </div>
     <br>
     <div class="field">
-      <mb-buttons type="code" label="Gender" path="gender" >
+      <mb-buttons type="code" path="gender" label="Gender" >
         <mb-option value="male" label="Male" />
         <mb-option value="female" label="Female" />
         <mb-option value="other" label="Other" />
@@ -139,7 +139,11 @@
     </div>
     <br>
     <div class="field" >
-      <mb-input type="	Address" path="address[0].line" placeholder="Line" />
+      <mb-input type="	Address" path="address[0].line" placeholder="Line 1" />
+    </div>
+    <br>
+    <div class="field" >
+      <mb-input type="Address" path="address[0].line" placeholder="Line 2" />
     </div>
     <br>
     <div class="field">
@@ -157,9 +161,25 @@
     <div class="field">
       <mb-input type="	Address" path="address[0].country" placeholder="Country" />
     </div>
+    <br>
+    <div class="field mb-5">
+      <mb-select type="code" path="communication.coding[0]" placeholder="Communication Language">
+        <mb-option value="ar" label="Arabic" />
+        <mb-option value="en" label="English" />
+        <mb-option value="fr" label="French" />
+        <mb-option value="hi" label="Hindi" />
+        <mb-option value="it" label="Italian" />
+        <mb-option value="pt" label="Portuguese" />
+        <mb-option value="sv" label="Swedish" />
+        <mb-option value="zh" label="Chinese" />
+        <mb-option value="ja" label="Japanese" />
+        <mb-option value="de" label="German" />
+        <mb-option value="es" label="Spanish" />
+      </mb-select>
+    </div>
     <!-- <br> -->
     <!-- <div> -->
-    <!--   <mb-multimedia type="photo" label="Photo" path="photo" /> -->
+    <!--   <mb-multimedia type="upload" label="Photo" path="photo" /> -->
     <!-- </div> -->
     <br>
     <div>

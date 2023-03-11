@@ -99,12 +99,13 @@
   <div class="field">
     <mb-input type="HumanName" path="name[0].suffix" placeholder="Suffix" />
   </div>
-  <div class="field mb-5">
+  <br>
+  <div class="field" >
     <mb-date type="date" label="Date of Birth" placeholder="Date of Birth" path="birthDate" />
   </div>
   <br>
   <div class="field">
-    <mb-buttons type="code" label="Gender" path="gender" >
+    <mb-buttons type="code" path="gender" placeholder="Gender" >
       <mb-option value="male" label="Male" />
       <mb-option value="female" label="Female" />
       <mb-option value="other" label="Other" />
@@ -118,24 +119,31 @@
   <div>
     <mb-date time type="dateTime" path="deceasedDateTime" placeholder="Date of Death" label="Date and Time of Death" />
   </div>
-  <div class="field">
-    <mb-context type="CodeableConcept" path="maritalStatus.coding.system" bind="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus" />
-  </div>
   <br>
   <div class="field"> 
-    <mb-select type="code" path="maritalStatus.coding" placeholder="Marital Status" > 
-      <mb-option value="A" label="Annulled" /> 
-      <mb-option value="D" label="Divorced" /> 
-      <mb-option value="I" label="Interlocutory" /> 
-      <mb-option value="L" label="Legally Separated" /> 
-      <mb-option value="M" label="Married" /> 
-      <mb-option value="C" label="Common Law" /> 
-      <mb-option value="P" label="Polygamous" /> 
-      <mb-option value="T" label="Domestic Partner" /> 
-      <mb-option value="U" label="Unmarried" /> 
-      <mb-option value="S" label="Never Married" /> 
-      <mb-option value="W" label="Widowed" /> 
+    <mb-select type="code" path="maritalStatus.coding[0]" placeholder="Marital Status" > 
+      <mb-option value="A" label="Annulled" display="Annulled" /> 
+      <mb-option value="D" label="Divorced" display="Divorced" /> 
+      <mb-option value="I" label="Interlocutory" display="Interlocutory" /> 
+      <mb-option value="L" label="Legally Separated" display="Legally Separated" /> 
+      <mb-option value="M" label="Married" display="Married" /> 
+      <mb-option value="C" label="Common Law" display="Common Law" /> 
+      <mb-option value="P" label="Polygamous" display="Polygamous" /> 
+      <mb-option value="T" label="Domestic Partner" display="Domestic Partner" /> 
+      <mb-option value="U" label="Unmarried" display="Unmarried" /> 
+      <mb-option value="S" label="Never Married" display="Never Married" /> 
+      <mb-option value="W" label="Widowed" display="Widowed" /> 
     </mb-select> 
+  </div>
+  <!-- <br> -->
+  <!-- <div class="field"> -->
+  <!--   <mb-context> -->
+  <!--      -->
+  <!--   </mb-context> -->
+  <!-- </div> -->
+  <!-- <br> -->
+  <div class="field">
+    <mb-context type="CodeableConcept" path="maritalStatus.coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus" />
   </div>
   <div class="field">
     <mb-context type="ContactPoint" path="telecom[0].system[0]" bind="phone">
@@ -158,31 +166,35 @@
   <div class="field">
     <mb-input type="ContactPoint" path="telecom[1].value[0]" placeholder="Email Address" />
   </div>
+  <br>
   <div class="field"> 
-    <mb-context type="	Address" path="address[0].use" bind="home" />
+    <mb-context type="Address" path="address[0].use" bind="home" />
   </div>
   <div class="field">
-    <mb-context type="	Address" path="address[0].type" bind="both" />
+    <mb-context type="Address" path="address[0].type" bind="physical" />
+  </div>
+  <div class="field" >
+    <mb-input type="Address" path="address[0].line" placeholder="Line 1" />
   </div>
   <br>
   <div class="field" >
-    <mb-input type="	Address" path="address[0].line" placeholder="Line" />
+    <mb-input type="Address" path="address[0].line" placeholder="Line 2" />
   </div>
   <br>
   <div class="field">
-    <mb-input type="	Address" path="address[0].city" placeholder="City"/>
+    <mb-input type="Address" path="address[0].city" placeholder="City"/>
   </div>
   <br>
   <div class="field">
-    <mb-input type="	Address" path="address[0].state" placeholder="State" />
+    <mb-input type="Address" path="address[0].state" placeholder="State" />
   </div>
   <br>
   <div class="field">
-    <mb-input type="	Address" path="address[0].postalCode" placeholder="Postal Code" />
+    <mb-input type="Address" path="address[0].postalCode" placeholder="Postal Code" />
   </div>
   <br>
   <div class="field">
-    <mb-input type="	Address" path="address[0].country" placeholder="Country" />
+    <mb-input type="Address" path="address[0].country" placeholder="Country" />
   </div>
   <!-- <br> -->
   <!-- <div> -->

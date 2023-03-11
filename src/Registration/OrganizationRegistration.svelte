@@ -94,17 +94,128 @@
   </div>
   <br>
   <div class="field" >
-    <mb-input path="name" placeholder="Organization Name"/>
+    <mb-input path="name" placeholder="Name"/>
   </div>
-  <mb-context path="contact.purpose[0].coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/contactentity-type" />
   <br>
-  <mb-select type="code" path="contact.purpose[0].coding[0].code" placeholder="Contact Type">
-    <mb-option value="ADMIN" display="Administrative" label="Administrative" />
-    <mb-option value="BILL" display="Billing" label="Billing" />
-    <mb-option value="HR" display="Human Resources" label="Human Resources" />
-    <mb-option value="PATINF" display="Organization" label="Organization" />
-    <mb-option value="PAYOR" display="Payor" label="Payor" />
-  </mb-select>
+  <div class="field" >
+    <mb-input path="alias[0]" placeholder="Alias" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[0].system[0]" bind="phone">
+  </div>
+
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[0].use[0]" bind="mobile" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="ContactPoint" path="telecom[0].value[0]" placeholder="Phone Number" />
+  </div>
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[1].system[0]" bind="email">
+  </div>
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[1].use[0]" bind="mobile" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="ContactPoint" path="telecom[1].value[0]" placeholder="Email Address" />
+  </div>
+  <br>
+  <div class="field"> 
+    <mb-context type="Address" path="address[0].use" bind="home" />
+  </div>
+  <!-- <br> -->
+  <div class="field">
+    <mb-context type="Address" path="address[0].type" bind="physical" />
+  </div>
+  <!-- <br> -->
+  <div class="field" >
+    <mb-input type="Address" path="address[0].line" placeholder="Line 1" />
+  </div>
+  <br>
+  <div class="field" >
+    <mb-input type="Address" path="address[0].line" placeholder="Line 2" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="address[0].city" placeholder="City"/>
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="address[0].state" placeholder="State" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="address[0].postalCode" placeholder="Postal Code" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="address[0].country" placeholder="Country" />
+  </div>
+  <br>
+  <div class="field" >
+    <mb-select type="code" path="contact.purpose[0].coding[0]" placeholder="Contact Type">
+      <mb-option value="ADMIN" display="Administrative" label="Administrative" />
+      <mb-option value="BILL" display="Billing" label="Billing" />
+      <mb-option value="HR" display="Human Resources" label="Human Resources" />
+      <mb-option value="PATINF" display="Organization" label="Organization" />
+      <mb-option value="PAYOR" display="Payor" label="Payor" />
+    </mb-select>
+  </div>
+  <div class="field"> 
+    <mb-context path="contact.purpose[0].coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/contactentity-type" /> 
+  </div> 
+  <div class="field">
+    <mb-context type="HumanName" path="contact.name[0].use[0]" bind="official" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="HumanName" path="contact.name[0].prefix" placeholder="Prefix" />
+  </div>
+  <br>
+  <div class="filed">
+    <mb-input type="HumanName" path="contact.name[0].given" placeholder="First Name" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="HumanName" path="contact.name[0].family" placeholder="Last Name" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="HumanName" path="contact.name[0].suffix" placeholder="Suffix" />
+  </div>
+  <br>
+  <div class="field"> 
+    <mb-context type="cAddress" path="contact.address[0].use" bind="home" />
+  </div>
+  <div class="field">
+    <mb-context type="Address" path="contact.address[0].type" bind="physical" />
+  </div>
+  <div class="field" >
+    <mb-input type="Address" path="contact.address[0].line" placeholder="Line 1" />
+  </div>
+  <br>
+  <div class="field" >
+    <mb-input type="Address" path="contact.address[0].line" placeholder="Line 2" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="contact.address[0].city" placeholder="City"/>
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="contact.address[0].state" placeholder="State" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="contact.address[0].postalCode" placeholder="Postal Code" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="Address" path="contact.address[0].country" placeholder="Country" />
+  </div>
   <br>
   <div>
     <mb-submit>
