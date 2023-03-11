@@ -27,3 +27,6 @@ dist-ssr
 .env.ehrbase
 .env.local
 public/vendor/
+utils
+src/features
+src/db
