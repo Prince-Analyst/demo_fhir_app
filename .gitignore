@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.pgdata
+.vscode
+.env.ehrbase
+.env.local
+public/vendor/
