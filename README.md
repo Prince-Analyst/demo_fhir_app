@@ -26,4 +26,4 @@ To run this app: kindly follow the steps
 3. Start the docker container by running `docker-compose up` or `docker-compose up -d` to run in a detached mode.
 4. Afterwards, run `npm run dev`
 5. To access the **fhir-server**, open [localhost:8090/fhir](http://localhost:8090/fhir) on your browser.
-6. To access the **ehrbase-server**, open [localhost:8080/ehrbase/swagger-ui/index.html#/](http://localhost:8080/ehrbase/swagger-ui/index.html#/)on your browser.
+6. To access the **ehrbase-server**, open [localhost:8080/ehrbase/swagger-ui/index.html#/](http://localhost:8080/ehrbase/swagger-ui/index.html#/) on your browser.
