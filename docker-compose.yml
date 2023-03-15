@@ -5,7 +5,7 @@ services:
     ports:
       -   "8090:8080"
     environment:
-      spring.datasource.url: "jdbc:postgresql://fhir-db:5432/hapi_r4"
+      spring.datasource.url: "jdbc:postgresql://fhir-db:5433/hapi_r4"
       spring.datasource.username: admin
       spring.datasource.password: admin
       spring.datasource.driverClassName: org.postgresql.Driver
@@ -14,7 +14,8 @@ services:
       hapi.fhir.client_id_strategy: ANY
 
   fhir-db:
-      image: postgres:latest
+      image:  yugabytedb/yugabyte:latest
+      #image: postgres:latest
       volumes:
         - fhir-db-data:/var/lib/postgresql/data
       environment:
@@ -27,7 +28,7 @@ services:
   ehrbase:
       image: ehrbase/ehrbase:next
       environment:
-          SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/ehrbase"
+          SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5433/ehrbase"
           SPRING_DATASOURCE_USERNAME: ehrbase
           SPRING_DATASOURCE_PASSWORD: ehrbase
           SERVER_AQLCONFIG_USEJQUERY: "false"
@@ -38,7 +39,8 @@ services:
           - "8080:8080"
 
   db:
-      image: postgres:latest
+      image: yugabytedb/yugabyte:latest
+      #image: postgres:latest
       volumes:
           - db-data:/var/lib/postgresql/data
       environment:
@@ -48,6 +50,42 @@ services:
       ports:
         - "15433:5432"
 
+#  yugabytedb:
+#    image: docker.io/yugabytedb/yugabyte:latest
+#    command: |
+#     bash -c "
+#     # create database and user as soon as database is up
+#     until [ -z "POSTGRES_USER" ] || PGPASSWORD=ehrbase bin/ysqlsh -v ON_ERROR_STOP=1 \\
+#      -c \"create database $${POSTGRES_DB:-$${POSTGRES_USER}} \" \\
+#      -c \"create user $${POSTGRES_USER} password '$${POSTGRES_PASSWORD}' \" \\
+#      2>/dev/null
+#      do
+#       echo \"Waiting for YugabyteDB to be up for creating user $${POSTGRES_USER}.\" ; sleep 5
+#      done &
+#     # start YugabyteDB
+#     bin/yugabyted start --listen 0.0.0.0 --daemon=false --tserver_flags='ysql_enable_auth=true'
+#     "
+#    environment:
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#      - POSTGRES_DB=hapi_r4
+#    ports:
+#      - 25433:5433
+#      - 27000:7000
+#
+#  waityugabyte:
+#    image: postgres:13-alpine
+#    links:
+#      - yugabytedb
+#    depends_on:
+#      - yugabytedb
+#    entrypoint:
+#      - bash
+#      - -c
+#      - 'until PGPASSWORD=admin /usr/local/bin/psql postgres://ehrbase@yugabytedb:5433/hapi_r4 -c "SELECT 1"; do sleep 5; done'
+#
 volumes:
-   fhir-db-data:
-   db-data:
+  fhir-db-data:
+  #yugabytedb:
+  db-data:
+  #waityugabyte:
