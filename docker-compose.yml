@@ -6,7 +6,7 @@ services:
       -   "8090:8080"
     environment:
       spring.datasource.url: "jdbc:postgresql://fyb-tserver:5433/hapi_r4"
-      spring.datasource.url: "jdbc:postgresql://fhir-db:5433/hapi_r4"
+      #spring.datasource.url: "jdbc:postgresql://fhir-db:5433/hapi_r4"
       spring.datasource.username: admin
       spring.datasource.password: admin
       spring.datasource.driverClassName: org.postgresql.Driver
@@ -17,7 +17,7 @@ services:
   #fhir-db:
   #    #image: postgres:latest
   #    image: yugabytedb/yugabyte:latest
-  #    container_name: 
+  #    container_name:
   #    volumes:
   #      - fhir-db-data:/var/lib/postgresql/data
   #    environment:
