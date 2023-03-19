@@ -16,19 +16,6 @@ services:
   fhir-db:
       image:  yugabytedb/yugabyte:latest
       #image: postgres:latest
-      command: |
-       bash -c "
-       # create database and user as soon as database is up
-       until [ -z "POSTGRES_USER" ] || PGPASSWORD=admin bin/ysqlsh -v ON_ERROR_STOP=1 \\
-        -c \"create database $${POSTGRES_DB:-$${POSTGRES_USER}} \" \\
-        -c \"create user $${POSTGRES_USER} password '$${POSTGRES_PASSWORD}' \" \\
-        2>/dev/null
-        do
-         echo \"Waiting for YugabyteDB to be up for creating user $${POSTGRES_USER}.\" ; sleep 5
-        done &
-       # start YugabyteDB
-       bin/yugabyted start --listen 0.0.0.0 --daemon=false --tserver_flags='ysql_enable_auth=true'
-       "
       volumes:
         - fhir-db-data:/var/lib/postgresql/data
       environment:
@@ -54,19 +41,7 @@ services:
   db:
       image: yugabytedb/yugabyte:latest
       #image: postgres:latest
-      command: |
-       bash -c "
-       # create database and user as soon as database is up
-       until [ -z "POSTGRES_USER" ] || PGPASSWORD=ehrbase bin/ysqlsh -v ON_ERROR_STOP=1 \\
-        -c \"create database $${POSTGRES_DB:-$${POSTGRES_USER}} \" \\
-        -c \"create user $${POSTGRES_USER} password '$${POSTGRES_PASSWORD}' \" \\
-        2>/dev/null
-        do
-         echo \"Waiting for YugabyteDB to be up for creating user $${POSTGRES_USER}.\" ; sleep 5
-        done &
-       # start YugabyteDB
-       bin/yugabyted start --listen 0.0.0.0 --daemon=false --tserver_flags='ysql_enable_auth=true'
-       "
+      
       volumes:
           - db-data:/var/lib/postgresql/data
       environment:

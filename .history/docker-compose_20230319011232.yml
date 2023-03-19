@@ -19,7 +19,7 @@ services:
       command: |
        bash -c "
        # create database and user as soon as database is up
-       until [ -z "POSTGRES_USER" ] || PGPASSWORD=admin bin/ysqlsh -v ON_ERROR_STOP=1 \\
+       until [ -z "POSTGRES_USER" ] || PGPASSWORD=ehrbase bin/ysqlsh -v ON_ERROR_STOP=1 \\
         -c \"create database $${POSTGRES_DB:-$${POSTGRES_USER}} \" \\
         -c \"create user $${POSTGRES_USER} password '$${POSTGRES_PASSWORD}' \" \\
         2>/dev/null
