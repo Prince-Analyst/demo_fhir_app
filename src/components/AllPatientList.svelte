@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { FHIR } from "../fhir";
+  import { fhir } from "../fhir";
   import { onMount } from "svelte";
   import PatientList from "./PatientList.svelte";
   import { Link, navigate } from "svelte-routing";
   import { SearchAllPatients } from "./searchPatient";
   let patients;
   const load = async () => {
-    const r = await FHIR.get("/Patient", {
+    const r = await fhir.get("/Patient", {
       params: { _count: 50, _sort: "-_lastUpdated" },
     });
     patients = r.data?.entry || [];
@@ -33,7 +33,7 @@
       on:mb-input={(e) => {
         navigate(`/clinical/${e.target.data.code}`);
       }}
-      axios={FHIR}
+      axios={fhir}
       plugin={SearchAllPatients}
     />
   </div>
