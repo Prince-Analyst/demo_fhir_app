@@ -1,0 +1,1383 @@
+{
+		"templateId": "clinikk.health_summary.v0",
+		"version": "2.3",
+		"defaultLanguage": "en",
+		"languages": [
+			"en"
+		],
+		"tree": {
+			"id": "clinikk.health_summary.v0",
+			"name": "clinikk.health_summary.v0",
+			"localizedName": "clinikk.health_summary.v0",
+			"rmType": "COMPOSITION",
+			"nodeId": "openEHR-EHR-COMPOSITION.health_summary.v1",
+			"min": 1,
+			"max": 1,
+			"localizedNames": {
+				"en": "clinikk.health_summary.v0"
+			},
+			"localizedDescriptions": {
+				"en": "Generic document containing a summary of health information about an individual."
+			},
+			"children": [
+				{
+					"id": "category",
+					"name": "category",
+					"localizedName": "category",
+					"rmType": "DV_CODED_TEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/category",
+					"inputs": [
+						{
+							"suffix": "code",
+							"type": "CODED_TEXT",
+							"list": [
+								{
+									"value": "433",
+									"label": "event",
+									"localizedLabels": {
+										"en": "event"
+									}
+								}
+							],
+							"terminology": "openehr"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "context",
+					"name": "context",
+					"localizedName": "context",
+					"rmType": "EVENT_CONTEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/context",
+					"children": [
+						{
+							"id": "start_time",
+							"name": "start_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/start_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "setting",
+							"name": "setting",
+							"rmType": "DV_CODED_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/setting",
+							"inputs": [
+								{
+									"suffix": "code",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "value",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "problem_diagnosis",
+					"name": "Problem/Diagnosis",
+					"localizedName": "Problem/Diagnosis",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.problem_diagnosis.v1",
+					"min": 0,
+					"max": -1,
+					"localizedNames": {
+						"en": "Problem/Diagnosis"
+					},
+					"localizedDescriptions": {
+						"en": "Details about a single identified health condition, injury, disability or any other issue which impacts on the physical, mental and/or social well-being of an individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]",
+					"children": [
+						{
+							"id": "problem_diagnosis_name",
+							"name": "Problem/Diagnosis name",
+							"localizedName": "Problem/Diagnosis name",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Problem/Diagnosis name"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the problem or diagnosis, by name."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the name of the problem or diagnosis with a terminology is preferred, where possible."
+							}
+						},
+						{
+							"id": "clinical_description",
+							"name": "Clinical description",
+							"localizedName": "Clinical description",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0009",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Clinical description"
+							},
+							"localizedDescriptions": {
+								"en": "Narrative description about the problem or diagnosis."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0009]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Use to provide background and context, including evolution, episodes or exacerbations, progress and any other relevant details, about the problem or diagnosis."
+							}
+						},
+						{
+							"id": "date_time_of_onset",
+							"name": "Date/time of onset",
+							"localizedName": "Date/time of onset",
+							"rmType": "DV_DATE_TIME",
+							"nodeId": "at0077",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Date/time of onset"
+							},
+							"localizedDescriptions": {
+								"en": "Estimated or actual date/time that signs or symptoms of the problem/diagnosis were first observed."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0077]/value",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"annotations": {
+								"comment": "Data captured/imported as \"Age at onset\" should be converted to a date using the subject's date of birth."
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "Clear delineation between the scope of a problem versus a diagnosis is not easy to achieve in practice. For the purposes of clinical documentation with this archetype, problem and diagnosis are regarded as a continuum, with increasing levels of detail and supportive evidence usually providing weight towards the label of 'diagnosis'."
+					}
+				},
+				{
+					"id": "procedure",
+					"name": "Procedure",
+					"localizedName": "Procedure",
+					"rmType": "ACTION",
+					"nodeId": "openEHR-EHR-ACTION.procedure.v1",
+					"min": 0,
+					"max": -1,
+					"localizedNames": {
+						"en": "Procedure"
+					},
+					"localizedDescriptions": {
+						"en": "A clinical activity carried out for screening, investigative, diagnostic, curative, therapeutic, evaluative or palliative purposes."
+					},
+					"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]",
+					"children": [
+						{
+							"id": "procedure_name",
+							"name": "Procedure name",
+							"localizedName": "Procedure name",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Procedure name"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the procedure by name."
+							},
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/description[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the specific procedure with a terminology is preferred, where possible."
+							}
+						},
+						{
+							"id": "description",
+							"name": "Description",
+							"localizedName": "Description",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0049",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Description"
+							},
+							"localizedDescriptions": {
+								"en": "Narrative description about the procedure, as appropriate for the pathway step."
+							},
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/description[at0001]/items[at0049]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "For example: description about the performance and findings from the the procedure, the aborted attempt or the cancellation of the procedure."
+							}
+						},
+						{
+							"id": "final_end_date_time",
+							"name": "Final end date/time",
+							"localizedName": "Final end date/time",
+							"rmType": "DV_DATE_TIME",
+							"nodeId": "at0060",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Final end date/time"
+							},
+							"localizedDescriptions": {
+								"en": "The date and/or time when the entire procedure, or the last component of a multicomponent procedure, was finished."
+							},
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/description[at0001]/items[at0060]/value",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"annotations": {
+								"comment": "Only for use in association with the 'Procedure performed' pathway step, and in situations where the procedure is repeated on multiple occasions before being completed or there are multiple components to the whole procedure. This may be the same as the RM time attribute for the 'Procedure completed' pathway step."
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/encoding",
+							"inContext": true
+						},
+						{
+							"id": "time",
+							"name": "time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "ism_transition",
+							"name": "ism_transition",
+							"rmType": "ISM_TRANSITION",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/ism_transition",
+							"children": [
+								{
+									"id": "careflow_step",
+									"name": "Careflow_step",
+									"rmType": "DV_CODED_TEXT",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/ism_transition/careflow_step",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "at0043",
+													"label": "Procedure completed",
+													"localizedLabels": {
+														"en": "Procedure completed"
+													},
+													"localizedDescriptions": {
+														"en": "The procedure has been performed and all associated clinical activities completed."
+													},
+													"currentStates": [
+														"532"
+													]
+												}
+											],
+											"terminology": "local"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "current_state",
+									"name": "Current_state",
+									"rmType": "DV_CODED_TEXT",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/ism_transition/current_state",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "532",
+													"label": "completed",
+													"localizedLabels": {
+														"en": "completed"
+													}
+												}
+											],
+											"terminology": "openehr"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "transition",
+									"name": "transition",
+									"rmType": "DV_CODED_TEXT",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/ism_transition/transition",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "medication_order",
+					"name": "Medication order",
+					"localizedName": "Medication order",
+					"rmType": "INSTRUCTION",
+					"nodeId": "openEHR-EHR-INSTRUCTION.medication_order.v3",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Medication order"
+					},
+					"localizedDescriptions": {
+						"en": "An order for a medication, vaccine, nutritional product or other therapeutic item for an identified individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]",
+					"children": [
+						{
+							"id": "order",
+							"name": "Order",
+							"localizedName": "Order",
+							"rmType": "ACTIVITY",
+							"nodeId": "at0001",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Order"
+							},
+							"localizedDescriptions": {
+								"en": "Details of the requested order."
+							},
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]",
+							"children": [
+								{
+									"id": "medication_item",
+									"name": "Medication item",
+									"localizedName": "Medication item",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0070",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Medication item"
+									},
+									"localizedDescriptions": {
+										"en": "Name of the medication, vaccine or other therapeutic/prescribable item being ordered."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0070]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "Depending on the prescribing context this field could be used for either generic- or product-based prescribing. This data field can be used to record tightly bound orders of different medications when they are prescribed as a single pack. It is strongly recommended that the 'Medication item' be coded with a terminology capable of triggering decision support, where possible. The extent of coding may vary from the simple name of the medication item through to structured details about the actual medication pack to be used. Free text entry should only be used if there is no appropriate terminology available."
+									}
+								},
+								{
+									"id": "therapeutic_direction",
+									"name": "Therapeutic direction",
+									"localizedName": "Therapeutic direction",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.therapeutic_direction.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Therapeutic direction"
+									},
+									"localizedDescriptions": {
+										"en": "Structured details of a single therapeutic direction for an ordered item, such as a medication or blood transfusion order."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]",
+									"children": [
+										{
+											"id": "dosage",
+											"name": "Dosage",
+											"localizedName": "Dosage",
+											"rmType": "CLUSTER",
+											"nodeId": "openEHR-EHR-CLUSTER.dosage.v1",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Dosage"
+											},
+											"localizedDescriptions": {
+												"en": "The combination of a medication amount and administration timing for a single day, in the context of a medication order or medication management."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]",
+											"children": [
+												{
+													"id": "timing_-_daily",
+													"name": "Timing - daily",
+													"localizedName": "Timing - daily",
+													"rmType": "CLUSTER",
+													"nodeId": "openEHR-EHR-CLUSTER.timing_daily.v1",
+													"min": 0,
+													"max": 1,
+													"localizedNames": {
+														"en": "Timing - daily"
+													},
+													"localizedDescriptions": {
+														"en": "Structured information about the intended timing of a therapeutic or diagnostic activity within any 24 hour period."
+													},
+													"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]",
+													"children": [
+														{
+															"id": "frequency",
+															"name": "Frequency",
+															"localizedName": "Frequency",
+															"rmType": "ELEMENT",
+															"nodeId": "at0003",
+															"min": 0,
+															"max": 1,
+															"localizedNames": {
+																"en": "Frequency"
+															},
+															"localizedDescriptions": {
+																"en": "The frequency as number of times per time period that the activity is to take place."
+															},
+															"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0003]",
+															"children": [
+																{
+																	"id": "quantity_value",
+																	"name": "Frequency",
+																	"localizedName": "Frequency",
+																	"rmType": "DV_QUANTITY",
+																	"nodeId": "at0003",
+																	"min": 1,
+																	"max": 1,
+																	"localizedNames": {
+																		"en": "Frequency"
+																	},
+																	"localizedDescriptions": {
+																		"en": "The frequency as number of times per time period that the activity is to take place."
+																	},
+																	"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0003]/value",
+																	"inputs": [
+																		{
+																			"suffix": "magnitude",
+																			"type": "DECIMAL"
+																		},
+																		{
+																			"suffix": "unit",
+																			"type": "CODED_TEXT",
+																			"list": [
+																				{
+																					"value": "1/d",
+																					"label": "1/d",
+																					"validation": {
+																						"precision": {
+																							"min": 0,
+																							"minOp": ">=",
+																							"max": 0,
+																							"maxOp": "<="
+																						},
+																						"range": {
+																							"min": 1.0,
+																							"minOp": ">="
+																						}
+																					}
+																				},
+																				{
+																					"value": "1/min",
+																					"label": "1/min",
+																					"validation": {
+																						"precision": {
+																							"min": 0,
+																							"minOp": ">=",
+																							"max": 0,
+																							"maxOp": "<="
+																						},
+																						"range": {
+																							"min": 1.0,
+																							"minOp": ">="
+																						}
+																					}
+																				},
+																				{
+																					"value": "1/s",
+																					"label": "1/s",
+																					"validation": {
+																						"precision": {
+																							"min": 0,
+																							"minOp": ">=",
+																							"max": 0,
+																							"maxOp": "<="
+																						},
+																						"range": {
+																							"min": 1.0,
+																							"minOp": ">="
+																						}
+																					}
+																				},
+																				{
+																					"value": "1/h",
+																					"label": "1/h",
+																					"validation": {
+																						"precision": {
+																							"min": 0,
+																							"minOp": ">=",
+																							"max": 0,
+																							"maxOp": "<="
+																						},
+																						"range": {
+																							"min": 1.0,
+																							"minOp": ">="
+																						}
+																					}
+																				}
+																			]
+																		}
+																	],
+																	"annotations": {
+																		"comment": "For example: \"4 times per day\" or \"3 to 4 times per hour\"."
+																	}
+																},
+																{
+																	"id": "interval<dv_quantity>_value",
+																	"name": "Frequency",
+																	"localizedName": "Frequency",
+																	"rmType": "DV_INTERVAL<DV_QUANTITY>",
+																	"nodeId": "at0003",
+																	"min": 1,
+																	"max": 1,
+																	"localizedNames": {
+																		"en": "Frequency"
+																	},
+																	"localizedDescriptions": {
+																		"en": "The frequency as number of times per time period that the activity is to take place."
+																	},
+																	"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0003]/value",
+																	"children": [
+																		{
+																			"id": "upper",
+																			"name": "upper",
+																			"localizedName": "upper",
+																			"rmType": "DV_QUANTITY",
+																			"min": 1,
+																			"max": 1,
+																			"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0003]/value/upper",
+																			"inputs": [
+																				{
+																					"suffix": "magnitude",
+																					"type": "DECIMAL"
+																				},
+																				{
+																					"suffix": "unit",
+																					"type": "CODED_TEXT",
+																					"list": [
+																						{
+																							"value": "1/d",
+																							"label": "1/d",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						},
+																						{
+																							"value": "1/min",
+																							"label": "1/min",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						},
+																						{
+																							"value": "1/s",
+																							"label": "1/s",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						},
+																						{
+																							"value": "1/h",
+																							"label": "1/h",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						}
+																					]
+																				}
+																			]
+																		},
+																		{
+																			"id": "lower",
+																			"name": "lower",
+																			"localizedName": "lower",
+																			"rmType": "DV_QUANTITY",
+																			"min": 1,
+																			"max": 1,
+																			"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0003]/value/lower",
+																			"inputs": [
+																				{
+																					"suffix": "magnitude",
+																					"type": "DECIMAL"
+																				},
+																				{
+																					"suffix": "unit",
+																					"type": "CODED_TEXT",
+																					"list": [
+																						{
+																							"value": "1/d",
+																							"label": "1/d",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						},
+																						{
+																							"value": "1/min",
+																							"label": "1/min",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						},
+																						{
+																							"value": "1/s",
+																							"label": "1/s",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						},
+																						{
+																							"value": "1/h",
+																							"label": "1/h",
+																							"validation": {
+																								"precision": {
+																									"min": 0,
+																									"minOp": ">=",
+																									"max": 0,
+																									"maxOp": "<="
+																								},
+																								"range": {
+																									"min": 1.0,
+																									"minOp": ">="
+																								}
+																							}
+																						}
+																					]
+																				}
+																			]
+																		}
+																	],
+																	"annotations": {
+																		"comment": "For example: \"4 times per day\" or \"3 to 4 times per hour\"."
+																	}
+																}
+															],
+															"annotations": {
+																"comment": "For example: \"4 times per day\" or \"3 to 4 times per hour\"."
+															}
+														},
+														{
+															"id": "timing_description",
+															"name": "Timing description",
+															"localizedName": "Timing description",
+															"rmType": "DV_TEXT",
+															"nodeId": "at0027",
+															"min": 0,
+															"max": 1,
+															"localizedNames": {
+																"en": "Timing description"
+															},
+															"localizedDescriptions": {
+																"en": "Text description of the daily timing. This element is intended to allow implementers to use the structures for different timings without necessarily specifying the timings in a structured way."
+															},
+															"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0027]/value",
+															"inputs": [
+																{
+																	"type": "TEXT"
+																}
+															],
+															"annotations": {
+																"comment": "For example: \"Take morning and evening\"."
+															}
+														},
+														{
+															"id": "specific_event",
+															"name": "Specific event",
+															"localizedName": "Specific event",
+															"rmType": "CLUSTER",
+															"nodeId": "at0039",
+															"min": 0,
+															"max": -1,
+															"localizedNames": {
+																"en": "Specific event"
+															},
+															"localizedDescriptions": {
+																"en": "A specific, named time event that the activity should occur in relation to."
+															},
+															"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0039]",
+															"children": [
+																{
+																	"id": "event_name",
+																	"name": "Event name",
+																	"localizedName": "Event name",
+																	"rmType": "DV_TEXT",
+																	"nodeId": "at0026",
+																	"min": 0,
+																	"max": 1,
+																	"localizedNames": {
+																		"en": "Event name"
+																	},
+																	"localizedDescriptions": {
+																		"en": "The name of the event that triggers the activity to take place."
+																	},
+																	"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0039]/items[at0026]/value",
+																	"inputs": [
+																		{
+																			"type": "TEXT"
+																		}
+																	],
+																	"annotations": {
+																		"comment": "For example: \"Before each meal\", \"at bedtime\", \"in the morning\". It is understood that these event names may not equate to the same exact times in different cultures. Coding with a terminology, for example HL7 FHIR Named events, is recommended where appropriate."
+																	}
+																}
+															]
+														}
+													]
+												}
+											],
+											"annotations": {
+												"comment": "For example: '2 tablets at 6pm' or '20mg three times per day'. Please note: this cluster allows multiple occurrences to enable representation of a complete set of dose patterns for a single dose direction."
+											}
+										},
+										{
+											"id": "direction_duration",
+											"name": "Direction duration",
+											"localizedName": "Direction duration",
+											"rmType": "DV_DURATION",
+											"nodeId": "at0066",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Direction duration"
+											},
+											"localizedDescriptions": {
+												"en": "The length of time for which this direction should be applied."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[at0066]/value",
+											"inputs": [
+												{
+													"suffix": "year",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "month",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "day",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "week",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "hour",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "minute",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "second",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												}
+											],
+											"annotations": {
+												"comment": "For example: 'for 7 days','Indefinite'. An example of a set of multiple directions, with varying durations might be ... '1 tablet daily for 3 days, 2 tablets daily for 4 days, then 3 tablets Indefinite'."
+											}
+										},
+										{
+											"id": "order_start_date_time",
+											"name": "Order start date/time",
+											"localizedName": "Order start date/time",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0178",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Order start date/time"
+											},
+											"localizedDescriptions": {
+												"en": "The date and optional time to commence the administration."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[at0178]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											]
+										},
+										{
+											"id": "order_stop_date_time",
+											"name": "Order stop date/time",
+											"localizedName": "Order stop date/time",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0179",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Order stop date/time"
+											},
+											"localizedDescriptions": {
+												"en": "The date and optional time when it is planned to cease the administration."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[at0179]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "timing",
+									"name": "timing",
+									"rmType": "DV_PARSABLE",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/timing",
+									"inputs": [
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "formalism",
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "action_archetype_id",
+									"name": "action_archetype_id",
+									"rmType": "STRING",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/action_archetype_id",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "narrative",
+							"name": "narrative",
+							"rmType": "DV_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/narrative",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/encoding",
+							"inContext": true
+						},
+						{
+							"id": "expiry_time",
+							"name": "expiry_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 0,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/expiry_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "adverse_reaction_risk",
+					"name": "Adverse reaction risk",
+					"localizedName": "Adverse reaction risk",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.adverse_reaction_risk.v1",
+					"min": 0,
+					"max": -1,
+					"localizedNames": {
+						"en": "Adverse reaction risk"
+					},
+					"localizedDescriptions": {
+						"en": "Risk of harmful or undesirable physiological response which is unique to an individual and associated with exposure to a substance."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]",
+					"children": [
+						{
+							"id": "substance",
+							"name": "Substance",
+							"localizedName": "Substance",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Substance"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of a substance, or substance class, that is considered to put the individual at risk of an adverse reaction event."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/data[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Both an individual substance and a substance class are valid entries in 'Substance'. A substance may be a compound of simpler substances, for example a medicinal product. If the value in 'Substance' is an individual substance, it may be duplicated in 'Specific substance'. It is strongly recommended that both 'Substance' and 'Specific substance' be coded with a terminology capable of triggering decision support, where possible. For example: Snomed CT, DM+D, RxNorm, NDFRT, ATC, New Zealand Universal List of Medicines and Australian Medicines Terminology. Free text entry should only be used if there is no appropriate terminology available.",
+								"source": "openEHR,FHIR,DAM"
+							}
+						},
+						{
+							"id": "onset_of_last_reaction",
+							"name": "Onset of last reaction",
+							"localizedName": "Onset of last reaction",
+							"rmType": "DV_DATE_TIME",
+							"nodeId": "at0117",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Onset of last reaction"
+							},
+							"localizedDescriptions": {
+								"en": "The date and/or time of the onset of the last known occurrence of a reaction event."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/data[at0001]/items[at0117]/value",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"annotations": {
+								"comment": "This date may be be a duplicate of the most recent 'Onset of reaction' date.\r\n Where a textual representation of the date of last occurrence is required e.g 'In Childhood, '10 years ago' the Comment element should be used.",
+								"source": "IMH"
+							}
+						},
+						{
+							"id": "comment",
+							"name": "Comment",
+							"localizedName": "Comment",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0006",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Comment"
+							},
+							"localizedDescriptions": {
+								"en": "Additional narrative about the propensity for the adverse reaction, not captured in other fields."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/data[at0001]/items[at0006]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "For example: including reason for flagging a 'Criticality' of 'High risk'; and instructions related to future exposure or administration of the Substance, such as administration within an Intensive Care Unit or under corticosteroid cover.",
+								"source": "openEHR"
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings.",
+						"source": "openEHR,FHIR"
+					}
+				},
+				{
+					"id": "composer",
+					"name": "composer",
+					"rmType": "PARTY_PROXY",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/composer",
+					"inputs": [
+						{
+							"suffix": "id",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_scheme",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_namespace",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "name",
+							"type": "TEXT"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "language",
+					"name": "language",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/language",
+					"inContext": true
+				},
+				{
+					"id": "territory",
+					"name": "territory",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/territory",
+					"inContext": true
+				}
+			]
+		}
+}

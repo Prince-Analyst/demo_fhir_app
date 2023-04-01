@@ -1,0 +1,413 @@
+{
+		"templateId": "Prototype.MedicationList.v0",
+		"version": "2.3",
+		"defaultLanguage": "en",
+		"languages": [
+			"en"
+		],
+		"tree": {
+			"id": "prototype.medicationlist.v0",
+			"name": "Prototype.MedicationList.v0",
+			"localizedName": "Prototype.MedicationList.v0",
+			"rmType": "COMPOSITION",
+			"nodeId": "openEHR-EHR-COMPOSITION.medication_list.v1",
+			"min": 1,
+			"max": 1,
+			"localizedNames": {
+				"en": "Prototype.MedicationList.v0"
+			},
+			"localizedDescriptions": {
+				"en": "A persistent and versioned list of medicines for an individual."
+			},
+			"children": [
+				{
+					"id": "category",
+					"name": "category",
+					"localizedName": "category",
+					"rmType": "DV_CODED_TEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/category",
+					"inputs": [
+						{
+							"suffix": "code",
+							"type": "CODED_TEXT",
+							"list": [
+								{
+									"value": "433",
+									"label": "event",
+									"localizedLabels": {
+										"en": "event"
+									}
+								}
+							],
+							"terminology": "openehr"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "context",
+					"name": "context",
+					"localizedName": "context",
+					"rmType": "EVENT_CONTEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/context",
+					"children": [
+						{
+							"id": "start_time",
+							"name": "start_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/start_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "setting",
+							"name": "setting",
+							"rmType": "DV_CODED_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/setting",
+							"inputs": [
+								{
+									"suffix": "code",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "value",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "medication_order",
+					"name": "Medication order",
+					"localizedName": "Medication order",
+					"rmType": "INSTRUCTION",
+					"nodeId": "openEHR-EHR-INSTRUCTION.medication_order.v3",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Medication order"
+					},
+					"localizedDescriptions": {
+						"en": "An order for a medication, vaccine, nutritional product or other therapeutic item for an identified individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]",
+					"children": [
+						{
+							"id": "order",
+							"name": "Order",
+							"localizedName": "Order",
+							"rmType": "ACTIVITY",
+							"nodeId": "at0001",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Order"
+							},
+							"localizedDescriptions": {
+								"en": "Details of the requested order."
+							},
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]",
+							"children": [
+								{
+									"id": "medication_item",
+									"name": "Medication item",
+									"localizedName": "Medication item",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0070",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Medication item"
+									},
+									"localizedDescriptions": {
+										"en": "Name of the medication, vaccine or other therapeutic/prescribable item being ordered."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0070]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "Depending on the prescribing context this field could be used for either generic- or product-based prescribing. This data field can be used to record tightly bound orders of different medications when they are prescribed as a single pack. It is strongly recommended that the 'Medication item' be coded with a terminology capable of triggering decision support, where possible. The extent of coding may vary from the simple name of the medication item through to structured details about the actual medication pack to be used. Free text entry should only be used if there is no appropriate terminology available."
+									}
+								},
+								{
+									"id": "route",
+									"name": "Route",
+									"localizedName": "Route",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0091",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Route"
+									},
+									"localizedDescriptions": {
+										"en": "The route by which the ordered item is to be administered into the subject's body."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0091]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "For example: 'oral', 'intravenous', or 'topical'.\r\nCoding of the route with a terminology is preferred, where possible. Multiple potential routes may be specified."
+									}
+								},
+								{
+									"id": "overall_directions_description",
+									"name": "Overall directions description",
+									"localizedName": "Overall directions description",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0009",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Overall directions description"
+									},
+									"localizedDescriptions": {
+										"en": "Complete narrative description about how the ordered item is to be used."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0009]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "This narrative should normally subsume data captured in 'Dose amount', 'Dose timing' and any additional instructions for use. Where the medication dose directions are fully carried by the structured, computable dose directions, this element should carry the narrative equivalent, generally auto-generated. If it is not possible to represent the intended 'Dose direction' fully in computable form, partial representation is not recommended, and the directions should be only recorded in narrative form using this data element."
+									}
+								},
+								{
+									"id": "order_details",
+									"name": "Order details",
+									"localizedName": "Order details",
+									"rmType": "CLUSTER",
+									"nodeId": "at0113",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Order details"
+									},
+									"localizedDescriptions": {
+										"en": "Details about the whole medication order."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0113]",
+									"children": [
+										{
+											"id": "order_start_date_time",
+											"name": "Order start date/time",
+											"localizedName": "Order start date/time",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0012",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Order start date/time"
+											},
+											"localizedDescriptions": {
+												"en": "The date and optional time to commence use of the ordered item."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0113]/items[at0012]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											]
+										},
+										{
+											"id": "order_stop_date_time",
+											"name": "Order stop date/time",
+											"localizedName": "Order stop date/time",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0013",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Order stop date/time"
+											},
+											"localizedDescriptions": {
+												"en": "The date and optional time when it is planned to cease use of the ordered item."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0113]/items[at0013]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "timing",
+									"name": "timing",
+									"rmType": "DV_PARSABLE",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/timing",
+									"inputs": [
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "formalism",
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "action_archetype_id",
+									"name": "action_archetype_id",
+									"rmType": "STRING",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/action_archetype_id",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "narrative",
+							"name": "narrative",
+							"rmType": "DV_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/narrative",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/encoding",
+							"inContext": true
+						},
+						{
+							"id": "expiry_time",
+							"name": "expiry_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 0,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/expiry_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "composer",
+					"name": "composer",
+					"rmType": "PARTY_PROXY",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/composer",
+					"inputs": [
+						{
+							"suffix": "id",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_scheme",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_namespace",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "name",
+							"type": "TEXT"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "language",
+					"name": "language",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/language",
+					"inContext": true
+				},
+				{
+					"id": "territory",
+					"name": "territory",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/territory",
+					"inContext": true
+				}
+			]
+		}
+}

@@ -1,0 +1,1387 @@
+{
+		"templateId": "ehrbase.testcase008.v0",
+		"version": "2.3",
+		"defaultLanguage": "en",
+		"languages": [
+			"en"
+		],
+		"tree": {
+			"id": "ehrbase.testcase008.v0",
+			"name": "ehrbase.testcase008.v0",
+			"localizedName": "ehrbase.testcase008.v0",
+			"rmType": "COMPOSITION",
+			"nodeId": "openEHR-EHR-COMPOSITION.health_summary.v1",
+			"min": 1,
+			"max": 1,
+			"localizedNames": {
+				"en": "ehrbase.testcase008.v0"
+			},
+			"localizedDescriptions": {
+				"en": "Generic document containing a summary of health information about an individual."
+			},
+			"children": [
+				{
+					"id": "category",
+					"name": "category",
+					"localizedName": "category",
+					"rmType": "DV_CODED_TEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/category",
+					"inputs": [
+						{
+							"suffix": "code",
+							"type": "CODED_TEXT",
+							"list": [
+								{
+									"value": "433",
+									"label": "event",
+									"localizedLabels": {
+										"en": "event"
+									}
+								}
+							],
+							"terminology": "openehr"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "context",
+					"name": "context",
+					"localizedName": "context",
+					"rmType": "EVENT_CONTEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/context",
+					"children": [
+						{
+							"id": "start_time",
+							"name": "start_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/start_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "setting",
+							"name": "setting",
+							"rmType": "DV_CODED_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/setting",
+							"inputs": [
+								{
+									"suffix": "code",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "value",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "body_temperature",
+					"name": "Body temperature",
+					"localizedName": "Body temperature",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.body_temperature.v2",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Body temperature"
+					},
+					"localizedDescriptions": {
+						"en": "A measurement of the body temperature, which is a surrogate for the core body temperature of the individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v2]",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0003",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v2]/data[at0002]/events[at0003]",
+							"children": [
+								{
+									"id": "temperature",
+									"name": "Temperature",
+									"localizedName": "Temperature",
+									"rmType": "DV_QUANTITY",
+									"nodeId": "at0004",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Temperature"
+									},
+									"localizedDescriptions": {
+										"en": "The measured temperature."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
+									"inputs": [
+										{
+											"suffix": "magnitude",
+											"type": "DECIMAL"
+										},
+										{
+											"suffix": "unit",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "Cel",
+													"label": "Cel",
+													"localizedLabels": {
+														"en": "°C"
+													},
+													"validation": {
+														"precision": {
+															"min": 1,
+															"minOp": ">=",
+															"max": 1,
+															"maxOp": "<="
+														},
+														"range": {
+															"min": 0.0,
+															"minOp": ">=",
+															"max": 100.0,
+															"maxOp": "<"
+														}
+													}
+												},
+												{
+													"value": "[degF]",
+													"label": "[degF]",
+													"localizedLabels": {
+														"en": "°F"
+													},
+													"validation": {
+														"precision": {
+															"min": 1,
+															"minOp": ">=",
+															"max": 1,
+															"maxOp": "<="
+														},
+														"range": {
+															"min": 30.0,
+															"minOp": ">=",
+															"max": 200.0,
+															"maxOp": "<"
+														}
+													}
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v2]/data[at0002]/events[at0003]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v2]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v2]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v2]/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "blood_pressure",
+					"name": "Blood pressure",
+					"localizedName": "Blood pressure",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.blood_pressure.v2",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Blood pressure"
+					},
+					"localizedDescriptions": {
+						"en": "The local measurement of arterial blood pressure which is a surrogate for arterial pressure in the systemic circulation."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0006",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]",
+							"children": [
+								{
+									"id": "systolic",
+									"name": "Systolic",
+									"localizedName": "Systolic",
+									"rmType": "DV_QUANTITY",
+									"nodeId": "at0004",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Systolic"
+									},
+									"localizedDescriptions": {
+										"en": "Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value",
+									"inputs": [
+										{
+											"suffix": "magnitude",
+											"type": "DECIMAL",
+											"validation": {
+												"precision": {
+													"min": 0,
+													"minOp": ">=",
+													"max": 0,
+													"maxOp": "<="
+												},
+												"range": {
+													"min": 0.0,
+													"minOp": ">=",
+													"max": 1000.0,
+													"maxOp": "<"
+												}
+											}
+										},
+										{
+											"suffix": "unit",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "mm[Hg]",
+													"label": "mm[Hg]",
+													"localizedLabels": {
+														"en": "mmHg"
+													},
+													"validation": {
+														"precision": {
+															"min": 0,
+															"minOp": ">=",
+															"max": 0,
+															"maxOp": "<="
+														},
+														"range": {
+															"min": 0.0,
+															"minOp": ">=",
+															"max": 1000.0,
+															"maxOp": "<"
+														}
+													}
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "diastolic",
+									"name": "Diastolic",
+									"localizedName": "Diastolic",
+									"rmType": "DV_QUANTITY",
+									"nodeId": "at0005",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Diastolic"
+									},
+									"localizedDescriptions": {
+										"en": "Minimum systemic arterial blood pressure - measured in the diastolic or relaxation phase of the heart cycle."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value",
+									"inputs": [
+										{
+											"suffix": "magnitude",
+											"type": "DECIMAL",
+											"validation": {
+												"precision": {
+													"min": 0,
+													"minOp": ">=",
+													"max": 0,
+													"maxOp": "<="
+												},
+												"range": {
+													"min": 0.0,
+													"minOp": ">=",
+													"max": 1000.0,
+													"maxOp": "<"
+												}
+											}
+										},
+										{
+											"suffix": "unit",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "mm[Hg]",
+													"label": "mm[Hg]",
+													"localizedLabels": {
+														"en": "mmHg"
+													},
+													"validation": {
+														"precision": {
+															"min": 0,
+															"minOp": ">=",
+															"max": 0,
+															"maxOp": "<="
+														},
+														"range": {
+															"min": 0.0,
+															"minOp": ">=",
+															"max": 1000.0,
+															"maxOp": "<"
+														}
+													}
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "anatomical_location",
+							"name": "Anatomical location",
+							"localizedName": "Anatomical location",
+							"rmType": "CLUSTER",
+							"nodeId": "openEHR-EHR-CLUSTER.anatomical_location.v1",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Anatomical location"
+							},
+							"localizedDescriptions": {
+								"en": "A physical site on or within the human body."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]",
+							"children": [
+								{
+									"id": "body_site_name",
+									"name": "Body site name",
+									"localizedName": "Body site name",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0001",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Body site name"
+									},
+									"localizedDescriptions": {
+										"en": "Identification of a single physical site either on, or within, the human body."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0001]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "This data element is the only mandated data point in this archetype and should be used as the primary data point to record an anatomical location with a commonly used name. It is strongly recommended that 'Body site name' be recorded as specifically as is anatomically possible. For example: record 'upper eyelid' rather than recording 'eyelid' with 'upper' as a qualifier; 'fifth rib' rather than 'rib' with a numeric qualifier. Use the other data elements for laterality, aspect, region and anatomical line to provide more detail.\r\n\r\nThis data element should be coded with a terminology capable of triggering decision support, where possible - an appropriate termset for use here could comprise individual concepts or a list of precoordinated terms. Free text should be used only if there is no appropriate terminology available.\r\n\r\nIf body site name is already identified in the parent archetype, then this data element may be redundant. Alternatively, a use case has been identified where the value may be duplicated into this element to support semantic querying using this archetype, rather than the data element within the parent."
+									}
+								},
+								{
+									"id": "media_file",
+									"name": "Media file",
+									"localizedName": "Media file",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.media_file.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Media file"
+									},
+									"localizedDescriptions": {
+										"en": "A media file that is acquired or used as part of the healthcare process, and associated metadata."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]",
+									"children": [
+										{
+											"id": "content",
+											"name": "Content",
+											"localizedName": "Content",
+											"rmType": "DV_MULTIMEDIA",
+											"nodeId": "at0001",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Content"
+											},
+											"localizedDescriptions": {
+												"en": "Digital representation of the media file."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0001]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "If the file is stored locally, the actual content will be captured and stored using the Multimedia data type. For example: RTF or PDF for a document; JPG for an image; MP4 for a video; or WAV for an audio file. If the file is stored at a location outside of the health record, the detailed path to the file is captured using the URI attribute in the Multimedia data type. The Multimedia data type has many RM attributes such as the size of file and URI to an external source - see https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_multimedia_class."
+											}
+										},
+										{
+											"id": "content_name",
+											"name": "Content name",
+											"localizedName": "Content name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0002",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Content name"
+											},
+											"localizedDescriptions": {
+												"en": "Descriptive name or title for the media file."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0002]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "A description of the content of the media file. Use an agreed standardised naming convention, if available. For example: \"Right hand burn #1\" or \"Cardiology video consultation on May 2\"."
+											}
+										},
+										{
+											"id": "identifier",
+											"name": "Identifier",
+											"localizedName": "Identifier",
+											"rmType": "ELEMENT",
+											"nodeId": "at0010",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Identifier"
+											},
+											"localizedDescriptions": {
+												"en": "Unique ID for the media file."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0010]",
+											"children": [
+												{
+													"id": "identifier_value",
+													"name": "Identifier",
+													"localizedName": "Identifier",
+													"rmType": "DV_IDENTIFIER",
+													"nodeId": "at0010",
+													"min": 1,
+													"max": 1,
+													"localizedNames": {
+														"en": "Identifier"
+													},
+													"localizedDescriptions": {
+														"en": "Unique ID for the media file."
+													},
+													"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0010]/value",
+													"inputs": [
+														{
+															"suffix": "id",
+															"type": "TEXT"
+														},
+														{
+															"suffix": "type",
+															"type": "TEXT"
+														},
+														{
+															"suffix": "issuer",
+															"type": "TEXT"
+														},
+														{
+															"suffix": "assigner",
+															"type": "TEXT"
+														}
+													]
+												},
+												{
+													"id": "text_value",
+													"name": "Identifier",
+													"localizedName": "Identifier",
+													"rmType": "DV_TEXT",
+													"nodeId": "at0010",
+													"min": 1,
+													"max": 1,
+													"localizedNames": {
+														"en": "Identifier"
+													},
+													"localizedDescriptions": {
+														"en": "Unique ID for the media file."
+													},
+													"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0010]/value",
+													"inputs": [
+														{
+															"type": "TEXT"
+														}
+													]
+												}
+											]
+										},
+										{
+											"id": "description",
+											"name": "Description",
+											"localizedName": "Description",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0005",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Description"
+											},
+											"localizedDescriptions": {
+												"en": "Narrative description about the media file."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0005]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										},
+										{
+											"id": "created",
+											"name": "Created",
+											"localizedName": "Created",
+											"rmType": "ELEMENT",
+											"nodeId": "at0004",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Created"
+											},
+											"localizedDescriptions": {
+												"en": "The date/time, partial date or period when the media file was generated or authored."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0004]",
+											"children": [
+												{
+													"id": "date_time_value",
+													"name": "Created",
+													"localizedName": "Created",
+													"rmType": "DV_DATE_TIME",
+													"nodeId": "at0004",
+													"min": 1,
+													"max": 1,
+													"localizedNames": {
+														"en": "Created"
+													},
+													"localizedDescriptions": {
+														"en": "The date/time, partial date or period when the media file was generated or authored."
+													},
+													"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0004]/value",
+													"inputs": [
+														{
+															"type": "DATETIME"
+														}
+													]
+												},
+												{
+													"id": "interval<dv_date_time>_value",
+													"name": "Created",
+													"localizedName": "Created",
+													"rmType": "DV_INTERVAL<DV_DATE_TIME>",
+													"nodeId": "at0004",
+													"min": 1,
+													"max": 1,
+													"localizedNames": {
+														"en": "Created"
+													},
+													"localizedDescriptions": {
+														"en": "The date/time, partial date or period when the media file was generated or authored."
+													},
+													"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0004]/value",
+													"children": [
+														{
+															"id": "lower",
+															"name": "lower",
+															"localizedName": "lower",
+															"rmType": "DV_DATE_TIME",
+															"min": 1,
+															"max": 1,
+															"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0004]/value/lower",
+															"inputs": [
+																{
+																	"type": "DATETIME"
+																}
+															]
+														},
+														{
+															"id": "upper",
+															"name": "upper",
+															"localizedName": "upper",
+															"rmType": "DV_DATE_TIME",
+															"min": 1,
+															"max": 1,
+															"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0004]/value/upper",
+															"inputs": [
+																{
+																	"type": "DATETIME"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"id": "comment",
+											"name": "Comment",
+											"localizedName": "Comment",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0007",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Comment"
+											},
+											"localizedDescriptions": {
+												"en": "Additional narrative about the media file not captured in other fields."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0007]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "medical_device",
+							"name": "Medical device",
+							"localizedName": "Medical device",
+							"rmType": "CLUSTER",
+							"nodeId": "openEHR-EHR-CLUSTER.device.v1",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Medical device"
+							},
+							"localizedDescriptions": {
+								"en": "An instrument, apparatus, implant, material or similar, used in the provision of healthcare. In this context, a medical device includes a broad range of devices which act through a variety of physical, mechanical, thermal or similar means but specifically excludes devices which act through medicinal means such as pharmacological, metabolic or immunological methods.  The scope is inclusive of disposable devices as well as durable or persisting devices that require tracking, maintenance activities or regular calibration, recognising that each type of device has specific data recording requirements."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]",
+							"children": [
+								{
+									"id": "device_name",
+									"name": "Device name",
+									"localizedName": "Device name",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0001",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Device name"
+									},
+									"localizedDescriptions": {
+										"en": "Identification of the medical device, preferably by a common name, a formal fully descriptive name or, if required, by class or category of device."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0001]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "This data element will capture the term, phrase or category used in clinical practice. For example: <brand name><machine> (XYZ Audiometer); <size> <brand name> <intravenous catheter> (14G Jelco IV catheter); or <brand name/type> <implant>. Coding with a terminology is desirable, where possible, although this may be local and depending on local supplies available.\n"
+									}
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm."
+					}
+				},
+				{
+					"id": "procedure",
+					"name": "Procedure",
+					"localizedName": "Procedure",
+					"rmType": "ACTION",
+					"nodeId": "openEHR-EHR-ACTION.procedure.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Procedure"
+					},
+					"localizedDescriptions": {
+						"en": "A clinical activity carried out for screening, investigative, diagnostic, curative, therapeutic, evaluative or palliative purposes."
+					},
+					"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]",
+					"children": [
+						{
+							"id": "procedure_name",
+							"name": "Procedure name",
+							"localizedName": "Procedure name",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Procedure name"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the procedure by name."
+							},
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/description[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the specific procedure with a terminology is preferred, where possible."
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/encoding",
+							"inContext": true
+						},
+						{
+							"id": "time",
+							"name": "time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "ism_transition",
+							"name": "ism_transition",
+							"rmType": "ISM_TRANSITION",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/ism_transition",
+							"children": [
+								{
+									"id": "current_state",
+									"name": "current_state",
+									"rmType": "DV_CODED_TEXT",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/ism_transition/current_state",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										}
+									]
+								},
+								{
+									"id": "transition",
+									"name": "transition",
+									"rmType": "DV_CODED_TEXT",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1]/ism_transition/transition",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "medication_order",
+					"name": "Medication order",
+					"localizedName": "Medication order",
+					"rmType": "INSTRUCTION",
+					"nodeId": "openEHR-EHR-INSTRUCTION.medication_order.v3",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Medication order"
+					},
+					"localizedDescriptions": {
+						"en": "An order for a medication, vaccine, nutritional product or other therapeutic item for an identified individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]",
+					"children": [
+						{
+							"id": "order",
+							"name": "Order",
+							"localizedName": "Order",
+							"rmType": "ACTIVITY",
+							"nodeId": "at0001",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Order"
+							},
+							"localizedDescriptions": {
+								"en": "Details of the requested order."
+							},
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]",
+							"children": [
+								{
+									"id": "medication_item",
+									"name": "Medication item",
+									"localizedName": "Medication item",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0070",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Medication item"
+									},
+									"localizedDescriptions": {
+										"en": "Name of the medication, vaccine or other therapeutic/prescribable item being ordered."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0070]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "Depending on the prescribing context this field could be used for either generic- or product-based prescribing. This data field can be used to record tightly bound orders of different medications when they are prescribed as a single pack. It is strongly recommended that the 'Medication item' be coded with a terminology capable of triggering decision support, where possible. The extent of coding may vary from the simple name of the medication item through to structured details about the actual medication pack to be used. Free text entry should only be used if there is no appropriate terminology available."
+									}
+								},
+								{
+									"id": "timing",
+									"name": "timing",
+									"rmType": "DV_PARSABLE",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/timing",
+									"inputs": [
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "formalism",
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "action_archetype_id",
+									"name": "action_archetype_id",
+									"rmType": "STRING",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/action_archetype_id",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "narrative",
+							"name": "narrative",
+							"rmType": "DV_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/narrative",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/encoding",
+							"inContext": true
+						},
+						{
+							"id": "expiry_time",
+							"name": "expiry_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 0,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/expiry_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "translation_requirement",
+					"name": "Translation requirement",
+					"localizedName": "Translation requirement",
+					"rmType": "ADMIN_ENTRY",
+					"nodeId": "openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Translation requirement"
+					},
+					"localizedDescriptions": {
+						"en": "The need for language translation in order to provide delivery of health care or related services."
+					},
+					"aqlPath": "/content[openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1]",
+					"children": [
+						{
+							"id": "language",
+							"name": "Language",
+							"localizedName": "Language",
+							"rmType": "CLUSTER",
+							"nodeId": "openEHR-EHR-CLUSTER.language.v1",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Language"
+							},
+							"localizedDescriptions": {
+								"en": "A collection of words, their pronunciation and methods for combining them, understood by a specific community and used as a form of communication."
+							},
+							"aqlPath": "/content[openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.language.v1]",
+							"children": [
+								{
+									"id": "language_name",
+									"name": "Language name",
+									"localizedName": "Language name",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0001",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Language name"
+									},
+									"localizedDescriptions": {
+										"en": "The name of the language."
+									},
+									"aqlPath": "/content[openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.language.v1]/items[at0001]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "For example: Mandarin, Swahili, French or Norwegian sign language. Coding of 'Language' with a terminology is preferred, where possible. ISO 639-3 codes include the simple name of the language but can represent the name and modality combined - for example Norwegian sign language. The value set for codes that are appropriate may depend on the mode."
+									}
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language2",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1]/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "problem_diagnosis",
+					"name": "Problem/Diagnosis",
+					"localizedName": "Problem/Diagnosis",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.problem_diagnosis.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Problem/Diagnosis"
+					},
+					"localizedDescriptions": {
+						"en": "Details about a single identified health condition, injury, disability or any other issue which impacts on the physical, mental and/or social well-being of an individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]",
+					"children": [
+						{
+							"id": "problem_diagnosis_name",
+							"name": "Problem/Diagnosis name",
+							"localizedName": "Problem/Diagnosis name",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Problem/Diagnosis name"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the problem or diagnosis, by name."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the name of the problem or diagnosis with a terminology is preferred, where possible."
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "Clear delineation between the scope of a problem versus a diagnosis is not easy to achieve in practice. For the purposes of clinical documentation with this archetype, problem and diagnosis are regarded as a continuum, with increasing levels of detail and supportive evidence usually providing weight towards the label of 'diagnosis'."
+					}
+				},
+				{
+					"id": "composer",
+					"name": "composer",
+					"rmType": "PARTY_PROXY",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/composer",
+					"inputs": [
+						{
+							"suffix": "id",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_scheme",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_namespace",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "name",
+							"type": "TEXT"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "language",
+					"name": "language",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/language",
+					"inContext": true
+				},
+				{
+					"id": "territory",
+					"name": "territory",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/territory",
+					"inContext": true
+				}
+			]
+		}
+}

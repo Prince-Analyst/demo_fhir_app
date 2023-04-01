@@ -1,0 +1,1256 @@
+{
+		"templateId": "ubiqare.symptoms.v0",
+		"version": "2.3",
+		"defaultLanguage": "en",
+		"languages": [
+			"en"
+		],
+		"tree": {
+			"id": "ubiqare.symptoms.v0",
+			"name": "ubiqare.symptoms.v0",
+			"localizedName": "ubiqare.symptoms.v0",
+			"rmType": "COMPOSITION",
+			"nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+			"min": 1,
+			"max": 1,
+			"localizedNames": {
+				"en": "ubiqare.symptoms.v0"
+			},
+			"localizedDescriptions": {
+				"en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+			},
+			"children": [
+				{
+					"id": "category",
+					"name": "category",
+					"localizedName": "category",
+					"rmType": "DV_CODED_TEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/category",
+					"inputs": [
+						{
+							"suffix": "code",
+							"type": "CODED_TEXT",
+							"list": [
+								{
+									"value": "433",
+									"label": "event",
+									"localizedLabels": {
+										"en": "event"
+									}
+								}
+							],
+							"terminology": "openehr"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "context",
+					"name": "context",
+					"localizedName": "context",
+					"rmType": "EVENT_CONTEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/context",
+					"children": [
+						{
+							"id": "start_time",
+							"name": "start_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/start_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "setting",
+							"name": "setting",
+							"rmType": "DV_CODED_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/setting",
+							"inputs": [
+								{
+									"suffix": "code",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "value",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "symptoms",
+					"name": "Symptoms",
+					"localizedName": "Symptoms",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.exam.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Symptoms"
+					},
+					"localizedDescriptions": {
+						"en": "Findings observed during the physical examination of a subject of care."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0002",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]",
+							"children": [
+								{
+									"id": "description",
+									"name": "Description",
+									"localizedName": "Description",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0004",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Description"
+									},
+									"localizedDescriptions": {
+										"en": "Narrative description of the overall findings observed during a physical examination of a patient."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "May be used to record a narrative summary of the complete clinical examination or key aspects of clinical examination findings, which will be supported by structured data. Details of specific structured findings can be included using CLUSTER archetypes in the 'Examination Detail' slot. This data element may be used to capture legacy data that is not available in a structured format."
+									}
+								},
+								{
+									"id": "covid_symptoms",
+									"name": "Covid symptoms",
+									"localizedName": "Covid symptoms",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Covid symptoms"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Covid symptoms']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Covid symptoms']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "386661006",
+															"label": "Fever",
+															"localizedLabels": {
+																"en": "Fever"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "49727002",
+															"label": "Cough",
+															"localizedLabels": {
+																"en": "Cough"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "82272006",
+															"label": "Cold",
+															"localizedLabels": {
+																"en": "Cold"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "162397003",
+															"label": "Sore Throat",
+															"localizedLabels": {
+																"en": "Sore Throat"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "230145002",
+															"label": "Breathing Difficulty",
+															"localizedLabels": {
+																"en": "Breathing Difficulty"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "82423001",
+															"label": "Persistent Pain",
+															"localizedLabels": {
+																"en": "Persistent Pain"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "40917007",
+															"label": "Mental Confusion",
+															"localizedLabels": {
+																"en": "Mental Confusion"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "289195008",
+															"label": "Slurred Speech",
+															"localizedLabels": {
+																"en": "Slurred Speech"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "91175000",
+															"label": "Seizures",
+															"localizedLabels": {
+																"en": "Seizures"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "13791008",
+															"label": "Weakness",
+															"localizedLabels": {
+																"en": "Weakness"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "3415004",
+															"label": "Dev. Bluish Discolorations",
+															"localizedLabels": {
+																"en": "Dev. Bluish Discolorations"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "general",
+									"name": "General",
+									"localizedName": "General",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "General"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='General']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='General']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "418107008",
+															"label": "Becoming Unconscious",
+															"localizedLabels": {
+																"en": "Becoming Unconscious"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "274640006",
+															"label": "Chills",
+															"localizedLabels": {
+																"en": "Chills"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "84229001",
+															"label": "Fatigue",
+															"localizedLabels": {
+																"en": "Fatigue"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "25064002",
+															"label": "Headache",
+															"localizedLabels": {
+																"en": "Headache"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "79890006",
+															"label": "Loss of Appetite",
+															"localizedLabels": {
+																"en": "Loss of Appetite"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "386689009",
+															"label": "Very low body temperature",
+															"localizedLabels": {
+																"en": "Very low body temperature"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "cvs",
+									"name": "CVS",
+									"localizedName": "CVS",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "CVS"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='CVS']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='CVS']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "698247007",
+															"label": "Irregular Heartbeat",
+															"localizedLabels": {
+																"en": "Irregular Heartbeat"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "80313002",
+															"label": "Palpitations",
+															"localizedLabels": {
+																"en": "Palpitations"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "80068009",
+															"label": "Swelling In Limbs",
+															"localizedLabels": {
+																"en": "Swelling In Limbs"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "413245000",
+															"label": "Unexplained Bleeding/Bruising",
+															"localizedLabels": {
+																"en": "Unexplained Bleeding/Bruising"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "rs",
+									"name": "RS",
+									"localizedName": "RS",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "RS"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='RS']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='RS']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "56018004",
+															"label": "Wheezing",
+															"localizedLabels": {
+																"en": "Wheezing"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "ns",
+									"name": "NS",
+									"localizedName": "NS",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "NS"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='NS']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='NS']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "282299006",
+															"label": "Loss of Balance",
+															"localizedLabels": {
+																"en": "Loss of Balance"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "musculoskeletal",
+									"name": "Musculoskeletal",
+									"localizedName": "Musculoskeletal",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Musculoskeletal"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Musculoskeletal']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Musculoskeletal']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "68962001",
+															"label": "Muscle Pain",
+															"localizedLabels": {
+																"en": "Muscle Pain"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "57676002",
+															"label": "Joint Pain",
+															"localizedLabels": {
+																"en": "Joint Pain"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "git",
+									"name": "GIT",
+									"localizedName": "GIT",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "GIT"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='GIT']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='GIT']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "21522001",
+															"label": "Abdominal Pain",
+															"localizedLabels": {
+																"en": "Abdominal Pain"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "60728008",
+															"label": "Swollen abdomen",
+															"localizedLabels": {
+																"en": "Swollen abdomen"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "249562008",
+															"label": "Changes in Bowel",
+															"localizedLabels": {
+																"en": "Changes in Bowel"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "62315008",
+															"label": "Diarrhoea",
+															"localizedLabels": {
+																"en": "Diarrhoea"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "288939007",
+															"label": "Difficulty Swallowing",
+															"localizedLabels": {
+																"en": "Difficulty Swallowing"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "422587007",
+															"label": "Nausea",
+															"localizedLabels": {
+																"en": "Nausea"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "422400008",
+															"label": "Vomiting",
+															"localizedLabels": {
+																"en": "Vomiting"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "162031009",
+															"label": "Persistent Indigestion",
+															"localizedLabels": {
+																"en": "Persistent Indigestion"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "18165001",
+															"label": "Jaundice",
+															"localizedLabels": {
+																"en": "Jaundice"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "urinary",
+									"name": "Urinary",
+									"localizedName": "Urinary",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Urinary"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Urinary']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Urinary']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "34436003",
+															"label": "Blood in the Urine",
+															"localizedLabels": {
+																"en": "Blood in the Urine"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "720001001",
+															"label": "Dark Urine Color",
+															"localizedLabels": {
+																"en": "Dark Urine Color"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "718403007",
+															"label": "Decreased Urine Output",
+															"localizedLabels": {
+																"en": "Decreased Urine Output"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "skin",
+									"name": "Skin",
+									"localizedName": "Skin",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Skin"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Skin']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Skin']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "64144002",
+															"label": "Itchy Skin",
+															"localizedLabels": {
+																"en": "Itchy Skin"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "271807003",
+															"label": "Rash/Kawasaki Rash",
+															"localizedLabels": {
+																"en": "Rash/Kawasaki Rash"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "eye",
+									"name": "Eye",
+									"localizedName": "Eye",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Eye"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Eye']",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_CODED_TEXT",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1 and name/value='Eye']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "code",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "246636008",
+															"label": "Blurred vision",
+															"localizedLabels": {
+																"en": "Blurred vision"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														},
+														{
+															"value": "193699007",
+															"label": "Loss of Vision",
+															"localizedLabels": {
+																"en": "Loss of Vision"
+															},
+															"localizedDescriptions": {
+																"en": ""
+															}
+														}
+													],
+													"listOpen": true,
+													"terminology": "local_terms"
+												},
+												{
+													"suffix": "other",
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										}
+									]
+								},
+								{
+									"id": "interpretation",
+									"name": "Interpretation",
+									"localizedName": "Interpretation",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0006",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Interpretation"
+									},
+									"localizedDescriptions": {
+										"en": "Single word, phrase or brief description which represents the clinical meaning and significance of the physical examination findings."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "Coding with a terminology is preferred, if possible. For example, 'normal examination' or 'tympanic membrane perforation'."
+									}
+								},
+								{
+									"id": "comment",
+									"name": "Comment",
+									"localizedName": "Comment",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0011",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Comment"
+									},
+									"localizedDescriptions": {
+										"en": "Additional narrative about the overall physical examination findings not captured in other fields."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/data[at0003]/items[at0011]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									]
+								},
+								{
+									"id": "confounding_factors",
+									"name": "Confounding factors",
+									"localizedName": "Confounding factors",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0008",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Confounding factors"
+									},
+									"localizedDescriptions": {
+										"en": "Description of any incidental factors that may have contributed to the physical examination findings."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/state[at0009]/items[at0008]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									]
+								},
+								{
+									"id": "position",
+									"name": "Position",
+									"localizedName": "Position",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0013",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Position"
+									},
+									"localizedDescriptions": {
+										"en": "The body position of the subject during the examination."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/state[at0009]/items[at0013]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									]
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/data[at0001]/events[at0002]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1 and name/value='Symptoms']/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "composer",
+					"name": "composer",
+					"rmType": "PARTY_PROXY",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/composer",
+					"inputs": [
+						{
+							"suffix": "id",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_scheme",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_namespace",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "name",
+							"type": "TEXT"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "language",
+					"name": "language",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/language",
+					"inContext": true
+				},
+				{
+					"id": "territory",
+					"name": "territory",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/territory",
+					"inContext": true
+				}
+			]
+		}
+}

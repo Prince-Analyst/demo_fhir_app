@@ -1,0 +1,1419 @@
+{
+		"templateId": "kenko-digitization",
+		"version": "2.3",
+		"defaultLanguage": "en",
+		"languages": [
+			"en"
+		],
+		"tree": {
+			"id": "kenko_digitization",
+			"name": "Kenko Digitization",
+			"localizedName": "Kenko Digitization",
+			"rmType": "COMPOSITION",
+			"nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+			"min": 1,
+			"max": 1,
+			"localizedNames": {
+				"en": "Kenko Digitization"
+			},
+			"localizedDescriptions": {
+				"en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+			},
+			"children": [
+				{
+					"id": "category",
+					"name": "category",
+					"localizedName": "category",
+					"rmType": "DV_CODED_TEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/category",
+					"inputs": [
+						{
+							"suffix": "code",
+							"type": "CODED_TEXT",
+							"list": [
+								{
+									"value": "433",
+									"label": "event",
+									"localizedLabels": {
+										"en": "event"
+									}
+								}
+							],
+							"terminology": "openehr"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "context",
+					"name": "context",
+					"localizedName": "context",
+					"rmType": "EVENT_CONTEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/context",
+					"children": [
+						{
+							"id": "start_time",
+							"name": "start_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/start_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "setting",
+							"name": "setting",
+							"rmType": "DV_CODED_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/setting",
+							"inputs": [
+								{
+									"suffix": "code",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "value",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "chief_complaint",
+					"name": "Chief complaint",
+					"localizedName": "Chief complaint",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.reason_for_encounter.v1",
+					"min": 1,
+					"max": 1,
+					"localizedNames": {
+						"en": "Chief complaint"
+					},
+					"localizedDescriptions": {
+						"en": "The reason for initiation of any healthcare encounter or contact by the individual who is the subject of care."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Chief complaint']",
+					"children": [
+						{
+							"id": "contact_type",
+							"name": "Contact type",
+							"localizedName": "Contact type",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Contact type"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the type, or administrative category, of healthcare sought or required by the subject of care."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Chief complaint']/data[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the 'Contact type' with a terminology is desirable, where possible. Examples include: pre-employment medical, routine antenatal visit, women's health check, pre-operative assessment, or annual medical check-up.\r\n"
+							}
+						},
+						{
+							"id": "presenting_problem",
+							"name": "Presenting problem",
+							"localizedName": "Presenting problem",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0004",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Presenting problem"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the clinical or social problem motivating the subject of care to seeking healthcare."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Chief complaint']/data[at0001]/items[at0004]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the 'Presenting problem' with a terminology is desirable, where possible. Clinical or social reasons for seeking healthcare can include health issues, symptoms or physical signs. Examples: health issues - desire to quit smoking, domestic violence; symptoms - abdominal pain, shortness of breath; physical signs - an altered conscious state. 'Chief complaint' may be used as a valid synonym for 'Presenting problem' in templates.\r\n "
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Chief complaint']/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Chief complaint']/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Chief complaint']/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "physical_examination_findings",
+					"name": "Physical examination findings",
+					"localizedName": "Physical examination findings",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.exam.v1",
+					"min": 0,
+					"max": -1,
+					"localizedNames": {
+						"en": "Physical examination findings"
+					},
+					"localizedDescriptions": {
+						"en": "Findings observed during the physical examination of a subject of care."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1]",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0002",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1]/data[at0001]/events[at0002]",
+							"children": [
+								{
+									"id": "description",
+									"name": "Description",
+									"localizedName": "Description",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0004",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Description"
+									},
+									"localizedDescriptions": {
+										"en": "Narrative description of the overall findings observed during a physical examination of a patient."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "May be used to record a narrative summary of the complete clinical examination or key aspects of clinical examination findings, which will be supported by structured data. Details of specific structured findings can be included using CLUSTER archetypes in the 'Examination Detail' slot. This data element may be used to capture legacy data that is not available in a structured format."
+									}
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1]/data[at0001]/events[at0002]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.exam.v1]/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "diagnosis",
+					"name": "Diagnosis",
+					"localizedName": "Diagnosis",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.problem_diagnosis.v1",
+					"min": 0,
+					"max": -1,
+					"localizedNames": {
+						"en": "Diagnosis"
+					},
+					"localizedDescriptions": {
+						"en": "Details about a single identified health condition, injury, disability or any other issue which impacts on the physical, mental and/or social well-being of an individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1 and name/value='Diagnosis']",
+					"children": [
+						{
+							"id": "diagnosis_name",
+							"name": "Diagnosis name",
+							"localizedName": "Diagnosis name",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Diagnosis name"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the problem or diagnosis, by name."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1 and name/value='Diagnosis']/data[at0001]/items[at0002 and name/value='Diagnosis name']/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the name of the problem or diagnosis with a terminology is preferred, where possible."
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1 and name/value='Diagnosis']/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1 and name/value='Diagnosis']/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1 and name/value='Diagnosis']/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "Clear delineation between the scope of a problem versus a diagnosis is not easy to achieve in practice. For the purposes of clinical documentation with this archetype, problem and diagnosis are regarded as a continuum, with increasing levels of detail and supportive evidence usually providing weight towards the label of 'diagnosis'."
+					}
+				},
+				{
+					"id": "medication_order",
+					"name": "Medication order",
+					"localizedName": "Medication order",
+					"rmType": "INSTRUCTION",
+					"nodeId": "openEHR-EHR-INSTRUCTION.medication_order.v3",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Medication order"
+					},
+					"localizedDescriptions": {
+						"en": "An order for a medication, vaccine, nutritional product or other therapeutic item for an identified individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]",
+					"children": [
+						{
+							"id": "order",
+							"name": "Order",
+							"localizedName": "Order",
+							"rmType": "ACTIVITY",
+							"nodeId": "at0001",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Order"
+							},
+							"localizedDescriptions": {
+								"en": "Details of the requested order."
+							},
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]",
+							"children": [
+								{
+									"id": "medication_item",
+									"name": "Medication item",
+									"localizedName": "Medication item",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0070",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Medication item"
+									},
+									"localizedDescriptions": {
+										"en": "Name of the medication, vaccine or other therapeutic/prescribable item being ordered."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0070]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "Depending on the prescribing context this field could be used for either generic- or product-based prescribing. This data field can be used to record tightly bound orders of different medications when they are prescribed as a single pack. It is strongly recommended that the 'Medication item' be coded with a terminology capable of triggering decision support, where possible. The extent of coding may vary from the simple name of the medication item through to structured details about the actual medication pack to be used. Free text entry should only be used if there is no appropriate terminology available."
+									}
+								},
+								{
+									"id": "route",
+									"name": "Route",
+									"localizedName": "Route",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0091",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Route"
+									},
+									"localizedDescriptions": {
+										"en": "The route by which the ordered item is to be administered into the subject's body."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[at0091]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "For example: 'oral', 'intravenous', or 'topical'.\nCoding of the route with a terminology is preferred, where possible. Multiple potential routes may be specified."
+									}
+								},
+								{
+									"id": "therapeutic_direction",
+									"name": "Therapeutic direction",
+									"localizedName": "Therapeutic direction",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.therapeutic_direction.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Therapeutic direction"
+									},
+									"localizedDescriptions": {
+										"en": "Structured details of a single therapeutic direction for an ordered item, such as a medication or blood transfusion order."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]",
+									"children": [
+										{
+											"id": "dosage",
+											"name": "Dosage",
+											"localizedName": "Dosage",
+											"rmType": "CLUSTER",
+											"nodeId": "openEHR-EHR-CLUSTER.dosage.v1",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Dosage"
+											},
+											"localizedDescriptions": {
+												"en": "The combination of a medication amount and administration timing for a single day, in the context of a medication order or medication management."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]",
+											"children": [
+												{
+													"id": "timing_-_daily",
+													"name": "Timing - daily",
+													"localizedName": "Timing - daily",
+													"rmType": "CLUSTER",
+													"nodeId": "openEHR-EHR-CLUSTER.timing_daily.v1",
+													"min": 0,
+													"max": 1,
+													"localizedNames": {
+														"en": "Timing - daily"
+													},
+													"localizedDescriptions": {
+														"en": "Structured information about the intended timing of a therapeutic or diagnostic activity within any 24 hour period."
+													},
+													"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]",
+													"children": [
+														{
+															"id": "frequency",
+															"name": "Frequency",
+															"localizedName": "Frequency",
+															"rmType": "DV_QUANTITY",
+															"nodeId": "at0003",
+															"min": 0,
+															"max": 1,
+															"localizedNames": {
+																"en": "Frequency"
+															},
+															"localizedDescriptions": {
+																"en": "The frequency as number of times per time period that the activity is to take place."
+															},
+															"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0003]/value",
+															"inputs": [
+																{
+																	"suffix": "magnitude",
+																	"type": "DECIMAL"
+																},
+																{
+																	"suffix": "unit",
+																	"type": "CODED_TEXT",
+																	"list": [
+																		{
+																			"value": "1/d",
+																			"label": "1/d",
+																			"validation": {
+																				"precision": {
+																					"min": 0,
+																					"minOp": ">=",
+																					"max": 0,
+																					"maxOp": "<="
+																				},
+																				"range": {
+																					"min": 1.0,
+																					"minOp": ">="
+																				}
+																			}
+																		},
+																		{
+																			"value": "1/min",
+																			"label": "1/min",
+																			"validation": {
+																				"precision": {
+																					"min": 0,
+																					"minOp": ">=",
+																					"max": 0,
+																					"maxOp": "<="
+																				},
+																				"range": {
+																					"min": 1.0,
+																					"minOp": ">="
+																				}
+																			}
+																		},
+																		{
+																			"value": "1/s",
+																			"label": "1/s",
+																			"validation": {
+																				"precision": {
+																					"min": 0,
+																					"minOp": ">=",
+																					"max": 0,
+																					"maxOp": "<="
+																				},
+																				"range": {
+																					"min": 1.0,
+																					"minOp": ">="
+																				}
+																			}
+																		},
+																		{
+																			"value": "1/h",
+																			"label": "1/h",
+																			"validation": {
+																				"precision": {
+																					"min": 0,
+																					"minOp": ">=",
+																					"max": 0,
+																					"maxOp": "<="
+																				},
+																				"range": {
+																					"min": 1.0,
+																					"minOp": ">="
+																				}
+																			}
+																		}
+																	]
+																}
+															],
+															"annotations": {
+																"comment": "For example: \"4 times per day\" or \"3 to 4 times per hour\"."
+															}
+														},
+														{
+															"id": "timing_description",
+															"name": "Timing description",
+															"localizedName": "Timing description",
+															"rmType": "DV_TEXT",
+															"nodeId": "at0027",
+															"min": 0,
+															"max": 1,
+															"localizedNames": {
+																"en": "Timing description"
+															},
+															"localizedDescriptions": {
+																"en": "Text description of the daily timing. This element is intended to allow implementers to use the structures for different timings without necessarily specifying the timings in a structured way."
+															},
+															"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[openEHR-EHR-CLUSTER.timing_daily.v1]/items[at0027]/value",
+															"inputs": [
+																{
+																	"type": "TEXT"
+																}
+															],
+															"annotations": {
+																"comment": "For example: \"Take morning and evening\"."
+															}
+														}
+													]
+												}
+											],
+											"annotations": {
+												"comment": "For example: '2 tablets at 6pm' or '20mg three times per day'. Please note: this cluster allows multiple occurrences to enable representation of a complete set of dose patterns for a single dose direction."
+											}
+										},
+										{
+											"id": "direction_duration",
+											"name": "Direction duration",
+											"localizedName": "Direction duration",
+											"rmType": "DV_DURATION",
+											"nodeId": "at0066",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Direction duration"
+											},
+											"localizedDescriptions": {
+												"en": "The length of time for which this direction should be applied."
+											},
+											"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/description[at0002]/items[openEHR-EHR-CLUSTER.therapeutic_direction.v1]/items[at0066]/value",
+											"inputs": [
+												{
+													"suffix": "year",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "month",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "day",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "week",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "hour",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "minute",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												},
+												{
+													"suffix": "second",
+													"type": "INTEGER",
+													"validation": {
+														"range": {
+															"min": 0,
+															"minOp": ">="
+														}
+													}
+												}
+											],
+											"annotations": {
+												"comment": "For example: 'for 7 days','Indefinite'. An example of a set of multiple directions, with varying durations might be ... '1 tablet daily for 3 days, 2 tablets daily for 4 days, then 3 tablets Indefinite'."
+											}
+										}
+									]
+								},
+								{
+									"id": "timing",
+									"name": "timing",
+									"rmType": "DV_PARSABLE",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/timing",
+									"inputs": [
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "formalism",
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "action_archetype_id",
+									"name": "action_archetype_id",
+									"rmType": "STRING",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/activities[at0001]/action_archetype_id",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "narrative",
+							"name": "narrative",
+							"rmType": "DV_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/narrative",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/encoding",
+							"inContext": true
+						},
+						{
+							"id": "expiry_time",
+							"name": "expiry_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 0,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.medication_order.v3]/expiry_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "investigation_request",
+					"name": "Investigation Request",
+					"localizedName": "Investigation Request",
+					"rmType": "INSTRUCTION",
+					"nodeId": "openEHR-EHR-INSTRUCTION.service_request.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Investigation Request"
+					},
+					"localizedDescriptions": {
+						"en": "Request for a health-related service or activity to be delivered by a clinician, organisation or agency.Can be:\n- Diagnostic test\n- Imaging"
+					},
+					"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']",
+					"children": [
+						{
+							"id": "current_activity",
+							"name": "Current Activity",
+							"localizedName": "Current Activity",
+							"rmType": "ACTIVITY",
+							"nodeId": "at0001",
+							"min": 1,
+							"max": -1,
+							"localizedNames": {
+								"en": "Current Activity"
+							},
+							"localizedDescriptions": {
+								"en": "Current Activity."
+							},
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/activities[at0001]",
+							"children": [
+								{
+									"id": "service_name",
+									"name": "Service name",
+									"localizedName": "Service name",
+									"rmType": "DV_CODED_TEXT",
+									"nodeId": "at0121",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Service name"
+									},
+									"localizedDescriptions": {
+										"en": "The name of the single service or activity requested."
+									},
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/activities[at0001]/description[at0009]/items[at0121]/value",
+									"inputs": [
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "code",
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "Coding of the 'Service name' with a coding system is desirable, if available. For example: 'referral' to an endocrinologist for diabetes management."
+									}
+								},
+								{
+									"id": "timing",
+									"name": "timing",
+									"rmType": "DV_PARSABLE",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/activities[at0001]/timing",
+									"inputs": [
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "formalism",
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "action_archetype_id",
+									"name": "action_archetype_id",
+									"rmType": "STRING",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/activities[at0001]/action_archetype_id",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "narrative",
+							"name": "narrative",
+							"rmType": "DV_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/narrative",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/encoding",
+							"inContext": true
+						},
+						{
+							"id": "expiry_time",
+							"name": "expiry_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 0,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-INSTRUCTION.service_request.v1 and name/value='Investigation Request']/expiry_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "health_education",
+					"name": "Health education",
+					"localizedName": "Health education",
+					"rmType": "ACTION",
+					"nodeId": "openEHR-EHR-ACTION.health_education.v1",
+					"min": 0,
+					"max": -1,
+					"localizedNames": {
+						"en": "Health education"
+					},
+					"localizedDescriptions": {
+						"en": "Communication to improve health literacy and life skills."
+					},
+					"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]",
+					"children": [
+						{
+							"id": "topic_name",
+							"name": "Topic name",
+							"localizedName": "Topic name",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Topic name"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the topic of health education, by name."
+							},
+							"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/description[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "The 'Topic' could identify a single piece of information or a single skill, or it may be the name of a training course or program that may be delivered over multiple sessions or visits. The name may indicate that the education was transferred to a group or the individual."
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/encoding",
+							"inContext": true
+						},
+						{
+							"id": "time",
+							"name": "time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "ism_transition",
+							"name": "ism_transition",
+							"rmType": "ISM_TRANSITION",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/ism_transition",
+							"children": [
+								{
+									"id": "careflow_step",
+									"name": "Careflow_step",
+									"rmType": "DV_CODED_TEXT",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/ism_transition/careflow_step",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "at0018",
+													"label": "Education recommended",
+													"localizedLabels": {
+														"en": "Education recommended"
+													},
+													"localizedDescriptions": {
+														"en": "Education has been recommended but no steps have been taken to initiate education."
+													},
+													"currentStates": [
+														"526"
+													]
+												},
+												{
+													"value": "at0013",
+													"label": "Education completed",
+													"localizedLabels": {
+														"en": "Education completed"
+													},
+													"localizedDescriptions": {
+														"en": "All planned activities for education have been successfully completed."
+													},
+													"currentStates": [
+														"532"
+													]
+												}
+											],
+											"terminology": "local"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "current_state",
+									"name": "Current_state",
+									"rmType": "DV_CODED_TEXT",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/ism_transition/current_state",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "526",
+													"label": "planned",
+													"localizedLabels": {
+														"en": "planned"
+													}
+												},
+												{
+													"value": "532",
+													"label": "completed",
+													"localizedLabels": {
+														"en": "completed"
+													}
+												}
+											],
+											"terminology": "openehr"
+										}
+									],
+									"inContext": true
+								},
+								{
+									"id": "transition",
+									"name": "transition",
+									"rmType": "DV_CODED_TEXT",
+									"min": 0,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-ACTION.health_education.v1]/ism_transition/transition",
+									"inputs": [
+										{
+											"suffix": "code",
+											"type": "TEXT"
+										},
+										{
+											"suffix": "value",
+											"type": "TEXT"
+										}
+									],
+									"inContext": true
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "clinical_synopsis",
+					"name": "Clinical synopsis",
+					"localizedName": "Clinical synopsis",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.clinical_synopsis.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Clinical synopsis"
+					},
+					"localizedDescriptions": {
+						"en": "Narrative summary or overview about a patient, specifically from the perspective of a healthcare provider, and with or without associated interpretations."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.clinical_synopsis.v1]",
+					"children": [
+						{
+							"id": "synopsis",
+							"name": "Synopsis",
+							"localizedName": "Synopsis",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Synopsis"
+							},
+							"localizedDescriptions": {
+								"en": "The summary, assessment, conclusions or evaluation of the clinical findings."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/data[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							]
+						},
+						{
+							"id": "media_file",
+							"name": "Media file",
+							"localizedName": "Media file",
+							"rmType": "CLUSTER",
+							"nodeId": "openEHR-EHR-CLUSTER.media_file.v1",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Media file"
+							},
+							"localizedDescriptions": {
+								"en": "A media file that is acquired or used as part of the healthcare process, and associated metadata."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/protocol[at0003]/items[openEHR-EHR-CLUSTER.media_file.v1]",
+							"children": [
+								{
+									"id": "content",
+									"name": "Content",
+									"localizedName": "Content",
+									"rmType": "DV_MULTIMEDIA",
+									"nodeId": "at0001",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Content"
+									},
+									"localizedDescriptions": {
+										"en": "Digital representation of the media file."
+									},
+									"aqlPath": "/content[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/protocol[at0003]/items[openEHR-EHR-CLUSTER.media_file.v1]/items[at0001]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									],
+									"annotations": {
+										"comment": "If the file is stored locally, the actual content will be captured and stored using the Multimedia data type. For example: RTF or PDF for a document; JPG for an image; MP4 for a video; or WAV for an audio file. If the file is stored at a location outside of the health record, the detailed path to the file is captured using the URI attribute in the Multimedia data type. The Multimedia data type has many RM attributes such as the size of file and URI to an external source - see https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_multimedia_class."
+									}
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "composer",
+					"name": "composer",
+					"rmType": "PARTY_PROXY",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/composer",
+					"inputs": [
+						{
+							"suffix": "id",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_scheme",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_namespace",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "name",
+							"type": "TEXT"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "language",
+					"name": "language",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/language",
+					"inContext": true
+				},
+				{
+					"id": "territory",
+					"name": "territory",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/territory",
+					"inContext": true
+				}
+			]
+		}
+}

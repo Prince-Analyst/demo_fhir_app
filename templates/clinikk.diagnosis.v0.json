@@ -1,0 +1,319 @@
+{
+		"templateId": "clinikk.diagnosis.v0",
+		"version": "2.3",
+		"defaultLanguage": "en",
+		"languages": [
+			"en"
+		],
+		"tree": {
+			"id": "clinikk.diagnosis.v0",
+			"name": "clinikk.diagnosis.v0",
+			"localizedName": "clinikk.diagnosis.v0",
+			"rmType": "COMPOSITION",
+			"nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+			"min": 1,
+			"max": 1,
+			"localizedNames": {
+				"en": "clinikk.diagnosis.v0"
+			},
+			"localizedDescriptions": {
+				"en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+			},
+			"children": [
+				{
+					"id": "category",
+					"name": "category",
+					"localizedName": "category",
+					"rmType": "DV_CODED_TEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/category",
+					"inputs": [
+						{
+							"suffix": "code",
+							"type": "CODED_TEXT",
+							"list": [
+								{
+									"value": "433",
+									"label": "event",
+									"localizedLabels": {
+										"en": "event"
+									}
+								}
+							],
+							"terminology": "openehr"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "context",
+					"name": "context",
+					"localizedName": "context",
+					"rmType": "EVENT_CONTEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/context",
+					"children": [
+						{
+							"id": "start_time",
+							"name": "start_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/start_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "setting",
+							"name": "setting",
+							"rmType": "DV_CODED_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/setting",
+							"inputs": [
+								{
+									"suffix": "code",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "value",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "story_history",
+					"name": "Story/History",
+					"localizedName": "Story/History",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.story.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Story/History"
+					},
+					"localizedDescriptions": {
+						"en": "The subjective clinical history of the subject of care as recorded directly by the subject, or reported to a clinician by the subject or a carer."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0002",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/data[at0001]/events[at0002]",
+							"children": [
+								{
+									"id": "story",
+									"name": "Story",
+									"localizedName": "Story",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0004",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Story"
+									},
+									"localizedDescriptions": {
+										"en": "Narrative description of the story or clinical history for the subject of care."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									]
+								},
+								{
+									"id": "symptom_sign",
+									"name": "Symptom/Sign",
+									"localizedName": "Symptom/Sign",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.symptom_sign.v1",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Symptom/Sign"
+									},
+									"localizedDescriptions": {
+										"en": "Reported observation of a physical or mental disturbance in an individual."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1]",
+									"children": [
+										{
+											"id": "symptom_sign_name",
+											"name": "Symptom/Sign name",
+											"localizedName": "Symptom/Sign name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0001",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Symptom/Sign name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1]/items[at0001]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Symptom name should be coded with a terminology, where possible."
+											}
+										},
+										{
+											"id": "description",
+											"name": "Description",
+											"localizedName": "Description",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0002",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Description"
+											},
+											"localizedDescriptions": {
+												"en": "Narrative description about the reported symptom or sign."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.symptom_sign.v1]/items[at0002]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/data[at0001]/events[at0002]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.story.v1]/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "composer",
+					"name": "composer",
+					"rmType": "PARTY_PROXY",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/composer",
+					"inputs": [
+						{
+							"suffix": "id",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_scheme",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_namespace",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "name",
+							"type": "TEXT"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "language",
+					"name": "language",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/language",
+					"inContext": true
+				},
+				{
+					"id": "territory",
+					"name": "territory",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/territory",
+					"inContext": true
+				}
+			]
+		}
+}

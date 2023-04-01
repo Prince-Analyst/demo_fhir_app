@@ -1,0 +1,1717 @@
+{
+		"templateId": "aarthy.screening.v0",
+		"version": "2.3",
+		"defaultLanguage": "en",
+		"languages": [
+			"en"
+		],
+		"tree": {
+			"id": "aarthy.screening.v0",
+			"name": "aarthy.screening.v0",
+			"localizedName": "aarthy.screening.v0",
+			"rmType": "COMPOSITION",
+			"nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+			"min": 1,
+			"max": 1,
+			"localizedNames": {
+				"en": "aarthy.screening.v0"
+			},
+			"localizedDescriptions": {
+				"en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+			},
+			"children": [
+				{
+					"id": "category",
+					"name": "category",
+					"localizedName": "category",
+					"rmType": "DV_CODED_TEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/category",
+					"inputs": [
+						{
+							"suffix": "code",
+							"type": "CODED_TEXT",
+							"list": [
+								{
+									"value": "433",
+									"label": "event",
+									"localizedLabels": {
+										"en": "event"
+									}
+								}
+							],
+							"terminology": "openehr"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "context",
+					"name": "context",
+					"localizedName": "context",
+					"rmType": "EVENT_CONTEXT",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/context",
+					"children": [
+						{
+							"id": "start_time",
+							"name": "start_time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/start_time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "setting",
+							"name": "setting",
+							"rmType": "DV_CODED_TEXT",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/context/setting",
+							"inputs": [
+								{
+									"suffix": "code",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "value",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "complaints",
+					"name": "Complaints",
+					"localizedName": "Complaints",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.reason_for_encounter.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Complaints"
+					},
+					"localizedDescriptions": {
+						"en": "The reason for initiation of any healthcare encounter or contact by the individual who is the subject of care."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Complaints']",
+					"children": [
+						{
+							"id": "presenting_problem",
+							"name": "Presenting problem",
+							"localizedName": "Presenting problem",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0004",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Presenting problem"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of the clinical or social problem motivating the subject of care to seeking healthcare."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Complaints']/data[at0001]/items[at0004]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Coding of the 'Presenting problem' with a terminology is desirable, where possible. Clinical or social reasons for seeking healthcare can include health issues, symptoms or physical signs. Examples: health issues - desire to quit smoking, domestic violence; symptoms - abdominal pain, shortness of breath; physical signs - an altered conscious state. 'Chief complaint' may be used as a valid synonym for 'Presenting problem' in templates.\r\n "
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Complaints']/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Complaints']/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.reason_for_encounter.v1 and name/value='Complaints']/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "pulse_heart_beat",
+					"name": "Pulse/Heart beat",
+					"localizedName": "Pulse/Heart beat",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.pulse.v2",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Pulse/Heart beat"
+					},
+					"localizedDescriptions": {
+						"en": "The rate and associated attributes for a pulse or heart beat."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0003",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]",
+							"children": [
+								{
+									"id": "rate",
+									"name": "Rate",
+									"localizedName": "Rate",
+									"rmType": "DV_QUANTITY",
+									"nodeId": "at0004",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Rate"
+									},
+									"localizedDescriptions": {
+										"en": "The rate of the pulse or heart beat, measured in beats per minute."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
+									"inputs": [
+										{
+											"suffix": "magnitude",
+											"type": "DECIMAL",
+											"validation": {
+												"precision": {
+													"min": 0,
+													"minOp": ">=",
+													"max": 0,
+													"maxOp": "<="
+												},
+												"range": {
+													"min": 0.0,
+													"minOp": ">=",
+													"max": 1000.0,
+													"maxOp": "<"
+												}
+											}
+										},
+										{
+											"suffix": "unit",
+											"type": "CODED_TEXT",
+											"list": [
+												{
+													"value": "/min",
+													"label": "/min",
+													"validation": {
+														"precision": {
+															"min": 0,
+															"minOp": ">=",
+															"max": 0,
+															"maxOp": "<="
+														},
+														"range": {
+															"min": 0.0,
+															"minOp": ">=",
+															"max": 1000.0,
+															"maxOp": "<"
+														}
+													}
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "blood_pressure",
+					"name": "Blood pressure",
+					"localizedName": "Blood pressure",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.blood_pressure.v2",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Blood pressure"
+					},
+					"localizedDescriptions": {
+						"en": "The local measurement of arterial blood pressure which is a surrogate for arterial pressure in the systemic circulation."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]",
+					"children": [
+						{
+							"id": "systolic",
+							"name": "Systolic",
+							"localizedName": "Systolic",
+							"rmType": "DV_QUANTITY",
+							"nodeId": "at0004",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Systolic"
+							},
+							"localizedDescriptions": {
+								"en": "Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value",
+							"inputs": [
+								{
+									"suffix": "magnitude",
+									"type": "DECIMAL",
+									"validation": {
+										"precision": {
+											"min": 0,
+											"minOp": ">=",
+											"max": 0,
+											"maxOp": "<="
+										},
+										"range": {
+											"min": 0.0,
+											"minOp": ">=",
+											"max": 1000.0,
+											"maxOp": "<"
+										}
+									}
+								},
+								{
+									"suffix": "unit",
+									"type": "CODED_TEXT",
+									"list": [
+										{
+											"value": "mm[Hg]",
+											"label": "mm[Hg]",
+											"localizedLabels": {
+												"en": "mmHg"
+											},
+											"validation": {
+												"precision": {
+													"min": 0,
+													"minOp": ">=",
+													"max": 0,
+													"maxOp": "<="
+												},
+												"range": {
+													"min": 0.0,
+													"minOp": ">=",
+													"max": 1000.0,
+													"maxOp": "<"
+												}
+											}
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "diastolic",
+							"name": "Diastolic",
+							"localizedName": "Diastolic",
+							"rmType": "DV_QUANTITY",
+							"nodeId": "at0005",
+							"min": 0,
+							"max": 1,
+							"localizedNames": {
+								"en": "Diastolic"
+							},
+							"localizedDescriptions": {
+								"en": "Minimum systemic arterial blood pressure - measured in the diastolic or relaxation phase of the heart cycle."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value",
+							"inputs": [
+								{
+									"suffix": "magnitude",
+									"type": "DECIMAL",
+									"validation": {
+										"precision": {
+											"min": 0,
+											"minOp": ">=",
+											"max": 0,
+											"maxOp": "<="
+										},
+										"range": {
+											"min": 0.0,
+											"minOp": ">=",
+											"max": 1000.0,
+											"maxOp": "<"
+										}
+									}
+								},
+								{
+									"suffix": "unit",
+									"type": "CODED_TEXT",
+									"list": [
+										{
+											"value": "mm[Hg]",
+											"label": "mm[Hg]",
+											"localizedLabels": {
+												"en": "mmHg"
+											},
+											"validation": {
+												"precision": {
+													"min": 0,
+													"minOp": ">=",
+													"max": 0,
+													"maxOp": "<="
+												},
+												"range": {
+													"min": 0.0,
+													"minOp": ">=",
+													"max": 1000.0,
+													"maxOp": "<"
+												}
+											}
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "time",
+							"name": "time",
+							"rmType": "DV_DATE_TIME",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/time",
+							"inputs": [
+								{
+									"type": "DATETIME"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm."
+					}
+				},
+				{
+					"id": "laboratory_test_result",
+					"name": "Laboratory test result",
+					"localizedName": "Laboratory test result",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Laboratory test result"
+					},
+					"localizedDescriptions": {
+						"en": "The result, including findings and the laboratory's interpretation, of an investigation performed on specimens collected from an individual or related to that individual."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0002",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]",
+							"children": [
+								{
+									"id": "test_name",
+									"name": "Test name",
+									"localizedName": "Test name",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0005",
+									"min": 1,
+									"max": 1,
+									"localizedNames": {
+										"en": "Test name"
+									},
+									"localizedDescriptions": {
+										"en": "Name of the laboratory investigation performed on the specimen(s)."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
+									"inputs": [
+										{
+											"type": "TEXT",
+											"defaultValue": "Screening"
+										}
+									],
+									"annotations": {
+										"comment": "A test result may be for a single analyte, or a group of items, including panel tests. It is strongly recommended that 'Test name' be coded with a terminology, for example LOINC or SNOMED CT. For example: 'Glucose', 'Urea and Electrolytes', 'Swab', 'Cortisol (am)', 'Potassium in perspiration' or 'Melanoma histopathology'. The name may sometimes include specimen type and patient state, for example 'Fasting blood glucose' or include other information, as 'Potassium (PNA blood gas)'."
+									}
+								},
+								{
+									"id": "blood_sugar_random",
+									"name": "Blood Sugar (Random)",
+									"localizedName": "Blood Sugar (Random)",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Blood Sugar (Random)"
+									},
+									"localizedDescriptions": {
+										"en": "The result of a laboratory test for a single analyte value."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Random)']",
+									"children": [
+										{
+											"id": "analyte_name",
+											"name": "Analyte name",
+											"localizedName": "Analyte name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0024",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Analyte name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the analyte result."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Random)']/items[at0024]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "The value for this element is normally supplied in a specialisation, in a template or at run-time to reflect the actual analyte. For example: 'Serum sodium', 'Haemoglobin'. Coding with an external terminology is strongly recommended, such as LOINC, NPU, SNOMED CT, or local lab terminologies.",
+												"hl7v2_mapping": "OBX.3",
+												"fhir_mapping": "Observation.code"
+											}
+										},
+										{
+											"id": "analyte_result",
+											"name": "Analyte result",
+											"localizedName": "Analyte result",
+											"rmType": "DV_QUANTITY",
+											"nodeId": "at0001",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Analyte result"
+											},
+											"localizedDescriptions": {
+												"en": "The value of the analyte result."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Random)']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "magnitude",
+													"type": "DECIMAL"
+												},
+												{
+													"suffix": "unit",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "mg/dL",
+															"label": "mg/dL"
+														}
+													]
+												}
+											],
+											"annotations": {
+												"comment": "For example '7.3 mmol/l', 'Raised'. The 'Any' data type will need to be constrained to an appropriate data type in a specialisation, a template or at run-time to reflect the actual analyte result. The Quantity data type has reference model attributes that include flags for normal/abnormal, reference ranges and approximations - see https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for more details.",
+												"hl7v2_mapping": "OBX.2, OBX.5, OBX.6, OBX.7, OBX.8",
+												"fhir_mapping": "Observation.value[x]"
+											}
+										}
+									]
+								},
+								{
+									"id": "blood_sugar_post_prandial",
+									"name": "Blood Sugar (Post Prandial)",
+									"localizedName": "Blood Sugar (Post Prandial)",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Blood Sugar (Post Prandial)"
+									},
+									"localizedDescriptions": {
+										"en": "The result of a laboratory test for a single analyte value."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Post Prandial)']",
+									"children": [
+										{
+											"id": "analyte_name",
+											"name": "Analyte name",
+											"localizedName": "Analyte name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0024",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Analyte name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the analyte result."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Post Prandial)']/items[at0024]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "The value for this element is normally supplied in a specialisation, in a template or at run-time to reflect the actual analyte. For example: 'Serum sodium', 'Haemoglobin'. Coding with an external terminology is strongly recommended, such as LOINC, NPU, SNOMED CT, or local lab terminologies.",
+												"hl7v2_mapping": "OBX.3",
+												"fhir_mapping": "Observation.code"
+											}
+										},
+										{
+											"id": "analyte_result",
+											"name": "Analyte result",
+											"localizedName": "Analyte result",
+											"rmType": "DV_QUANTITY",
+											"nodeId": "at0001",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Analyte result"
+											},
+											"localizedDescriptions": {
+												"en": "The value of the analyte result."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Post Prandial)']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "magnitude",
+													"type": "DECIMAL"
+												},
+												{
+													"suffix": "unit",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "mg/dL",
+															"label": "mg/dL"
+														}
+													]
+												}
+											],
+											"annotations": {
+												"comment": "For example '7.3 mmol/l', 'Raised'. The 'Any' data type will need to be constrained to an appropriate data type in a specialisation, a template or at run-time to reflect the actual analyte result. The Quantity data type has reference model attributes that include flags for normal/abnormal, reference ranges and approximations - see https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for more details.",
+												"hl7v2_mapping": "OBX.2, OBX.5, OBX.6, OBX.7, OBX.8",
+												"fhir_mapping": "Observation.value[x]"
+											}
+										}
+									]
+								},
+								{
+									"id": "blood_sugar_fasting",
+									"name": "Blood Sugar (Fasting)",
+									"localizedName": "Blood Sugar (Fasting)",
+									"rmType": "CLUSTER",
+									"nodeId": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Blood Sugar (Fasting)"
+									},
+									"localizedDescriptions": {
+										"en": "The result of a laboratory test for a single analyte value."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Fasting)']",
+									"children": [
+										{
+											"id": "analyte_name",
+											"name": "Analyte name",
+											"localizedName": "Analyte name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0024",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Analyte name"
+											},
+											"localizedDescriptions": {
+												"en": "The name of the analyte result."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Fasting)']/items[at0024]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "The value for this element is normally supplied in a specialisation, in a template or at run-time to reflect the actual analyte. For example: 'Serum sodium', 'Haemoglobin'. Coding with an external terminology is strongly recommended, such as LOINC, NPU, SNOMED CT, or local lab terminologies.",
+												"hl7v2_mapping": "OBX.3",
+												"fhir_mapping": "Observation.code"
+											}
+										},
+										{
+											"id": "analyte_result",
+											"name": "Analyte result",
+											"localizedName": "Analyte result",
+											"rmType": "DV_QUANTITY",
+											"nodeId": "at0001",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Analyte result"
+											},
+											"localizedDescriptions": {
+												"en": "The value of the analyte result."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1 and name/value='Blood Sugar (Fasting)']/items[at0001]/value",
+											"inputs": [
+												{
+													"suffix": "magnitude",
+													"type": "DECIMAL"
+												},
+												{
+													"suffix": "unit",
+													"type": "CODED_TEXT",
+													"list": [
+														{
+															"value": "mg/dL",
+															"label": "mg/dL"
+														}
+													]
+												}
+											],
+											"annotations": {
+												"comment": "For example '7.3 mmol/l', 'Raised'. The 'Any' data type will need to be constrained to an appropriate data type in a specialisation, a template or at run-time to reflect the actual analyte result. The Quantity data type has reference model attributes that include flags for normal/abnormal, reference ranges and approximations - see https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for more details.",
+												"hl7v2_mapping": "OBX.2, OBX.5, OBX.6, OBX.7, OBX.8",
+												"fhir_mapping": "Observation.value[x]"
+											}
+										}
+									]
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/data[at0001]/events[at0002]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]/encoding",
+							"inContext": true
+						}
+					]
+				},
+				{
+					"id": "medical_history",
+					"name": "Medical History",
+					"localizedName": "Medical History",
+					"rmType": "OBSERVATION",
+					"nodeId": "openEHR-EHR-OBSERVATION.problem_screening.v0",
+					"min": 0,
+					"max": 1,
+					"localizedNames": {
+						"en": "Medical History"
+					},
+					"localizedDescriptions": {
+						"en": "Series of questions and associated answers used to screen for problems or diagnoses."
+					},
+					"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']",
+					"children": [
+						{
+							"id": "any_event",
+							"name": "Any event",
+							"localizedName": "Any event",
+							"rmType": "EVENT",
+							"nodeId": "at0002",
+							"min": 0,
+							"max": -1,
+							"localizedNames": {
+								"en": "Any event"
+							},
+							"localizedDescriptions": {
+								"en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+							},
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]",
+							"children": [
+								{
+									"id": "other",
+									"name": "Other",
+									"localizedName": "Other",
+									"rmType": "DV_TEXT",
+									"nodeId": "at0043",
+									"min": 0,
+									"max": 1,
+									"localizedNames": {
+										"en": "Other"
+									},
+									"localizedDescriptions": {
+										"en": "Narrative description about the history of any problems or diagnoses related to the screening purpose."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0043 and name/value='Other']/value",
+									"inputs": [
+										{
+											"type": "TEXT"
+										}
+									]
+								},
+								{
+									"id": "one_eyed",
+									"name": "One Eyed",
+									"localizedName": "One Eyed",
+									"rmType": "CLUSTER",
+									"nodeId": "at0022",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "One Eyed"
+									},
+									"localizedDescriptions": {
+										"en": "Details about a specific problem or diagnosis or grouping of problems or diagnoses related to the screening purpose."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='One Eyed']",
+									"children": [
+										{
+											"id": "problem_diagnosis_name",
+											"name": "Problem/diagnosis name",
+											"localizedName": "Problem/diagnosis name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0004",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Problem/diagnosis name"
+											},
+											"localizedDescriptions": {
+												"en": "Identification of a problem, diagnosis, or grouping of problems or diagnoses, by name."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='One Eyed']/items[at0004]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Coding of the 'Problem/diagnosis name' with a terminology is preferred, where possible."
+											}
+										},
+										{
+											"id": "presence",
+											"name": "Presence?",
+											"localizedName": "Presence?",
+											"rmType": "DV_BOOLEAN",
+											"nodeId": "at0005",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Presence?"
+											},
+											"localizedDescriptions": {
+												"en": "Is there a history of the specific problem or diagnosis related to the screening purpose?"
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='One Eyed']/items[at0005]/value",
+											"inputs": [
+												{
+													"type": "BOOLEAN"
+												}
+											],
+											"annotations": {
+												"comment": "In a template, the data element would usually be renamed to the specific question asked. The proposed value set can be adapted for local use by using the 'text' choice to match each specific use case."
+											}
+										},
+										{
+											"id": "onset",
+											"name": "Onset",
+											"localizedName": "Onset",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0040",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Onset"
+											},
+											"localizedDescriptions": {
+												"en": "Timing of the initial recognition of the problem or diagnosis."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='One Eyed']/items[at0040]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											],
+											"annotations": {
+												"comment": "The 'Onset' data element is deliberately loosely modelled to support the myriad of ways that it can be used in questionnaires to capture the onset of a problem or the timing of a diagnosis. The specific and intended semantics can be further clarified in a template. \r\n\r\nFor example:\r\nDate/time for the date of of diagnosis. Interval of date/time for a period of time eg. between 1940 and 1942. Text for descriptions like 'Immediately after the operation', or 'Up to one week ago', 'Up to two weeks ago', 'Three weeks ago'. Duration for the individual's age at the onset. Interval of Duration for the approximate age of the individual at the time of onset."
+											}
+										},
+										{
+											"id": "comment",
+											"name": "Comment",
+											"localizedName": "Comment",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0025",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Comment"
+											},
+											"localizedDescriptions": {
+												"en": "Additional narrative about the specific problem/diagnosis question, not captured in other fields."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='One Eyed']/items[at0025]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "hypertension",
+									"name": "Hypertension",
+									"localizedName": "Hypertension",
+									"rmType": "CLUSTER",
+									"nodeId": "at0022",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Hypertension"
+									},
+									"localizedDescriptions": {
+										"en": "Details about a specific problem or diagnosis or grouping of problems or diagnoses related to the screening purpose."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Hypertension']",
+									"children": [
+										{
+											"id": "problem_diagnosis_name",
+											"name": "Problem/diagnosis name",
+											"localizedName": "Problem/diagnosis name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0004",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Problem/diagnosis name"
+											},
+											"localizedDescriptions": {
+												"en": "Identification of a problem, diagnosis, or grouping of problems or diagnoses, by name."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Hypertension']/items[at0004]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Coding of the 'Problem/diagnosis name' with a terminology is preferred, where possible."
+											}
+										},
+										{
+											"id": "presence",
+											"name": "Presence?",
+											"localizedName": "Presence?",
+											"rmType": "DV_BOOLEAN",
+											"nodeId": "at0005",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Presence?"
+											},
+											"localizedDescriptions": {
+												"en": "Is there a history of the specific problem or diagnosis related to the screening purpose?"
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Hypertension']/items[at0005]/value",
+											"inputs": [
+												{
+													"type": "BOOLEAN"
+												}
+											],
+											"annotations": {
+												"comment": "In a template, the data element would usually be renamed to the specific question asked. The proposed value set can be adapted for local use by using the 'text' choice to match each specific use case."
+											}
+										},
+										{
+											"id": "onset",
+											"name": "Onset",
+											"localizedName": "Onset",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0040",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Onset"
+											},
+											"localizedDescriptions": {
+												"en": "Timing of the initial recognition of the problem or diagnosis."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Hypertension']/items[at0040]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											],
+											"annotations": {
+												"comment": "The 'Onset' data element is deliberately loosely modelled to support the myriad of ways that it can be used in questionnaires to capture the onset of a problem or the timing of a diagnosis. The specific and intended semantics can be further clarified in a template. \r\n\r\nFor example:\r\nDate/time for the date of of diagnosis. Interval of date/time for a period of time eg. between 1940 and 1942. Text for descriptions like 'Immediately after the operation', or 'Up to one week ago', 'Up to two weeks ago', 'Three weeks ago'. Duration for the individual's age at the onset. Interval of Duration for the approximate age of the individual at the time of onset."
+											}
+										},
+										{
+											"id": "comment",
+											"name": "Comment",
+											"localizedName": "Comment",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0025",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Comment"
+											},
+											"localizedDescriptions": {
+												"en": "Additional narrative about the specific problem/diagnosis question, not captured in other fields."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Hypertension']/items[at0025]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "diabetes",
+									"name": "Diabetes",
+									"localizedName": "Diabetes",
+									"rmType": "CLUSTER",
+									"nodeId": "at0022",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Diabetes"
+									},
+									"localizedDescriptions": {
+										"en": "Details about a specific problem or diagnosis or grouping of problems or diagnoses related to the screening purpose."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Diabetes']",
+									"children": [
+										{
+											"id": "problem_diagnosis_name",
+											"name": "Problem/diagnosis name",
+											"localizedName": "Problem/diagnosis name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0004",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Problem/diagnosis name"
+											},
+											"localizedDescriptions": {
+												"en": "Identification of a problem, diagnosis, or grouping of problems or diagnoses, by name."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Diabetes']/items[at0004]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Coding of the 'Problem/diagnosis name' with a terminology is preferred, where possible."
+											}
+										},
+										{
+											"id": "presence",
+											"name": "Presence?",
+											"localizedName": "Presence?",
+											"rmType": "DV_BOOLEAN",
+											"nodeId": "at0005",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Presence?"
+											},
+											"localizedDescriptions": {
+												"en": "Is there a history of the specific problem or diagnosis related to the screening purpose?"
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Diabetes']/items[at0005]/value",
+											"inputs": [
+												{
+													"type": "BOOLEAN"
+												}
+											],
+											"annotations": {
+												"comment": "In a template, the data element would usually be renamed to the specific question asked. The proposed value set can be adapted for local use by using the 'text' choice to match each specific use case."
+											}
+										},
+										{
+											"id": "onset",
+											"name": "Onset",
+											"localizedName": "Onset",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0040",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Onset"
+											},
+											"localizedDescriptions": {
+												"en": "Timing of the initial recognition of the problem or diagnosis."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Diabetes']/items[at0040]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											],
+											"annotations": {
+												"comment": "The 'Onset' data element is deliberately loosely modelled to support the myriad of ways that it can be used in questionnaires to capture the onset of a problem or the timing of a diagnosis. The specific and intended semantics can be further clarified in a template. \r\n\r\nFor example:\r\nDate/time for the date of of diagnosis. Interval of date/time for a period of time eg. between 1940 and 1942. Text for descriptions like 'Immediately after the operation', or 'Up to one week ago', 'Up to two weeks ago', 'Three weeks ago'. Duration for the individual's age at the onset. Interval of Duration for the approximate age of the individual at the time of onset."
+											}
+										},
+										{
+											"id": "comment",
+											"name": "Comment",
+											"localizedName": "Comment",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0025",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Comment"
+											},
+											"localizedDescriptions": {
+												"en": "Additional narrative about the specific problem/diagnosis question, not captured in other fields."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Diabetes']/items[at0025]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "asthma",
+									"name": "Asthma",
+									"localizedName": "Asthma",
+									"rmType": "CLUSTER",
+									"nodeId": "at0022",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Asthma"
+									},
+									"localizedDescriptions": {
+										"en": "Details about a specific problem or diagnosis or grouping of problems or diagnoses related to the screening purpose."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Asthma']",
+									"children": [
+										{
+											"id": "problem_diagnosis_name",
+											"name": "Problem/diagnosis name",
+											"localizedName": "Problem/diagnosis name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0004",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Problem/diagnosis name"
+											},
+											"localizedDescriptions": {
+												"en": "Identification of a problem, diagnosis, or grouping of problems or diagnoses, by name."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Asthma']/items[at0004]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Coding of the 'Problem/diagnosis name' with a terminology is preferred, where possible."
+											}
+										},
+										{
+											"id": "presence",
+											"name": "Presence?",
+											"localizedName": "Presence?",
+											"rmType": "DV_BOOLEAN",
+											"nodeId": "at0005",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Presence?"
+											},
+											"localizedDescriptions": {
+												"en": "Is there a history of the specific problem or diagnosis related to the screening purpose?"
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Asthma']/items[at0005]/value",
+											"inputs": [
+												{
+													"type": "BOOLEAN"
+												}
+											],
+											"annotations": {
+												"comment": "In a template, the data element would usually be renamed to the specific question asked. The proposed value set can be adapted for local use by using the 'text' choice to match each specific use case."
+											}
+										},
+										{
+											"id": "onset",
+											"name": "Onset",
+											"localizedName": "Onset",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0040",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Onset"
+											},
+											"localizedDescriptions": {
+												"en": "Timing of the initial recognition of the problem or diagnosis."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Asthma']/items[at0040]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											],
+											"annotations": {
+												"comment": "The 'Onset' data element is deliberately loosely modelled to support the myriad of ways that it can be used in questionnaires to capture the onset of a problem or the timing of a diagnosis. The specific and intended semantics can be further clarified in a template. \r\n\r\nFor example:\r\nDate/time for the date of of diagnosis. Interval of date/time for a period of time eg. between 1940 and 1942. Text for descriptions like 'Immediately after the operation', or 'Up to one week ago', 'Up to two weeks ago', 'Three weeks ago'. Duration for the individual's age at the onset. Interval of Duration for the approximate age of the individual at the time of onset."
+											}
+										},
+										{
+											"id": "comment",
+											"name": "Comment",
+											"localizedName": "Comment",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0025",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Comment"
+											},
+											"localizedDescriptions": {
+												"en": "Additional narrative about the specific problem/diagnosis question, not captured in other fields."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Asthma']/items[at0025]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "cardiac_condition",
+									"name": "Cardiac Condition",
+									"localizedName": "Cardiac Condition",
+									"rmType": "CLUSTER",
+									"nodeId": "at0022",
+									"min": 0,
+									"max": -1,
+									"localizedNames": {
+										"en": "Cardiac Condition"
+									},
+									"localizedDescriptions": {
+										"en": "Details about a specific problem or diagnosis or grouping of problems or diagnoses related to the screening purpose."
+									},
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Cardiac Condition']",
+									"children": [
+										{
+											"id": "problem_diagnosis_name",
+											"name": "Problem/diagnosis name",
+											"localizedName": "Problem/diagnosis name",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0004",
+											"min": 1,
+											"max": 1,
+											"localizedNames": {
+												"en": "Problem/diagnosis name"
+											},
+											"localizedDescriptions": {
+												"en": "Identification of a problem, diagnosis, or grouping of problems or diagnoses, by name."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Cardiac Condition']/items[at0004]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											],
+											"annotations": {
+												"comment": "Coding of the 'Problem/diagnosis name' with a terminology is preferred, where possible."
+											}
+										},
+										{
+											"id": "presence",
+											"name": "Presence?",
+											"localizedName": "Presence?",
+											"rmType": "DV_BOOLEAN",
+											"nodeId": "at0005",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Presence?"
+											},
+											"localizedDescriptions": {
+												"en": "Is there a history of the specific problem or diagnosis related to the screening purpose?"
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Cardiac Condition']/items[at0005]/value",
+											"inputs": [
+												{
+													"type": "BOOLEAN"
+												}
+											],
+											"annotations": {
+												"comment": "In a template, the data element would usually be renamed to the specific question asked. The proposed value set can be adapted for local use by using the 'text' choice to match each specific use case."
+											}
+										},
+										{
+											"id": "onset",
+											"name": "Onset",
+											"localizedName": "Onset",
+											"rmType": "DV_DATE_TIME",
+											"nodeId": "at0040",
+											"min": 0,
+											"max": -1,
+											"localizedNames": {
+												"en": "Onset"
+											},
+											"localizedDescriptions": {
+												"en": "Timing of the initial recognition of the problem or diagnosis."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Cardiac Condition']/items[at0040]/value",
+											"inputs": [
+												{
+													"type": "DATETIME"
+												}
+											],
+											"annotations": {
+												"comment": "The 'Onset' data element is deliberately loosely modelled to support the myriad of ways that it can be used in questionnaires to capture the onset of a problem or the timing of a diagnosis. The specific and intended semantics can be further clarified in a template. \r\n\r\nFor example:\r\nDate/time for the date of of diagnosis. Interval of date/time for a period of time eg. between 1940 and 1942. Text for descriptions like 'Immediately after the operation', or 'Up to one week ago', 'Up to two weeks ago', 'Three weeks ago'. Duration for the individual's age at the onset. Interval of Duration for the approximate age of the individual at the time of onset."
+											}
+										},
+										{
+											"id": "comment",
+											"name": "Comment",
+											"localizedName": "Comment",
+											"rmType": "DV_TEXT",
+											"nodeId": "at0025",
+											"min": 0,
+											"max": 1,
+											"localizedNames": {
+												"en": "Comment"
+											},
+											"localizedDescriptions": {
+												"en": "Additional narrative about the specific problem/diagnosis question, not captured in other fields."
+											},
+											"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/data[at0003]/items[at0022 and name/value='Cardiac Condition']/items[at0025]/value",
+											"inputs": [
+												{
+													"type": "TEXT"
+												}
+											]
+										}
+									]
+								},
+								{
+									"id": "time",
+									"name": "time",
+									"rmType": "DV_DATE_TIME",
+									"min": 1,
+									"max": 1,
+									"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/data[at0001]/events[at0002]/time",
+									"inputs": [
+										{
+											"type": "DATETIME"
+										}
+									],
+									"inContext": true
+								}
+							]
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-OBSERVATION.problem_screening.v0 and name/value='Medical History']/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "The answers may be self-reported."
+					}
+				},
+				{
+					"id": "adverse_reaction_risk",
+					"name": "Adverse reaction risk",
+					"localizedName": "Adverse reaction risk",
+					"rmType": "EVALUATION",
+					"nodeId": "openEHR-EHR-EVALUATION.adverse_reaction_risk.v1",
+					"min": 0,
+					"max": -1,
+					"localizedNames": {
+						"en": "Adverse reaction risk"
+					},
+					"localizedDescriptions": {
+						"en": "Risk of harmful or undesirable physiological response which is unique to an individual and associated with exposure to a substance."
+					},
+					"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]",
+					"children": [
+						{
+							"id": "substance",
+							"name": "Substance",
+							"localizedName": "Substance",
+							"rmType": "DV_TEXT",
+							"nodeId": "at0002",
+							"min": 1,
+							"max": 1,
+							"localizedNames": {
+								"en": "Substance"
+							},
+							"localizedDescriptions": {
+								"en": "Identification of a substance, or substance class, that is considered to put the individual at risk of an adverse reaction event."
+							},
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/data[at0001]/items[at0002]/value",
+							"inputs": [
+								{
+									"type": "TEXT"
+								}
+							],
+							"annotations": {
+								"comment": "Both an individual substance and a substance class are valid entries in 'Substance'. A substance may be a compound of simpler substances, for example a medicinal product. If the value in 'Substance' is an individual substance, it may be duplicated in 'Specific substance'. It is strongly recommended that both 'Substance' and 'Specific substance' be coded with a terminology capable of triggering decision support, where possible. For example: Snomed CT, DM+D, RxNorm, NDFRT, ATC, New Zealand Universal List of Medicines and Australian Medicines Terminology. Free text entry should only be used if there is no appropriate terminology available.",
+								"source": "openEHR,FHIR,DAM"
+							}
+						},
+						{
+							"id": "subject",
+							"name": "subject",
+							"rmType": "PARTY_PROXY",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/subject",
+							"inputs": [
+								{
+									"suffix": "id",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_scheme",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "id_namespace",
+									"type": "TEXT"
+								},
+								{
+									"suffix": "name",
+									"type": "TEXT"
+								}
+							],
+							"inContext": true
+						},
+						{
+							"id": "language",
+							"name": "language",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/language",
+							"inContext": true
+						},
+						{
+							"id": "encoding",
+							"name": "encoding",
+							"rmType": "CODE_PHRASE",
+							"min": 1,
+							"max": 1,
+							"aqlPath": "/content[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]/encoding",
+							"inContext": true
+						}
+					],
+					"annotations": {
+						"comment": "Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings.",
+						"source": "openEHR,FHIR"
+					}
+				},
+				{
+					"id": "composer",
+					"name": "composer",
+					"rmType": "PARTY_PROXY",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/composer",
+					"inputs": [
+						{
+							"suffix": "id",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_scheme",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "id_namespace",
+							"type": "TEXT"
+						},
+						{
+							"suffix": "name",
+							"type": "TEXT"
+						}
+					],
+					"inContext": true
+				},
+				{
+					"id": "language",
+					"name": "language",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/language",
+					"inContext": true
+				},
+				{
+					"id": "territory",
+					"name": "territory",
+					"rmType": "CODE_PHRASE",
+					"min": 1,
+					"max": 1,
+					"aqlPath": "/territory",
+					"inContext": true
+				}
+			]
+		}
+}
