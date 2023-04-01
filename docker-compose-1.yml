@@ -1,0 +1,105 @@
+version: '3'
+services:
+  fhir-server:
+    image: "hapiproject/hapi:latest-tomcat"
+    ports:
+      -   "8090:8080"
+    environment:
+      spring.datasource.url: "jdbc:postgresql://fhir-yugabytedb:25433/hapi_r4"
+      spring.datasource.username: admin
+      spring.datasource.password: admin
+      spring.datasource.driverClassName: org.postgresql.Driver
+      hapi.fhir.subsrciption.resthook_enabled: "true"
+      hapi.fhir.subsrciption.websocket_enabled: "true"
+      hapi.fhir.client_id_strategy: ANY
+
+  fhir-yugabytedb:
+    image: yugabytedb/yugabyte:latest
+    command: |
+     bash -c "
+     # create database and user as soon as database is up
+     until [ -z "POSTGRES_USER" ] || PGPASSWORD=yugabyte bin/ysqlsh -v ON_ERROR_STOP=1 \\
+      -c \"create database $${POSTGRES_DB:-$${POSTGRES_USER}} \" \\
+      -c \"create user $${POSTGRES_USER} password '$${POSTGRES_PASSWORD}' \" \\
+      2>/dev/null
+      do
+       echo \"Waiting for YugabyteDB to be up for creating user $${POSTGRES_USER}.\" ; sleep 5
+      done &
+     # start YugabyteDB
+     bin/yugabyted start --listen 0.0.0.0 --daemon=false --tserver_flags='ysql_enable_auth=true'
+     "
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=hapi_r4
+    ports:
+      - 25433:5433
+      - 27000:7000
+
+  fhir-waityugabyte:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    links:
+      - fhir-yugabytedb
+    depends_on:
+      - fhir-yugabytedb
+    entrypoint:
+      - bash
+      - -c
+      - 'until PGPASSWORD=admin /usr/lib/postgresql/15/bin/psql postgres://admin@fhir-yugabytedb:25433/hapi_r4 -c "SELECT 1"; do sleep 5; done'
+
+  ehrbase:
+      image: ehrbase/ehrbase:next
+      environment:
+          SPRING_DATASOURCE_URL: "jdbc:postgresql://ehrbase-yugabytedb:15433/ehrbase"
+          SPRING_DATASOURCE_USERNAME: ehrbase
+          SPRING_DATASOURCE_PASSWORD: ehrbase
+          SERVER_AQLCONFIG_USEJQUERY: "false"
+      restart: on-failure
+      depends_on:
+          - ehrbase-yugabytedb
+      ports:
+          - "8080:8080"
+
+  ehrbase-yugabytedb:
+    image: yugabytedb/yugabyte:latest
+    command: |
+     bash -c "
+     # create database and user as soon as database is up
+     until [ -z "POSTGRES_USER" ] || PGPASSWORD=yugabyte bin/ysqlsh -v ON_ERROR_STOP=1 \\
+      -c \"create database $${POSTGRES_DB:-$${POSTGRES_USER}} \" \\
+      -c \"create user $${POSTGRES_USER} password '$${POSTGRES_PASSWORD}' \" \\
+      2>/dev/null
+      do
+       echo \"Waiting for YugabyteDB to be up for creating user $${POSTGRES_USER}.\" ; sleep 5
+      done &
+     # start YugabyteDB
+     bin/yugabyted start --listen 0.0.0.0 --daemon=false --tserver_flags='ysql_enable_auth=true'
+     "
+    environment:
+      - POSTGRES_USER=ehrbase
+      - POSTGRES_PASSWORD=ehrbase
+      - POSTGRES_DB=ehrbase
+    ports:
+      - 15433:5433
+      - 17000:7000
+
+  ehrbase-waityugabyte:
+    image: postgres:latest
+    ports:
+      - 15432:5432
+    links:
+      - ehrbase-yugabytedb
+    depends_on:
+      - ehrbase-yugabytedb
+    entrypoint:
+      - bash
+      - -c
+      - 'until PGPASSWORD=ehrbase /usr/lib/postgresql/15/bin/psql postgres://ehrbase@ehrbase-yugabytedb:15432/ehrbase -c "SELECT 1"; do sleep 5; done'
+
+volumes:
+  fhir-yugabytedb-data:
+  ehrbase-yugabytedb-data:
+  fhir-waityugabyte:
+  ehrbase-waityugabyte:
