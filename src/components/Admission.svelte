@@ -10,7 +10,7 @@
     let encounter;
     let loading;
     onMount(async () => {
-      const r = await fhir.get(`/Encounter?subject=${ehrId}`);
+      const r = await FHIR.get(`/Encounter?subject=${ehrId}`);
       if (r?.data?.entry) {
         encounter = r?.data?.entry[0]?.resource;
         if (encounter) {
@@ -23,12 +23,12 @@
       loading = true;
       const data = e.detail;
       if (encounter) {
-        await fhir.put(`/Encounter/${encounter.id}`, {
+        await FHIR.put(`/Encounter/${encounter.id}`, {
           ...data,
           id: encounter.id,
         });
       } else {
-        const r = await fhir.post("Encounter", data);
+        const r = await FHIR.post("Encounter", data);
       }
       loading = false;
       navigate(redirectUrl || `/clinical/${ehrId}`, { replace: true });
@@ -36,7 +36,7 @@
   </script>
 
   <p class="my-5 text-xl font-semibold text-gray-700">Admission Details</p>
-  <mb-fhir-form
+  <mb-FHIR-form
     bind:this={form}
     class="flex flex-col gap-3"
     on:mb-submit={handleSubmit}
@@ -60,4 +60,4 @@
     <mb-submit>
       <sl-button {loading} type="neutral" class="w-full">Save</sl-button>
     </mb-submit>
-  </mb-fhir-form>
+  </mb-FHIR-form>
