@@ -3,7 +3,7 @@
   import "medblocks-ui/dist/shoelace";
   import '@shoelace-style/shoelace/dist/themes/light.css';
   import './tailwind.css'
-  import { FHIR, openehr } from '../fhir';
+  import { fhir, openehr } from '../fhir';
   import { onMount } from 'svelte';
   import { Link, navigate } from "svelte-routing";
   //import { expect, oneEvent } from '@open-wc copy/testing';
@@ -27,21 +27,21 @@
 
     });
 
-    //const resp = await FHIR.post("/Patient", e.detail);
+    //const resp = await fhir.post("/Patient", e.detail);
     //if (resp.status == 201) {
     //    ehrId = resp.data.id;
     //}
     //const respEHR = await openehr.put(`/ehr/${ehrId}`);
 
     if (id) {
-        const resp = await FHIR.put(`/Patient/${id}`, { ...e.detail, id })
+        const resp = await fhir.put(`/Patient/${id}`, { ...e.detail, id })
         //if (resp.status === 200) {
         //  const ehrId = resp.data.id;
         //  const respEHR = await openehr.put(`/ehr/${ehrId}/composition`)
         //}
         console.log(resp.data);
     } else {
-        const resp = await FHIR.post("/Patient", e.detail);
+        const resp = await fhir.post("/Patient", e.detail);
         //if (resp.status === 201) {
         //  var ehrId = resp.data.id;
         //  const respEHR = await openehr.post(`/ehr/${ehrId}/composition`);
@@ -53,7 +53,7 @@
 
   onMount(async () => {
     if (id) {
-      const r = await FHIR.get(`/Patient/${id}`);
+      const r = await fhir.get(`/Patient/${id}`);
       console.log(r.data);
       console.log(form.parse(r.data));
       data = form.parse(r.data);
@@ -62,7 +62,7 @@
 
   //onMount(async () => {
   //  if (id){
-  //     const resp = await FHIR.get(`/Patient/${id}`)
+  //     const resp = await fhir.get(`/Patient/${id}`)
   //      //if (resp.status === 200) {
   //      //  const ehrId = resp.data.id;
   //      //  const respEHR = await openehr.get(`/ehr/${ehrId}`);
