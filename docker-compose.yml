@@ -22,7 +22,7 @@ services:
          POSTGRES_USERNAME: admin
          POSTGRES_DB: hapi_r4
       ports:
-        - "15432:5432"
+        - "5431:5432"
 
   ehrbase:
       image: ehrbase/ehrbase:next
@@ -33,11 +33,11 @@ services:
           SERVER_AQLCONFIG_USEJQUERY: "false"
       restart: on-failure
       depends_on:
-          - db
+          - ehrdb
       ports:
           - "8080:8080"
 
-  db:
+  ehrdb:
       image: postgres:latest
       volumes:
           - db-data:/var/lib/postgresql/data
@@ -46,7 +46,7 @@ services:
           POSTGRES_PASSWORD: ehrbase
           POSTGRES_DB: ehrbase
       ports:
-        - "15433:5432"
+        - "5433:5432"
 
 volumes:
    fhir-db-data:
