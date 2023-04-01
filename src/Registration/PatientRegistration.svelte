@@ -105,7 +105,7 @@
   </div>
   <br>
   <div class="field">
-    <mb-buttons type="code" path="gender" placeholder="Gender" >
+    <mb-buttons type="code" path="biologicalGender" placeholder="Gender" >
       <mb-option value="male" label="Male" />
       <mb-option value="female" label="Female" />
       <mb-option value="other" label="Other" />

@@ -40,7 +40,7 @@ services:
   ehrdb:
       image: postgres:latest
       volumes:
-          - db-data:/var/lib/postgresql/data
+          - ehrdb-data:/var/lib/postgresql/data
       environment:
           POSTGRES_USER: ehrbase
           POSTGRES_PASSWORD: ehrbase
@@ -50,4 +50,4 @@ services:
 
 volumes:
    fhir-db-data:
-   db-data:
+   ehrdb-data:
