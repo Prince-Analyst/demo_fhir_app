@@ -14,6 +14,7 @@ services:
       12hapi.fhir.client_id_strategy: ANY
 
   fhir-db:
+<<<<<<< HEAD
     image: postgres:latest
     volumes:
       - fhir-db-data:/var/lib/postgresql/data
@@ -47,6 +48,41 @@ services:
       POSTGRES_DB: ehrbase
     ports:
       - "5433:5432"
+=======
+      image: postgres:latest
+      volumes:
+        - fhir-db-data:/var/lib/postgresql/data
+      environment:
+         POSTGRES_PASSWORD: admin
+         POSTGRES_USERNAME: admin
+         POSTGRES_DB: hapi_r4
+      ports:
+        - "5431:5432"
+
+  ehrbase:
+      image: ehrbase/ehrbase:next
+      environment:
+          SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/ehrbase"
+          SPRING_DATASOURCE_USERNAME: ehrbase
+          SPRING_DATASOURCE_PASSWORD: ehrbase
+          SERVER_AQLCONFIG_USEJQUERY: "false"
+      restart: on-failure
+      depends_on:
+          - ehrdb
+      ports:
+          - "8080:8080"
+
+  ehrdb:
+      image: postgres:latest
+      volumes:
+          - db-data:/var/lib/postgresql/data
+      environment:
+          POSTGRES_USER: ehrbase
+          POSTGRES_PASSWORD: ehrbase
+          POSTGRES_DB: ehrbase
+      ports:
+        - "5433:5432"
+>>>>>>> 4622bc3 (modified docker-compose)
 
 volumes:
    fhir-db-data:
