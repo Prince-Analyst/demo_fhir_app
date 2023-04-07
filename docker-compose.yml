@@ -35,7 +35,7 @@ services:
       depends_on:
           - ehrdb
       ports:
-          - "8080:8080"
+          - "8081:8080"
 
   ehrdb:
       image: postgres:latest
