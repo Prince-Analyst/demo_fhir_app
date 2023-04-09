@@ -1,0 +1,53 @@
+version: '3'
+services:
+  fhir-server:
+    image: "hapiproject/hapi:latest-tomcat"
+    ports:
+      -   "8090:8080"
+    environment:
+      spring.datasource.url: "jdbc:postgresql://fhir-db:5432/hapi_r4"
+      spring.datasource.username: admin
+      spring.datasource.password: admin
+      spring.datasource.driverClassName: org.postgresql.Driver
+      hapi.fhir.subsrciption.resthook_enabled: "true"
+      hapi.fhir.subsrciption.websocket_enabled: "true"
+      12hapi.fhir.client_id_strategy: ANY
+
+  fhir-db:
+      image: postgres:latest
+      volumes:
+        - fhir-db-data:/var/lib/postgresql/data
+      environment:
+         POSTGRES_PASSWORD: admin
+         POSTGRES_USERNAME: admin
+         POSTGRES_DB: hapi_r4
+      ports:
+        - "5431:5432"
+
+  ehrbase:
+      image: ehrbase/ehrbase:next
+      environment:
+          SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/ehrbase"
+          SPRING_DATASOURCE_USERNAME: ehrbase
+          SPRING_DATASOURCE_PASSWORD: ehrbase
+          SERVER_AQLCONFIG_USEJQUERY: "false"
+      restart: on-failure
+      depends_on:
+          - ehrdb
+      ports:
+          - "8080:8080"
+
+  ehrdb:
+      image: postgres:latest
+      volumes:
+          - ehrdb-data:/var/lib/postgresql/data
+      environment:
+          POSTGRES_USER: ehrbase
+          POSTGRES_PASSWORD: ehrbase
+          POSTGRES_DB: ehrbase
+      ports:
+        - "5433:5432"
+
+volumes:
+   fhir-db-data:
+   ehrdb-data:
