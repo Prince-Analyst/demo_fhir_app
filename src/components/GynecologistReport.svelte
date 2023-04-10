@@ -65,7 +65,7 @@
 
 </script>
 
-<h1 class="text-2x font-semibold font-sans">Gyneacology Visit</h1>
+<h1 class="text-2x font-semibold font-sans">Gynecology Visit</h1>
 <mb-fhir-form
     id="form"
     bind:this={form}
