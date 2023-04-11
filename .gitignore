@@ -30,3 +30,5 @@ public/vendor/
 utils
 src/features
 src/db
+.vscode/
+.history/
