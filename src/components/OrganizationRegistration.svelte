@@ -67,10 +67,10 @@
 
 
 <h1 class="text-2x font-semibold font-sans">Organization Registration</h1>
-<mb-fhir-form 
+<mb-fhir-form
     id="form"
-    bind:this={form} 
-    class="flex flex-col gap-3" 
+    bind:this={form}
+    class="flex flex-col gap-3"
     on:mb-submit={handleSubmit}
 >
   <div class="field">
@@ -123,7 +123,7 @@
     <mb-input type="ContactPoint" path="telecom[1].value[0]" placeholder="Email Address" />
   </div>
   <br>
-  <div class="field"> 
+  <div class="field">
     <mb-context type="Address" path="address[0].use" bind="home" />
   </div>
   <!-- <br> -->
@@ -164,9 +164,9 @@
       <mb-option value="PAYOR" display="Payor" label="Payor" />
     </mb-select>
   </div>
-  <div class="field"> 
+  <div class="field">
     <mb-context path="contact.purpose[0].coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/contactentity-type" /> 
-  </div> 
+  </div>
   <div class="field">
     <mb-context type="HumanName" path="contact.name[0].use[0]" bind="official" />
   </div>
@@ -187,7 +187,7 @@
     <mb-input type="HumanName" path="contact.name[0].suffix" placeholder="Suffix" />
   </div>
   <br>
-  <div class="field"> 
+  <div class="field">
     <mb-context type="cAddress" path="contact.address[0].use" bind="home" />
   </div>
   <div class="field">
