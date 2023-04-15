@@ -4,7 +4,7 @@
   import "@shoelace-style/shoelace/dist/components/dialog/dialog";
   import { patientProxy } from "./patientProxy";
   import { getCovidResults } from "./aqls";
-  import { FHIR } from "../fhir";
+  import { fhir } from "../fhir";
   import { createEventDispatcher } from "svelte";
   export let patients: any[] = null;
   export let action: { name: string; segment: string } = {
@@ -26,7 +26,7 @@
     dialog.show();
   }
   async function deletePatientAction() {
-    const r = await FHIR.delete(`Patient/${deletePatient}`);
+    const r = await fhir.delete(`Patient/${deletePatient}`);
     console.log(r.data);
     dialog.hide();
     dispatch("reload");
