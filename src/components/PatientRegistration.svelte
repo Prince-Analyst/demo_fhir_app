@@ -138,7 +138,6 @@
   <div class="field">
     <mb-input type="ContactPoint" path="telecom[0].value" placeholder="Phone Number" />
   </div>
-  <div class="field">
     <mb-context type="ContactPoint" path="telecom[1].system" bind="email">
   </div>
   <div class="field">
@@ -151,20 +150,6 @@
   <br>
   <div class="field">
     <mb-input label="Address" textarea path="address[0].text" placeholder="Full Address"/>
-  </div>
-  <br>
-  <div class="field">
-    <mb-context type="Address" path="address[0].use" bind="home" />
-  </div>
-  <div class="field">
-    <mb-context type="Address" path="address[0].type" bind="physical" />
-  </div>
-  <div class="field" >
-    <mb-input type="Address" path="address[0].line[0]" placeholder="Line 1" />
-  </div>
-  <br>
-  <div class="field" >
-    <mb-input type="Address" path="address[0].line[1]" placeholder="Line 2" />
   </div>
   <br>
   <div class="field">
