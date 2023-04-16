@@ -1,6 +1,6 @@
 import { token } from "./stores";
 import { navigate } from "svelte-routing";
-import { FHIR, openehr } from "./fhir";
+import { fhir, openehr } from "./fhir";
 export const logout = (wrongLogin = false) => {
   localStorage.clear();
   token.set(localStorage.getItem("token"));
@@ -23,7 +23,7 @@ export const registerAxios = (token: string) => {
     return;
   }
   const [username, password] = token.split(",");
-  [FHIR, openehr].forEach((service) => {
+  [fhir, openehr].forEach((service) => {
     service.defaults.auth = {
       username,
       password,
