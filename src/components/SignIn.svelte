@@ -5,7 +5,7 @@
     let password = "";
     export let state;
   </script>
-  
+
   <sl-form
     on:sl-submit={() => {
       login(username, password);
@@ -25,7 +25,7 @@
         placeholder="Password"
         on:sl-input={(e) => (password = e.target.value)}
       /><sl-button submit type="neutral">Sign in</sl-button>
-  
+
       {#if state}
         <p class="capitalize mt-5 text-red-600 font-semibold">
           {state} login
@@ -33,4 +33,3 @@
       {/if}
     </div>
   </sl-form>
-  

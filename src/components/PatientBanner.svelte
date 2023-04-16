@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { FHIR } from "../fhir";
+  import { fhir } from "../fhir";
   import { onMount } from "svelte";
   import { patientProxy } from "./patientProxy";
 
-  let patientdata;
+  let patientdata: any;
   $: patient = patientProxy(patientdata);
 
   export let ehrId;
   onMount(async () => {
-    const fhirDemographics = await FHIR.get(`/Patient/${ehrId}`);
+    const fhirDemographics = await fhir.get(`/Patient/${ehrId}`);
     patientdata = fhirDemographics.data;
   });
 </script>

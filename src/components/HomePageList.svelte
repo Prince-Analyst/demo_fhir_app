@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { FHIR } from "../fhir";
+  import { fhir } from "../fhir";
   import { onMount } from "svelte";
   import PatientList from "./PatientList.svelte";
   import { Link, navigate } from "svelte-routing";
@@ -15,7 +15,7 @@
   const load = async (view) => {
     loading = true;
     if (view === "all") {
-      const r = await FHIR.get("/Patient", {
+      const r = await fhir.get("/Patient", {
         params: {
           _count: 50,
           _sort: "-_lastUpdated",
@@ -44,7 +44,7 @@
       });
       patients = nonDischargedPatients;
     } else if (view === "admitted") {
-      const r = await FHIR.get("/Encounter", {
+      const r = await fhir.get("/Encounter", {
         params: {
           status: "in-progress",
           _include: "Encounter:subject",
@@ -55,7 +55,7 @@
       const entries = r.data?.entry || [];
       patients = entries.filter((e) => e?.search?.mode === "include");
     } else if (view === "discharged") {
-      const r = await FHIR.get("/Encounter", {
+      const r = await fhir.get("/Encounter", {
         params: {
           status: "finished,onleave,triaged,unknown,cancelled",
           _include: "Encounter:subject",
@@ -106,7 +106,7 @@
       on:mb-input={(e) => {
         navigate(`/clinical/${e.target.data.code}`);
       }}
-      axios={FHIR}
+      axios={fhir}
       plugin={SearchAllPatients}
     />
   </div>

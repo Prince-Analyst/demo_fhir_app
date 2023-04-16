@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { FHIR, openehr } from "../fhir";
+  import { fhir, openehr } from "../fhir";
   import { onMount } from "svelte";
   import { Link } from "svelte-routing";
   export let ehrId: string;
@@ -26,7 +26,7 @@
   };
   onMount(async () => {
     try {
-      const r = await FHIR.post(`/`, {
+      const r = await fhir.post(`/`, {
         resourceType: "Bundle",
         entry: [
           { request: { method: "GET", url: `/Encounter?subject=${ehrId}` } },

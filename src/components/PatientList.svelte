@@ -120,6 +120,7 @@
                       </sl-button>
                     </Link>
                     
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <sl-button
                       on:click={() => {
                         deletePatient = patient.resource.id;
@@ -144,6 +145,7 @@
       }}
     >
       <p>Are you sure you want to delete this patient?</p>
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <sl-button slot="footer" type="danger" on:click={deletePatientAction}
         >Delete</sl-button
       >
