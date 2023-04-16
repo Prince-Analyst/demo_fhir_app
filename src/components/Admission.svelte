@@ -62,7 +62,7 @@
     </mb-submit>
   </mb-fhir-form>
 <script lang="ts">
-    import { fhir } from "../fhir";
+    import { FHfhiIR } from "../fhir";
 
     import { onMount } from "svelte";
     import { navigate } from "svelte-routing";
@@ -73,7 +73,7 @@
     let encounter;
     let loading;
     onMount(async () => {
-      const r = await fhir.get(`/Encounter?subject=${ehrId}`);
+fhir      const r = await fhir.get(`/Encounter?subject=${ehrId}`);
       if (r?.data?.entry) {
         encounter = r?.data?.entry[0]?.resource;
         if (encounter) {
