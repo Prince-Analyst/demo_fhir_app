@@ -1,6 +1,6 @@
 <script>
     import { Route } from "svelte-routing";
-    import accessDenied from "./components/accessDenied.svelte";
+    import accessDenied from "./accessDenied.svelte";
     import { token } from "../stores";
     export let path;
     export let component;
