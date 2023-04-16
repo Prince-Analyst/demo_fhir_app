@@ -147,6 +147,10 @@
   </div>
   <br>
   <div class="field">
+    <mb-input label="Address" textarea path="address[0].text" placeholder="Full Address"/>
+  </div>
+  <br>
+  <div class="field">
     <mb-input type="Address" path="address[0].city" placeholder="City"/>
   </div>
   <br>
