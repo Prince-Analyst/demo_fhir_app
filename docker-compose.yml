@@ -25,63 +25,32 @@ services:
       - "5431:5432"
 
   ehrbase:
-    image: ehrbase/ehrbase:next
-    ports:
-      - 8080:8080
-    networks:
-      - ehrbase-net
-    env_file:
-      - .env.ehrbase
+    image: ehrbase/ehrbase@sha256:74c97d56ed00b1a89be18153f30ea3766fec67a876327fb8e5b623d535e386ce
     environment:
-      DB_URL: jdbc:postgresql://ehrdb:5432/ehrbase
-      DB_USER_ADMIN: ehrbase
-      DB_PASS_ADMIN: ehrbase
-      DB_USER: ehrbase_restricted
-      DB_PASS: ehrbase_restricted
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://ehrdb:5432/ehrbase"
+      SPRING_DATASOURCE_USERNAME: ehrbase
+      SPRING_DATASOURCE_PASSWORD: ehrbase
+      SERVER_AQLCONFIG_USEJSQUERY: "false"
+      SERVER_NODENAME: "localhost"
+      WEB_CORS_ALLOWEDORIGINPATTERNS: "*"
+      WEB_CORS_ALLOWEDMETHODS: "GET,PUT,DELETE,POST,OPTIONS"
+      WEB_CORS_ALLOWCREDENTIALS: "true"
+    depends_on:
+      - ehrdb
+    ports:
+      - "8080:8080"
     restart: on-failure
 
   ehrdb:
-    image: ehrbase/ehrbase-postgres:13.4.v2
-    ports:
-      - 5432:5432
-    networks:
-      - ehrbase-net
+    image: postgres:latest
     volumes:
-      - ./.pgdata:/var/lib/postgresql/data
+      - ehrdb-data:/var/lib/postgresql/data
+      - ./cloud-db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      EHRBASE_USER_ADMIN: ehrbase
-      EHRBASE_PASSWORD_ADMIN: ehrbase
-      EHRBASE_USER: ehrbase_restricted
-      EHRBASE_PASSWORD: ehrbase_restricted
+    ports:
+      - "5432:5432"
 
-  #ehrbase:
-  #  image: ehrbase/ehrbase@sha256:74c97d56ed00b1a89be18153f30ea3766fec67a876327fb8e5b623d535e386ce
-  #  environment:
-  #    SPRING_DATASOURCE_URL: "jdbc:postgresql://ehrdb:5432/ehrbase"
-  #    SPRING_DATASOURCE_USERNAME: ehrbase
-  #    SPRING_DATASOURCE_PASSWORD: ehrbase
-  #    SERVER_AQLCONFIG_USEJSQUERY: "false"
-  #    SERVER_NODENAME: "localhost"
-  #    WEB_CORS_ALLOWEDORIGINPATTERNS: "*"
-  #    WEB_CORS_ALLOWEDMETHODS: "GET,PUT,DELETE,POST,OPTIONS"
-  #    WEB_CORS_ALLOWCREDENTIALS: "true"
-  #  depends_on:
-  #    - ehrdb
-  #  ports:
-  #    - "8080:8080"
-  #  restart: on-failure
-  #ehrdb:
-  #  image: postgres:latest
-  #  volumes:
-  #    - ehrdb-data:/var/lib/postgresql/data
-  #    - ./cloud-db.sql:/docker-entrypoint-initdb.d/init.sql
-  #  environment:
-  #    POSTGRES_PASSWORD: postgres
-
-networks:
-  ehrbase-net: {}
 volumes:
   ehrdb-data:
   fhirdb-data:
