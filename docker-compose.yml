@@ -35,7 +35,12 @@ services:
       SECURITY_AUTHTYPE: NONE
       ABAC_ENABLED: "false"
     ports:
-      - "8080:8080"
+      - 8080:8080
+    networks:
+      - ehrbase-net
+    env_file:
+      - .env.ehrbase
+
 
   fhir:
     image: "tornadoalert/fhir:${FHIR_TAG}"
@@ -65,6 +70,9 @@ services:
       - caddy_data:/data
       - caddy_config:/config
 
+
+networks:
+  ehrbase-net: {}
 volumes:
   db-data:
   caddy_data:
