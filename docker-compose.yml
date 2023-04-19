@@ -5,7 +5,7 @@ services:
     ports:
       -   "8090:8080"
     environment:
-      spring.datasource.url: "jdbc:postgresql://fhir-db:5432/hapi_r4"
+      spring.datasource.url: "jdbc:postgresql://fhirdb:5432/hapi_r4"
       spring.datasource.username: admin
       spring.datasource.password: admin
       spring.datasource.driverClassName: org.postgresql.Driver
@@ -13,10 +13,10 @@ services:
       hapi.fhir.subsrciption.websocket_enabled: "true"
       12hapi.fhir.client_id_strategy: ANY
 
-  fhir-db:
+  fhirdb:
     image: postgres:latest
     volumes:
-      - fhir-db-data:/var/lib/postgresql/data
+      - fhirdb-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: admin
       POSTGRES_USERNAME: admin
@@ -26,28 +26,62 @@ services:
 
   ehrbase:
     image: ehrbase/ehrbase:next
-    environment:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/ehrbase"
-      SPRING_DATASOURCE_USERNAME: ehrbase
-      SPRING_DATASOURCE_PASSWORD: ehrbase
-      SERVER_AQLCONFIG_USEJQUERY: "false"
-    restart: on-failure
-    depends_on:
-      - ehrdb
     ports:
-      - "8080:8080"
+      - 8080:8080
+    networks:
+      - ehrbase-net
+    env_file:
+      - .env.ehrbase
+    environment:
+      DB_URL: jdbc:postgresql://ehrdb:5432/ehrbase
+      DB_USER_ADMIN: ehrbase
+      DB_PASS_ADMIN: ehrbase
+      DB_USER: ehrbase_restricted
+      DB_PASS: ehrbase_restricted
+    restart: on-failure
 
   ehrdb:
-    image: postgres:latest
-    volumes:
-      - ehrdb-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: ehrbase
-      POSTGRES_PASSWORD: ehrbase
-      POSTGRES_DB: ehrbase
+    image: ehrbase/ehrbase-postgres:13.4.v2
     ports:
-      - "5433:5432"
+      - 5432:5432
+    networks:
+      - ehrbase-net
+    volumes:
+      - ./.pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      EHRBASE_USER_ADMIN: ehrbase
+      EHRBASE_PASSWORD_ADMIN: ehrbase
+      EHRBASE_USER: ehrbase_restricted
+      EHRBASE_PASSWORD: ehrbase_restricted
 
+  #ehrbase:
+  #  image: ehrbase/ehrbase@sha256:74c97d56ed00b1a89be18153f30ea3766fec67a876327fb8e5b623d535e386ce
+  #  environment:
+  #    SPRING_DATASOURCE_URL: "jdbc:postgresql://ehrdb:5432/ehrbase"
+  #    SPRING_DATASOURCE_USERNAME: ehrbase
+  #    SPRING_DATASOURCE_PASSWORD: ehrbase
+  #    SERVER_AQLCONFIG_USEJSQUERY: "false"
+  #    SERVER_NODENAME: "localhost"
+  #    WEB_CORS_ALLOWEDORIGINPATTERNS: "*"
+  #    WEB_CORS_ALLOWEDMETHODS: "GET,PUT,DELETE,POST,OPTIONS"
+  #    WEB_CORS_ALLOWCREDENTIALS: "true"
+  #  depends_on:
+  #    - ehrdb
+  #  ports:
+  #    - "8080:8080"
+  #  restart: on-failure
+  #ehrdb:
+  #  image: postgres:latest
+  #  volumes:
+  #    - ehrdb-data:/var/lib/postgresql/data
+  #    - ./cloud-db.sql:/docker-entrypoint-initdb.d/init.sql
+  #  environment:
+  #    POSTGRES_PASSWORD: postgres
+
+networks:
+  ehrbase-net: {}
 volumes:
-  fhir-db-data:
   ehrdb-data:
+  fhirdb-data:

@@ -1,8 +1,8 @@
 <script>
     import { login } from "../auth";
     import "@shoelace-style/shoelace/dist/components/form/form";
-    let username = "";
-    let password = "";
+    let username = "admin";
+    let password = "admin";
     export let state;
   </script>
 
