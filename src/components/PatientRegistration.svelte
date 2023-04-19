@@ -88,7 +88,6 @@
   <div class="field" >
     <mb-date type="date" label="Date of Birth" placeholder="Date of Birth" path="birthDate" />
   </div>
-  
   <div class="field">
     <mb-buttons datatype="code" label="Gender" path="gender">
       <mb-option value="male" label="Male" />
@@ -120,20 +119,12 @@
       <mb-option value="W" label="Widowed" display="Widowed" />
     </mb-select>
   </div>
-  <!-- <br> -->
-  <!-- <div class="field"> -->
-  <!--   <mb-context> -->
-  <!--      -->
-  <!--   </mb-context> -->
-  <!-- </div> -->
-  <!-- <br> -->
   <div class="field">
     <mb-context type="CodeableConcept" path="maritalStatus.coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus" />
   </div>
   <div class="field">
     <mb-context type="ContactPoint" path="telecom[0].system[0]" bind="phone">
   </div>
-
   <div class="field">
     <mb-context type="ContactPoint" path="telecom[0].use[0]" bind="mobile" />
   </div>
@@ -282,10 +273,6 @@
   <div class="field">
     <mb-input type="Address" path="contact[0]address[0].country" placeholder="Country" />
   </div>
-  <!-- <br> -->
-  <!-- <div> -->
-  <!--   <mb-multimedia type="photo" label="Photo" path="photo" /> -->
-  <!-- </div> -->
   <br>
   <div>
     <mb-submit>
