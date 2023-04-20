@@ -1,13 +1,15 @@
 <script lang="ts">
   import "medblocks-ui/dist/medblocks";
   import { onMount } from "svelte";
-  import { fhir } from "../fhir";
+  import { fhir, openehr  } from "../fhir";
   import { Link, navigate } from "svelte-routing";
 
   let data = {};
   let form;
   let loading = false;
   export let id;
+  export let ehrId;
+  export let resp;
 
   onMount(async () => {
     if (id) {
@@ -27,6 +29,10 @@
     } else {
       loading = true;
       await fhir.post(`/Patient`, data);
+      if (resp.status == 201) {
+      ehrId = resp.data.id;
+        }
+      const respEHR = await openehr.put(`/ehr/${ehrId}`);
       loading = false;
     }
     navigate("/", { replace: true });
@@ -123,24 +129,24 @@
     <mb-context type="CodeableConcept" path="maritalStatus.coding[0].system[0]" bind="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus" />
   </div>
   <div class="field">
-    <mb-context type="ContactPoint" path="telecom[0].system[0]" bind="phone">
+    <mb-context type="ContactPoint" path="telecom[0].system" bind="phone">
   </div>
   <div class="field">
-    <mb-context type="ContactPoint" path="telecom[0].use[0]" bind="mobile" />
-  </div>
-  <br>
-  <div class="field">
-    <mb-input type="ContactPoint" path="telecom[0].value[0]" placeholder="Phone Number" />
-  </div>
-  <div class="field">
-    <mb-context type="ContactPoint" path="telecom[1].system[0]" bind="email">
-  </div>
-  <div class="field">
-    <mb-context type="ContactPoint" path="telecom[1].use[0]" bind="mobile" />
+    <mb-context type="ContactPoint" path="telecom[0].use" bind="mobile" />
   </div>
   <br>
   <div class="field">
-    <mb-input type="ContactPoint" path="telecom[1].value[0]" placeholder="Email Address" />
+    <mb-input type="ContactPoint" path="telecom[0].value" placeholder="Phone Number" />
+  </div>
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[1].system" bind="email">
+  </div>
+  <div class="field">
+    <mb-context type="ContactPoint" path="telecom[1].use" bind="mobile" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="ContactPoint" path="telecom[1].value" placeholder="Email Address" />
   </div>
   <br>
   <div class="field">
@@ -154,11 +160,11 @@
     <mb-context type="Address" path="address[0].type" bind="physical" />
   </div>
   <div class="field" >
-    <mb-input type="Address" path="address[0].line" placeholder="Line 1" />
+    <mb-input type="Address" path="address[0].line[0]" placeholder="Line 1" />
   </div>
   <br>
   <div class="field" >
-    <mb-input type="Address" path="address[0].line" placeholder="Line 2" />
+    <mb-input type="Address" path="address[0].line[1]" placeholder="Line 2" />
   </div>
   <br>
   <div class="field">
@@ -179,6 +185,9 @@
   <br>
   <div class="field">
     <label for="" class="font-bold">Attendant information</label>
+  </div>
+  <div class="field">
+    <mb-checkbox type="boolean" path="contact[0].active" label="Active" />
   </div>
   <div class="field">
     <mb-context type="HumanName" path="contact[0].name[0].use[0]" bind="official" />
@@ -220,24 +229,24 @@
   </div>
   <br>
   <div class="field">
-    <mb-context type="ContactPoint" path="contact[0].telecom[0].system[0]" bind="phone">
+    <mb-context type="ContactPoint" path="contact[0].telecom[0].system" bind="phone">
   </div>
   <div class="field">
-    <mb-context type="ContactPoint" path="contact[0].telecom[0].use[0]" bind="mobile" />
-  </div>
-  <br>
-  <div class="field">
-    <mb-input type="ContactPoint" path="contact[0].telecom[0].value[0]" placeholder="Phone Number" />
-  </div>
-  <div class="field">
-    <mb-context type="ContactPoint" path="contact[0].telecom[1].system[0]" bind="email">
-  </div>
-  <div class="field">
-    <mb-context type="ContactPoint" path="contact[0].telecom[1].use[0]" bind="mobile" />
+    <mb-context type="ContactPoint" path="contact[0].telecom[0].use" bind="mobile" />
   </div>
   <br>
   <div class="field">
-    <mb-input type="ContactPoint" path="contact[0].telecom[1].value[0]" placeholder="Email Address" />
+    <mb-input type="ContactPoint" path="contact[0].telecom[0].value" placeholder="Phone Number" />
+  </div>
+  <div class="field">
+    <mb-context type="ContactPoint" path="contact[0].telecom[1].system" bind="email">
+  </div>
+  <div class="field">
+    <mb-context type="ContactPoint" path="contact[0].telecom[1].use" bind="mobile" />
+  </div>
+  <br>
+  <div class="field">
+    <mb-input type="ContactPoint" path="contact[0].telecom[1].value" placeholder="Email Address" />
   </div>
   <br>
   <div class="field">
@@ -251,11 +260,11 @@
     <mb-context type="Address" path="contact[0]address[0].type" bind="physical" />
   </div>
   <div class="field" >
-    <mb-input type="Address" path="contact[0]address[0].line" placeholder="Line 1" />
+    <mb-input type="Address" path="contact[0]address[0].line[0]" placeholder="Line 1" />
   </div>
   <br>
   <div class="field" >
-    <mb-input type="Address" path="contact[0]address[0].line" placeholder="Line 2" />
+    <mb-input type="Address" path="contact[0]address[0].line[1]" placeholder="Line 2" />
   </div>
   <br>
   <div class="field">

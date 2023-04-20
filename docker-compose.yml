@@ -1,56 +1,68 @@
-version: '3'
+version: "3.3"
 services:
-  fhir-server:
-    image: "hapiproject/hapi:latest-tomcat"
+  nats:
+    image: nats:${NATS_TAG}
     ports:
-      -   "8090:8080"
-    environment:
-      spring.datasource.url: "jdbc:postgresql://fhirdb:5432/hapi_r4"
-      spring.datasource.username: admin
-      spring.datasource.password: admin
-      spring.datasource.driverClassName: org.postgresql.Driver
-      hapi.fhir.subsrciption.resthook_enabled: "true"
-      hapi.fhir.subsrciption.websocket_enabled: "true"
-      12hapi.fhir.client_id_strategy: ANY
-
-  fhirdb:
-    image: postgres:latest
+      - "4222:4222"
+  db:
+    image: postgres:13.4
+    command:
+      - -c
+      - max_replication_slots=10
+      - -c
+      - wal_level=logical
     volumes:
-      - fhirdb-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: admin
-      POSTGRES_USERNAME: admin
-      POSTGRES_DB: hapi_r4
-    ports:
-      - "5431:5432"
-
-  ehrbase:
-    image: ehrbase/ehrbase@sha256:74c97d56ed00b1a89be18153f30ea3766fec67a876327fb8e5b623d535e386ce
-    environment:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://ehrdb:5432/ehrbase"
-      SPRING_DATASOURCE_USERNAME: ehrbase
-      SPRING_DATASOURCE_PASSWORD: ehrbase
-      SERVER_AQLCONFIG_USEJSQUERY: "false"
-      SERVER_NODENAME: "localhost"
-      WEB_CORS_ALLOWEDORIGINPATTERNS: "*"
-      WEB_CORS_ALLOWEDMETHODS: "GET,PUT,DELETE,POST,OPTIONS"
-      WEB_CORS_ALLOWCREDENTIALS: "true"
-    depends_on:
-      - ehrdb
-    ports:
-      - "8080:8080"
-    restart: on-failure
-
-  ehrdb:
-    image: postgres:latest
-    volumes:
-      - ehrdb-data:/var/lib/postgresql/data
-      - ./cloud-db.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
 
+  openehr:
+    image: "ehrbase/ehrbase:${EHRBASE_TAG}"
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://${POSTGRES_PRIVATE_HOST}:${POSTGRES_PORT}/ehrbase"
+      SPRING_DATASOURCE_USERNAME: ehrbase
+      SPRING_DATASOURCE_PASSWORD: ehrbase
+      SPRING_DATASOURCE_MAX_ACTIVE: 8
+      SERVER_AQLCONFIG_USEJSQUERY: "false"
+      SERVER_NODENAME: "localhost"
+      SECURITY_AUTHTYPE: NONE
+      ABAC_ENABLED: "false"
+    ports:
+      - "8080:8080"
+
+  fhir:
+    image: "tornadoalert/fhir:${FHIR_TAG}"
+    environment:
+      spring.datasource.url: "jdbc:postgresql://${POSTGRES_PRIVATE_HOST}:${POSTGRES_PORT}/hapi"
+      spring.datasource.username: hapi
+      spring.datasource.password: hapi
+      spring.datasource.maxActive: 8
+      spring.datasource.driverClassName: org.postgresql.Driver
+      hapi.fhir.subscription.resthook_enabled: "true"
+      hapi.fhir.subscription.websocket_enabled: "true"
+      hapi.fhir.client_id_strategy: ANY
+      hapi.fhir.nats: "nats://nats:4222"
+    ports:
+      - "8090:8080"
+
+  caddy:
+    image: caddy:${CADDY_TAG}
+    ports:
+      - "2019:2019"
+      - "80:80"
+      - "443:443"
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME:-:80}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
 volumes:
-  ehrdb-data:
-  fhirdb-data:
+  db-data:
+  caddy_data:
+  caddy_config:
