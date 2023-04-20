@@ -20,7 +20,7 @@ services:
       - "5432:5432"
 
   openehr:
-    image: "ehrbase/ehrbase:${EHRBASE_TAG}"
+    image: "ehrbase/ehrbase@sha256:${EHRBASE_TAG}"
     restart: unless-stopped
     environment:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://${POSTGRES_PRIVATE_HOST}:${POSTGRES_PORT}/ehrbase"
@@ -29,6 +29,9 @@ services:
       SPRING_DATASOURCE_MAX_ACTIVE: 8
       SERVER_AQLCONFIG_USEJSQUERY: "false"
       SERVER_NODENAME: "localhost"
+      WEB_CORS_ALLOWEDORIGINPATTERNS: "*"
+      WEB_CORS_ALLOWEDMETHODS: "GET,PUT,DELETE,POST,OPTIONS"
+      WEB_CORS_ALLOWCREDENTIALS: "true"
       SECURITY_AUTHTYPE: NONE
       ABAC_ENABLED: "false"
     ports:
