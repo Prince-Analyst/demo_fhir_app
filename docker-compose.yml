@@ -19,32 +19,48 @@ services:
     ports:
       - "5432:5432"
 
-  ehrbase:
-    image: ehrbase/ehrbase@sha256:74c97d56ed00b1a89be18153f30ea3766fec67a876327fb8e5b623d535e386ce
+  openehr:
+    image: "ehrbase/ehrbase:${EHRBASE_TAG}"
+    restart: unless-stopped
     environment:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://ehrdb:5432/ehrbase"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://${POSTGRES_PRIVATE_HOST}:${POSTGRES_PORT}/ehrbase"
       SPRING_DATASOURCE_USERNAME: ehrbase
       SPRING_DATASOURCE_PASSWORD: ehrbase
+      SPRING_DATASOURCE_MAX_ACTIVE: 8
       SERVER_AQLCONFIG_USEJSQUERY: "false"
       SERVER_NODENAME: "localhost"
-      WEB_CORS_ALLOWEDORIGINPATTERNS: "*"
-      WEB_CORS_ALLOWEDMETHODS: "GET,PUT,DELETE,POST,OPTIONS"
-      WEB_CORS_ALLOWCREDENTIALS: "true"
-    depends_on:
-      - ehrdb
+      SECURITY_AUTHTYPE: NONE
+      ABAC_ENABLED: "false"
     ports:
       - "8080:8080"
-    restart: on-failure
 
-  ehrdb:
-    image: postgres:latest
-    volumes:
-      - ehrdb-data:/var/lib/postgresql/data
-      - ./cloud-db.sql:/docker-entrypoint-initdb.d/init.sql
+  fhir:
+    image: "tornadoalert/fhir:${FHIR_TAG}"
     environment:
-      POSTGRES_PASSWORD: postgres
+      spring.datasource.url: "jdbc:postgresql://${POSTGRES_PRIVATE_HOST}:${POSTGRES_PORT}/hapi"
+      spring.datasource.username: hapi
+      spring.datasource.password: hapi
+      spring.datasource.maxActive: 8
+      spring.datasource.driverClassName: org.postgresql.Driver
+      hapi.fhir.subscription.resthook_enabled: "true"
+      hapi.fhir.subscription.websocket_enabled: "true"
+      hapi.fhir.client_id_strategy: ANY
+      hapi.fhir.nats: "nats://nats:4222"
     ports:
-      - "5432:5432"
+      - "8090:8080"
+
+  caddy:
+    image: caddy:${CADDY_TAG}
+    ports:
+      - "2019:2019"
+      - "80:80"
+      - "443:443"
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME:-:80}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
 
 volumes:
   db-data:

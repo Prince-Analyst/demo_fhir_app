@@ -8,6 +8,8 @@
   let form;
   let loading = false;
   export let id;
+  export let ehrId;
+  export let resp;
 
   onMount(async () => {
     if (id) {
@@ -27,6 +29,10 @@
     } else {
       loading = true;
       await fhir.post(`/Patient`, data);
+      if (resp.status == 201) {
+      ehrId = resp.data.id;
+        }
+      const respEHR = await openehr.put(`/ehr/${ehrId}`);
       loading = false;
     }
     navigate("/", { replace: true });
