@@ -42,7 +42,7 @@
       });
     }
   </script>
-  
+
   {#if practitioner}
     {#if practitioner?.length > 0}
       <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4">
@@ -71,7 +71,7 @@
                       <span class="capitalize">{Practitioner.proxy.gender}</span>
                     </p>
                   </td>
-  
+
                   <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     <span
                       class="relative inline-block px-3 py-1 font-semibold leading-tight"
@@ -165,4 +165,3 @@
       {/each}
     </div>
   {/if}
-  
