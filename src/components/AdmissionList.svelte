@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import PatientList from "./PatientList.svelte";
   import { Link, navigate } from "svelte-routing";
-  import { SearchAllPatients } from "./searchPatient";
+  import { SearchAllPatients } from "../searchPatient";
 
   let patients;
   const load = async () => {
