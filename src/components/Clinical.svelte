@@ -21,5 +21,6 @@
     <Route path="covid/:compositionId" component={Covid} />
     <Route path="admission" component={Admission} />
     <Route path="discharge/:step" component={DischargeSteps} />
+    <Route path="assessment" component={Assessment} />
   </PatientBanner>
 </Router>
