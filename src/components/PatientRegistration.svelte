@@ -138,6 +138,7 @@
   <div class="field">
     <mb-input type="ContactPoint" path="telecom[0].value" placeholder="Phone Number" />
   </div>
+  <div>
     <mb-context type="ContactPoint" path="telecom[1].system" bind="email">
   </div>
   <div class="field">
