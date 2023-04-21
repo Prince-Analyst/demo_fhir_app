@@ -11,7 +11,7 @@ export const fhir = axios.create({
 });
 
 export const openehr = axios.create({
-    baseURL: `${OPENEHR}/ehrbase/rest`,
+    baseURL: `${OPENEHR}/rest/openehr/v1`,
     headers: {
         Accept: "application/json",
     },

@@ -1,15 +1,15 @@
 <script lang="ts" >
   import "medblocks-ui/dist/medblocks";
   import { onMount } from "svelte";
-  import { fhir, openehr  } from "../fhir";
+  import { fhir, openehr } from "../fhir";
   import { Link, navigate } from "svelte-routing";
+  import type { login } from "../auth";
 
-  let data = {};
+  let data: any = {};
   let form;
   let loading = false;
-  export let id;
-  export let ehrId;
-  export let resp;
+  export let id = undefined;
+  export let ehrId = undefined;
 
   onMount(async () => {
     if (id) {
@@ -17,6 +17,7 @@
       console.log(r.data);
       console.log(form.parse(r.data));
       data = form.parse(r.data);
+      console.log(r.data.id)
     }
   });
   const handleSubmit = async (e: any) => {
@@ -24,15 +25,16 @@
     console.log(data);
     if (id) {
       loading = true;
-      await fhir.put(`/Patient/${id}`, { ...data, id });
+      const resp = await fhir.put(`/Patient/${id}`, { ...data, id });
       loading = false;
     } else {
       loading = true;
-      await fhir.post(`/Patient`, data);
+      const resp = await fhir.post(`/Patient`, data);
       if (resp.status == 201) {
       ehrId = resp.data.id;
         }
       const respEHR = await openehr.put(`/ehr/${ehrId}`);
+      console.log(ehrId);
       loading = false;
     }
     navigate("/", { replace: true });
