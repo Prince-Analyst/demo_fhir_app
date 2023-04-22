@@ -28,7 +28,7 @@
           id: encounter.id,
         });
       } else {
-        const r = await fhir.post("Encounter", data);
+        const r = await fhir.post(`/Encounter`, data);
       }
       loading = false;
       navigate(redirectUrl || `/clinical/${ehrId}`, { replace: true });
@@ -41,8 +41,8 @@
     class="flex flex-col gap-3"
     on:mb-submit={handleSubmit}
   >
-    <div class="hidden">
-      <mb-context path="resourceType" data="Encounter" />
+    <div class="field">
+      <mb-context class="hidden" path="resourceType" bind="Encounter" />
       <mb-context path="subject" data={{ reference: `Patient/${ehrId}` }} />
     </div>
     <mb-date path="period.start" label="Start" />
