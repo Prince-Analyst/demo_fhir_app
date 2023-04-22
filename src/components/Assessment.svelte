@@ -11,7 +11,7 @@
     import { onMount } from "svelte";
     export let compositionId: string | undefined = undefined;
     export let ehrId: string;
-    export let templateId: string = "MCS.CovidCare.DailySheet.v0.2";
+    export let templateId: string = "MCS.CovidCare.DailySheet.v0.1";
     export let redirectUrl: string | undefined;
 
     let form;

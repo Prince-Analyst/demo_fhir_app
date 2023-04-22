@@ -7,7 +7,7 @@
 
   let patients;
   const load = async () => {
-    const r = await FHIR.get("/Encounter", {
+    const r = await fhir.get("/Encounter", {
       params: {
         status: "in-progress",
         _include: "Encounter:subject",

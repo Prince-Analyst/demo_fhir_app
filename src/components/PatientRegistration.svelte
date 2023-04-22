@@ -24,11 +24,11 @@
     console.log(data);
     if (id) {
       loading = true;
-      await fhir.put(`/Patient/${id}`, { ...data, id });
+      const resp = await fhir.put(`/Patient/${id}`, { ...data, id });
       loading = false;
     } else {
       loading = true;
-      await fhir.post(`/Patient`, data);
+      const resp = await fhir.post(`/Patient`, data);
       if (resp.status == 201) {
       ehrId = resp.data.id;
         }
@@ -138,6 +138,7 @@
   <div class="field">
     <mb-input type="ContactPoint" path="telecom[0].value" placeholder="Phone Number" />
   </div>
+  <div>
     <mb-context type="ContactPoint" path="telecom[1].system" bind="email">
   </div>
   <div class="field">
@@ -146,10 +147,6 @@
   <br>
   <div class="field">
     <mb-input type="ContactPoint" path="telecom[1].value" placeholder="Email Address" />
-  </div>
-  <br>
-  <div class="field">
-    <mb-input label="Address" textarea path="address[0].text" placeholder="Full Address"/>
   </div>
   <br>
   <div class="field">
@@ -239,7 +236,7 @@
   </div>
   <br>
   <div class="field">
-    <mb-input label="Address" textarea path="contact[0]address[0].text" placeholder="Full Address"/>
+    <mb-input textarea path="contact[0]address[0].text" placeholder="Full Address"/>
   </div>
   <br>
   <div class="field">
