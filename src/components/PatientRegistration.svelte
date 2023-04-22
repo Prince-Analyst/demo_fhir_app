@@ -156,11 +156,11 @@
   </div>
   <br>
   <div class="field" >
-    <mb-input type="Address" path="contact[0]address[0].line[0]" placeholder="Line 1" />
+    <mb-input type="Address" path="address[0].line[0]" placeholder="Line 1" />
   </div>
   <br>
   <div class="field" >
-    <mb-input type="Address" path="contact[0]address[0].line[1]" placeholder="Line 2" />
+    <mb-input type="Address" path="address[0].line[1]" placeholder="Line 2" />
   </div>
   <br>
   <div class="field">
@@ -207,7 +207,7 @@
   <br>
   <div class="field">
     <mb-select
-      label="Attendant relationship"
+      placeholder="Attendant relationship"
       path="contact[0].relationship[0]"
       datatype="CodableConcept"
     >
