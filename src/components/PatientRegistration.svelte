@@ -68,6 +68,7 @@
       <mb-option value="driving" label="Driving License" />
       <mb-option value="nin" label="National Identity Number" />
       <mb-option value="voter" label="Voter ID" />
+      <mb-option value ="insuranceId" label="Insurance ID" />
     </mb-select>
   </div>
   <div class="field">
