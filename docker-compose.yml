@@ -56,8 +56,8 @@ services:
     image: caddy:${CADDY_TAG}
     ports:
       - "2019:2019"
-      - "80:80"
-      - "443:443"
+      - "81:80"
+      - "44:443"
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME:-:80}
     volumes:

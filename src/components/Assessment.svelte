@@ -54,6 +54,7 @@
               params: { format: "FLAT", templateId, ehrId },
             }
           );
+          console.log(compositionId);
         } else {
           const r = await openehr.post("/ecis/v1/composition/", data, {
             params: { format: "FLAT", templateId, ehrId },
