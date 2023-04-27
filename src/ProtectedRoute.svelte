@@ -1,11 +1,11 @@
 <script>
     import { Route } from "svelte-routing";
-    import accessDenied from "./accessDenied.svelte";
-    import { token } from "../stores";
+    import accessDenied from "./components/accessDenied.svelte";
+    import { token } from "./stores";
     export let path;
     export let component;
     import { onMount } from "svelte";
-    import { registerAxios } from "../auth";
+    import { registerAxios } from "./auth";
     onMount(() => {
       if ($token) {
         registerAxios($token);

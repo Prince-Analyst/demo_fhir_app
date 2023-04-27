@@ -1,7 +1,7 @@
 <script>
   import PatientRegistration from "./components/PatientRegistration.svelte";
   import { Router, Route } from "svelte-routing";
-  import ProtectedRoute from "./components/ProtectedRoute.svelte";
+  import ProtectedRoute from "./ProtectedRoute.svelte";
   import Layout from "./components/Layout.svelte";
   import Home from "./components/Home.svelte";
   import AdmissionList from "./components/AdmissionList.svelte";
