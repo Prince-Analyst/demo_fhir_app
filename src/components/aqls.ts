@@ -1,4 +1,4 @@
-import { openehr } from "../fhir";
+import { openehr } from "../fhir-1";
 
 export const formatAql = (aqlResultData): Map<string, any>[] => {
   const { columns, rows } = aqlResultData;

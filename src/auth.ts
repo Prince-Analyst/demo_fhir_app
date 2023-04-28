@@ -1,6 +1,6 @@
 import { token } from "./stores";
 import { navigate } from "svelte-routing";
-import { fhir, openehr } from "./fhir";
+import { fhir, openehr } from "./fhir-1";
 export const logout = (wrongLogin = false) => {
   localStorage.clear();
   token.set(localStorage.getItem("token"));
