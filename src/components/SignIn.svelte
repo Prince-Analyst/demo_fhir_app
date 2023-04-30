@@ -17,7 +17,7 @@
       <sl-input
         value={username}
         placeholder="Username"
-        on:sl-input={(e) => (username = e.target.value)}
+        on:sl-input={(/** @type {{ target: { value: string; }; }} */ e) => (username = e.target.value)}
       />
       </div>
       <br>
@@ -27,7 +27,7 @@
         value={password}
         toggle-password
         placeholder="Password"
-        on:sl-input={(e) => (password = e.target.value)}
+        on:sl-input={(/** @type {{ target: { value: string; }; }} */ e) => (password = e.target.value)}
       />
       </div>
       <br>
