@@ -53,12 +53,12 @@
   on:mb-submit={handleSubmit}
 >
   <div class="field">
-    <mb-input class="hidden"  path="resourceType" data="Patient" />
+    <mb-context class="hidden"  path="resourceType" bind="Patient" />
   </div>
   <br>
-  <div class="field">
-    <label for="" class="font-bold">Patient information</label>
-  </div>
+  <!-- <div class="field"> -->
+  <!--   <label for="" class="font-bold">Patient information</label>  -->
+  <!-- </div>  -->
   <div class="field">
     <mb-checkbox type="boolean" path="active" label="Active" />
   </div>
