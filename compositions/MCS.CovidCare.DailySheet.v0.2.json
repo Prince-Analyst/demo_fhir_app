@@ -781,30 +781,6 @@
 											},
 											"archetype_node_id": "at0004"
 										},
-                                        {
-											"_type": "ELEMENT",
-											"name": {
-												"_type": "DV_TEXT",
-												"value": "Diastolic blood pressure"
-											},
-											"value": {
-												"_type": "DV_ORDINAL",
-												"symbol": {
-													"_type": "DV_CODED_TEXT",
-													"value": "60-130",
-													"defining_code": {
-														"_type": "CODE_PHRASE",
-														"terminology_id": {
-															"_type": "TERMINOLOGY_ID",
-															"value": "external"
-														},
-														"code_string": "at0015"
-													}
-												},
-												"value": 0
-											},
-											"archetype_node_id": "at0005"
-										},
 										{
 											"_type": "ELEMENT",
 											"name": {

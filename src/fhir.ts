@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const FHIR = 'http://localhost:8090';
-const OPENEHR = 'http://localhost:8080';
+const FHIR = 'http://localhost:8091';
+const OPENEHR = 'http://localhost:8081';
 
 
 export const fhir = axios.create({
