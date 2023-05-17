@@ -1,0 +1,18 @@
+# Use the official Nginx base image
+FROM nginx:latest
+
+# Copy the custom nginx.conf file
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy the certificate files
+COPY certificate.crt /etc/nginx/
+COPY private.key /etc/nginx/
+
+# Copy the conf.d directory
+COPY conf.d /etc/nginx/conf.d
+
+# Expose port 80 for HTTP and 443 for HTTPS
+EXPOSE 80 443
+
+# Start Nginx when the container launches
+CMD ["nginx", "-g", "daemon off;"]

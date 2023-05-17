@@ -14,6 +14,8 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      #- ./create-db.sql:/docker-entrypoint-initdb.d/create-db.sql
+
     environment:
       POSTGRES_PASSWORD: postgres
     ports:
@@ -59,7 +61,7 @@ services:
       - "81:80"
       - "44:443"
     environment:
-      - DOMAIN_NAME=${DOMAIN_NAME:-:80}
+      - DOMAIN_NAME=${DOMAIN_NAME:-localhost}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
