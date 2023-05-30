@@ -5,7 +5,7 @@ services:
     ports:
       - "4222:4222"
   db:
-    image: "postgres:$(POSTGRES_TAG)"
+    image: "postgres:${POSTGRES_TAG}"
     command:
       - -c
       - max_replication_slots=10
