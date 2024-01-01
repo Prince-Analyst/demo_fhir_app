@@ -5,4 +5,3 @@
       navigate("/list/all");
     });
   </script>
-  

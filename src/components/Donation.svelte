@@ -41,14 +41,14 @@
   class="flex flex-col gap-3"
   on:mb-submit={handleSubmit}
 >
-  <div class="hidden">
-    <mb-context path="resourceType" data="Invoice" />
+  <div class="field">
+    <mb-context class="hidden" path="resourceType" bind="Invoice" />
     <mb-context path="subject" data={{ reference: `Patient/${ehrId}` }} />
-    <mb-context
+    <mb-context class="hidden"
       type="number"
       label="Total Donations"
       path="totalNet.currency"
-      data="INR"
+      bind="NGN"
     />
   </div>
   <mb-input type="number" label="Total Donations" path="totalNet.value" />

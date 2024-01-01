@@ -1,0 +1,3541 @@
+{
+	"_type": "COMPOSITION",
+	"name": {
+		"_type": "DV_TEXT",
+		"value": "Covid Care Daily Sheet"
+	},
+	"archetype_details": {
+		"archetype_id": {
+			"value": "openEHR-EHR-COMPOSITION.encounter.v1"
+		},
+		"template_id": {
+			"value": "MCS.CovidCare.DailySheet.v0.2"
+		},
+		"rm_version": "1.0.4"
+	},
+	"language": {
+		"_type": "CODE_PHRASE",
+		"terminology_id": {
+			"_type": "TERMINOLOGY_ID",
+			"value": "ISO_639-1"
+		},
+		"code_string": "en"
+	},
+	"territory": {
+		"_type": "CODE_PHRASE",
+		"terminology_id": {
+			"_type": "TERMINOLOGY_ID",
+			"value": "ISO_3166-1"
+		},
+		"code_string": "DE"
+	},
+	"category": {
+		"_type": "DV_CODED_TEXT",
+		"value": "event",
+		"defining_code": {
+			"_type": "CODE_PHRASE",
+			"terminology_id": {
+				"_type": "TERMINOLOGY_ID",
+				"value": "openehr"
+			},
+			"code_string": "433"
+		}
+	},
+	"composer": {
+		"_type": "PARTY_IDENTIFIED",
+		"name": "Max Mustermann"
+	},
+	"context": {
+		"_type": "EVENT_CONTEXT",
+		"start_time": {
+			"_type": "DV_DATE_TIME",
+			"value": "2022-02-03T04:05:06.000"
+		},
+		"end_time": {
+			"_type": "DV_DATE_TIME",
+			"value": "2022-02-03T04:05:06.000"
+		},
+		"setting": {
+			"_type": "DV_CODED_TEXT",
+			"value": "home",
+			"defining_code": {
+				"_type": "CODE_PHRASE",
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "openehr"
+				},
+				"code_string": "225"
+			}
+		},
+		"health_care_facility": {
+			"_type": "PARTY_IDENTIFIED",
+			"name": "DOE, John"
+		}
+	},
+	"content": [
+		{
+			"_type": "SECTION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Vitals"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-SECTION.adhoc.v1"
+				},
+				"template_id": {
+					"value": "MCS.CovidCare.DailySheet.v0.2"
+				},
+				"rm_version": "1.0.4"
+			},
+			"items": [
+				{
+					"_type": "OBSERVATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Body temperature"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-OBSERVATION.body_temperature.v2"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "c5a64373-27fe-3f67-acf5-1500c9d9d522",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "1fe6d99f-6ffe-358d-b3cf-fc139300695f",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "History"
+						},
+						"origin": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"period": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"duration": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"events": [
+							{
+								"_type": "INTERVAL_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Temperature"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "Cel",
+												"magnitude": 50.0
+											},
+											"archetype_node_id": "at0004"
+										}
+									],
+									"archetype_node_id": "at0001",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "feda6071-8a69-32d0-93b8-6d72bee7b04b"
+									}
+								},
+								"width": {
+									"_type": "DV_DURATION",
+									"value": "PT42H"
+								},
+								"math_function": {
+									"_type": "DV_CODED_TEXT",
+									"value": "minimum",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "openehr"
+										},
+										"code_string": "145"
+									}
+								},
+								"archetype_node_id": "at0003",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "1a98fa57-ed0b-3d04-983a-7e844364b798"
+								}
+							}
+						],
+						"archetype_node_id": "at0002",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "2dc80099-7853-3c64-b450-4d57ac0de26e"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-OBSERVATION.body_temperature.v2",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "09ebdae9-9467-309d-9c8a-2c3a0c479143"
+					}
+				},
+				{
+					"_type": "OBSERVATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Blood pressure"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-OBSERVATION.blood_pressure.v2"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "4e6166a4-6c52-327a-b01c-751816c172e1",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "d6331063-8dfb-36c8-8113-89bf7bfe7438",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "History"
+						},
+						"origin": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"period": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"duration": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"events": [
+							{
+								"_type": "INTERVAL_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "blood pressure"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Systolic"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "mm[Hg]",
+												"magnitude": 500.0
+											},
+											"archetype_node_id": "at0004"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Diastolic"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "mm[Hg]",
+												"magnitude": 500.0
+											},
+											"archetype_node_id": "at0005"
+										}
+									],
+									"archetype_node_id": "at0003",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "840c0a24-b908-369c-b590-d689e0b4cee3"
+									}
+								},
+								"width": {
+									"_type": "DV_DURATION",
+									"value": "PT42H"
+								},
+								"math_function": {
+									"_type": "DV_CODED_TEXT",
+									"value": "minimum",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "openehr"
+										},
+										"code_string": "145"
+									}
+								},
+								"archetype_node_id": "at0006",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "f0fde9be-8e9e-33f7-95bc-23d51b78cc82"
+								}
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "aec6c89f-b474-3f41-8e81-a9161632f7b5"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-OBSERVATION.blood_pressure.v2",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "37654577-be89-395e-893a-479856e9c6fd"
+					}
+				},
+				{
+					"_type": "OBSERVATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Pulse/Heart beat"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-OBSERVATION.pulse.v2"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "e8ceb993-94e4-3b12-8069-0181a69d7a13",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "d72a1055-8066-38b4-a630-b558d43d55c4",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "history"
+						},
+						"origin": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"period": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"duration": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"events": [
+							{
+								"_type": "INTERVAL_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "structure"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Rate"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "/min",
+												"magnitude": 500.0
+											},
+											"archetype_node_id": "at0004"
+										}
+									],
+									"archetype_node_id": "at0001",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "9b3a415f-64a2-3542-b2f7-b7336213e410"
+									}
+								},
+								"width": {
+									"_type": "DV_DURATION",
+									"value": "PT42H"
+								},
+								"math_function": {
+									"_type": "DV_CODED_TEXT",
+									"value": "minimum",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "openehr"
+										},
+										"code_string": "145"
+									}
+								},
+								"archetype_node_id": "at0003",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "08828bc3-1c70-3b6d-8c25-fb6af015b478"
+								}
+							}
+						],
+						"archetype_node_id": "at0002",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "bbd49b34-bdcf-3a1a-b7e0-d7beb333e687"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-OBSERVATION.pulse.v2",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "1d5c9339-34d3-33e6-a407-a30c4cc45586"
+					}
+				},
+				{
+					"_type": "OBSERVATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "NEWS (UK RCP)"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-OBSERVATION.news_uk_rcp.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "d0d324d0-aad2-37d6-839f-3f57244a4af9",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "10b2fe46-b285-3d3b-b781-e07351a05b90",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Event Series"
+						},
+						"origin": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"period": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"duration": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"events": [
+							{
+								"_type": "POINT_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Point in time"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"state": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Confounding factors"
+											},
+											"value": {
+												"_type": "DV_TEXT",
+												"value": "Lorem ipsum"
+											},
+											"archetype_node_id": "at0043"
+										}
+									],
+									"archetype_node_id": "at0041",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "69c02b7e-4caa-39ac-af9c-a2c6b520507f"
+									}
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Respiration rate"
+											},
+											"value": {
+												"_type": "DV_ORDINAL",
+												"symbol": {
+													"_type": "DV_CODED_TEXT",
+													"value": "12-20",
+													"defining_code": {
+														"_type": "CODE_PHRASE",
+														"terminology_id": {
+															"_type": "TERMINOLOGY_ID",
+															"value": "external"
+														},
+														"code_string": "at0018"
+													}
+												},
+												"value": 0
+											},
+											"archetype_node_id": "at0006"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Oxygen saturation"
+											},
+											"value": {
+												"_type": "DV_ORDINAL",
+												"symbol": {
+													"_type": "DV_CODED_TEXT",
+													"value": ">= 96",
+													"defining_code": {
+														"_type": "CODE_PHRASE",
+														"terminology_id": {
+															"_type": "TERMINOLOGY_ID",
+															"value": "external"
+														},
+														"code_string": "at0030"
+													}
+												},
+												"value": 0
+											},
+											"archetype_node_id": "at0029"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Supplemental oxygen"
+											},
+											"value": {
+												"_type": "DV_ORDINAL",
+												"symbol": {
+													"_type": "DV_CODED_TEXT",
+													"value": "No",
+													"defining_code": {
+														"_type": "CODE_PHRASE",
+														"terminology_id": {
+															"_type": "TERMINOLOGY_ID",
+															"value": "external"
+														},
+														"code_string": "at0036"
+													}
+												},
+												"value": 0
+											},
+											"archetype_node_id": "at0034"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Body temperature"
+											},
+											"value": {
+												"_type": "DV_ORDINAL",
+												"symbol": {
+													"_type": "DV_CODED_TEXT",
+													"value": "36.1-38.0",
+													"defining_code": {
+														"_type": "CODE_PHRASE",
+														"terminology_id": {
+															"_type": "TERMINOLOGY_ID",
+															"value": "external"
+														},
+														"code_string": "at0022"
+													}
+												},
+												"value": 0
+											},
+											"archetype_node_id": "at0007"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Systolic blood pressure"
+											},
+											"value": {
+												"_type": "DV_ORDINAL",
+												"symbol": {
+													"_type": "DV_CODED_TEXT",
+													"value": "111-219",
+													"defining_code": {
+														"_type": "CODE_PHRASE",
+														"terminology_id": {
+															"_type": "TERMINOLOGY_ID",
+															"value": "external"
+														},
+														"code_string": "at0014"
+													}
+												},
+												"value": 0
+											},
+											"archetype_node_id": "at0004"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Heart rate"
+											},
+											"value": {
+												"_type": "DV_ORDINAL",
+												"symbol": {
+													"_type": "DV_CODED_TEXT",
+													"value": "51-90",
+													"defining_code": {
+														"_type": "CODE_PHRASE",
+														"terminology_id": {
+															"_type": "TERMINOLOGY_ID",
+															"value": "external"
+														},
+														"code_string": "at0013"
+													}
+												},
+												"value": 0
+											},
+											"archetype_node_id": "at0005"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Level of consciousness"
+											},
+											"value": {
+												"_type": "DV_ORDINAL",
+												"symbol": {
+													"_type": "DV_CODED_TEXT",
+													"value": "A",
+													"defining_code": {
+														"_type": "CODE_PHRASE",
+														"terminology_id": {
+															"_type": "TERMINOLOGY_ID",
+															"value": "external"
+														},
+														"code_string": "at0024"
+													}
+												},
+												"value": 0
+											},
+											"archetype_node_id": "at0008"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Total score"
+											},
+											"value": {
+												"_type": "DV_COUNT",
+												"magnitude": 10
+											},
+											"archetype_node_id": "at0028"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Clinical risk category"
+											},
+											"value": {
+												"_type": "DV_CODED_TEXT",
+												"value": "Low",
+												"defining_code": {
+													"_type": "CODE_PHRASE",
+													"terminology_id": {
+														"_type": "TERMINOLOGY_ID",
+														"value": "local"
+													},
+													"code_string": "at0048"
+												}
+											},
+											"archetype_node_id": "at0047"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Comment"
+											},
+											"value": {
+												"_type": "DV_TEXT",
+												"value": "Lorem ipsum"
+											},
+											"archetype_node_id": "at0044"
+										}
+									],
+									"archetype_node_id": "at0003",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "34ce177a-58e1-3c11-9c1b-8620f8289e67"
+									}
+								},
+								"archetype_node_id": "at0002",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "72305a73-8c27-3ea8-ae4d-37f85c53d032"
+								}
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "670e679f-0633-3579-9755-e92104cc6755"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-OBSERVATION.news_uk_rcp.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "ccb48fd6-f011-35ab-843c-a631d2b15070"
+					}
+				},
+				{
+					"_type": "OBSERVATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Pulse oximetry"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-OBSERVATION.pulse_oximetry.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "005ded47-0132-3d83-93b1-00af2fe95355",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "a6f62f80-05d8-376b-bbd7-8df62e3acc2c",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Event Series"
+						},
+						"origin": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"period": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"duration": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"events": [
+							{
+								"_type": "INTERVAL_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"state": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "CLUSTER",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Inspired oxygen"
+											},
+											"archetype_details": {
+												"archetype_id": {
+													"value": "openEHR-EHR-CLUSTER.inspired_oxygen.v1"
+												},
+												"template_id": {
+													"value": "MCS.CovidCare.DailySheet.v0.2"
+												},
+												"rm_version": "1.0.4"
+											},
+											"items": [
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Flow rate"
+													},
+													"value": {
+														"_type": "DV_QUANTITY",
+														"units": "ml/min",
+														"magnitude": 25000.0
+													},
+													"archetype_node_id": "at0051"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Percent O₂"
+													},
+													"value": {
+														"_type": "DV_PROPORTION",
+														"numerator": 50.0,
+														"denominator": 100.0,
+														"type": 3
+													},
+													"archetype_node_id": "at0053"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "On air"
+													},
+													"value": {
+														"_type": "DV_BOOLEAN",
+														"value": true
+													},
+													"archetype_node_id": "at0057"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Method of oxygen delivery"
+													},
+													"value": {
+														"_type": "DV_TEXT",
+														"value": "Lorem ipsum"
+													},
+													"archetype_node_id": "at0054"
+												}
+											],
+											"archetype_node_id": "openEHR-EHR-CLUSTER.inspired_oxygen.v1",
+											"uid": {
+												"_type": "HIER_OBJECT_ID",
+												"value": "164b06de-9fc6-37c5-8c8f-e47821cc5ec6"
+											}
+										}
+									],
+									"archetype_node_id": "at0014",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "65d90f16-92e1-348c-b62b-d8d6a99dcd06"
+									}
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "SpO₂"
+											},
+											"value": {
+												"_type": "DV_PROPORTION",
+												"numerator": 50.0,
+												"denominator": 100.0,
+												"type": 3
+											},
+											"archetype_node_id": "at0006"
+										}
+									],
+									"archetype_node_id": "at0003",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "aba38580-1c95-3d59-a47a-f8afab84cff8"
+									}
+								},
+								"width": {
+									"_type": "DV_DURATION",
+									"value": "PT42H"
+								},
+								"math_function": {
+									"_type": "DV_CODED_TEXT",
+									"value": "minimum",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "openehr"
+										},
+										"code_string": "145"
+									}
+								},
+								"archetype_node_id": "at0002",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "4fdbbf70-cc69-32e0-a632-c263cd1355e2"
+								}
+							},
+							{
+								"_type": "POINT_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"state": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "CLUSTER",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Inspired oxygen"
+											},
+											"archetype_details": {
+												"archetype_id": {
+													"value": "openEHR-EHR-CLUSTER.inspired_oxygen.v1"
+												},
+												"template_id": {
+													"value": "MCS.CovidCare.DailySheet.v0.2"
+												},
+												"rm_version": "1.0.4"
+											},
+											"items": [
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Flow rate"
+													},
+													"value": {
+														"_type": "DV_QUANTITY",
+														"units": "ml/min",
+														"magnitude": 25000.0
+													},
+													"archetype_node_id": "at0051"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Percent O₂"
+													},
+													"value": {
+														"_type": "DV_PROPORTION",
+														"numerator": 50.0,
+														"denominator": 100.0,
+														"type": 3
+													},
+													"archetype_node_id": "at0053"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "On air"
+													},
+													"value": {
+														"_type": "DV_BOOLEAN",
+														"value": true
+													},
+													"archetype_node_id": "at0057"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Method of oxygen delivery"
+													},
+													"value": {
+														"_type": "DV_TEXT",
+														"value": "Lorem ipsum"
+													},
+													"archetype_node_id": "at0054"
+												}
+											],
+											"archetype_node_id": "openEHR-EHR-CLUSTER.inspired_oxygen.v1",
+											"uid": {
+												"_type": "HIER_OBJECT_ID",
+												"value": "164b06de-9fc6-37c5-8c8f-e47821cc5ec6"
+											}
+										}
+									],
+									"archetype_node_id": "at0014",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "65d90f16-92e1-348c-b62b-d8d6a99dcd06"
+									}
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "SpO₂"
+											},
+											"value": {
+												"_type": "DV_PROPORTION",
+												"numerator": 50.0,
+												"denominator": 100.0,
+												"type": 3
+											},
+											"archetype_node_id": "at0006"
+										}
+									],
+									"archetype_node_id": "at0003",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "aba38580-1c95-3d59-a47a-f8afab84cff8"
+									}
+								},
+								"archetype_node_id": "at0002",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "4fdbbf70-cc69-32e0-a632-c263cd1355e2"
+								}
+							},
+							{
+								"_type": "INTERVAL_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"state": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "CLUSTER",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Inspired oxygen"
+											},
+											"archetype_details": {
+												"archetype_id": {
+													"value": "openEHR-EHR-CLUSTER.inspired_oxygen.v1"
+												},
+												"template_id": {
+													"value": "MCS.CovidCare.DailySheet.v0.2"
+												},
+												"rm_version": "1.0.4"
+											},
+											"items": [
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Flow rate"
+													},
+													"value": {
+														"_type": "DV_QUANTITY",
+														"units": "ml/min",
+														"magnitude": 25000.0
+													},
+													"archetype_node_id": "at0051"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Percent O₂"
+													},
+													"value": {
+														"_type": "DV_PROPORTION",
+														"numerator": 50.0,
+														"denominator": 100.0,
+														"type": 3
+													},
+													"archetype_node_id": "at0053"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "On air"
+													},
+													"value": {
+														"_type": "DV_BOOLEAN",
+														"value": true
+													},
+													"archetype_node_id": "at0057"
+												},
+												{
+													"_type": "ELEMENT",
+													"name": {
+														"_type": "DV_TEXT",
+														"value": "Method of oxygen delivery"
+													},
+													"value": {
+														"_type": "DV_TEXT",
+														"value": "Lorem ipsum"
+													},
+													"archetype_node_id": "at0054"
+												}
+											],
+											"archetype_node_id": "openEHR-EHR-CLUSTER.inspired_oxygen.v1",
+											"uid": {
+												"_type": "HIER_OBJECT_ID",
+												"value": "164b06de-9fc6-37c5-8c8f-e47821cc5ec6"
+											}
+										}
+									],
+									"archetype_node_id": "at0014",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "65d90f16-92e1-348c-b62b-d8d6a99dcd06"
+									}
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "SpO₂"
+											},
+											"value": {
+												"_type": "DV_PROPORTION",
+												"numerator": 50.0,
+												"denominator": 100.0,
+												"type": 3
+											},
+											"archetype_node_id": "at0006"
+										}
+									],
+									"archetype_node_id": "at0003",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "aba38580-1c95-3d59-a47a-f8afab84cff8"
+									}
+								},
+								"width": {
+									"_type": "DV_DURATION",
+									"value": "PT42H"
+								},
+								"math_function": {
+									"_type": "DV_CODED_TEXT",
+									"value": "minimum",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "openehr"
+										},
+										"code_string": "145"
+									}
+								},
+								"archetype_node_id": "at0002",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "4fdbbf70-cc69-32e0-a632-c263cd1355e2"
+								}
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "e7013507-7f17-393a-86e1-a3eb7c2d8380"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-OBSERVATION.pulse_oximetry.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "7cf26728-0bcd-362f-8626-3b85614e9972"
+					}
+				},
+				{
+					"_type": "OBSERVATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Respiration"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-OBSERVATION.respiration.v2"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "8062f95d-66be-3130-88a4-cb83d8038dc2",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "388906da-06ed-3a36-8db9-656f82c773ee",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "history"
+						},
+						"origin": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"period": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"duration": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"events": [
+							{
+								"_type": "INTERVAL_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "List"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Rate"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "/min",
+												"magnitude": 100.0
+											},
+											"archetype_node_id": "at0004"
+										}
+									],
+									"archetype_node_id": "at0003",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "b4ee69db-a6bf-3385-8b3a-4c0ce6afa004"
+									}
+								},
+								"width": {
+									"_type": "DV_DURATION",
+									"value": "PT42H"
+								},
+								"math_function": {
+									"_type": "DV_CODED_TEXT",
+									"value": "minimum",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "openehr"
+										},
+										"code_string": "145"
+									}
+								},
+								"archetype_node_id": "at0002",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "0e357946-97dc-3691-875f-2cb7285c82c2"
+								}
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "e928b650-303d-3907-9e2d-4561171a2a26"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-OBSERVATION.respiration.v2",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "e556a9a8-76d7-385e-a195-3b4d25ab00d6"
+					}
+				},
+				{
+					"_type": "EVALUATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Other risk factors"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-EVALUATION.health_risk.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "30064736-7089-3008-a015-165ca4d404b0",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "3c3c55ff-7104-36a6-b1d6-a9dc3de79246",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "structure"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Health risk"
+								},
+								"value": {
+									"_type": "DV_TEXT",
+									"value": "Lorem ipsum"
+								},
+								"archetype_node_id": "at0002"
+							},
+							{
+								"_type": "CLUSTER",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Labored Breathing"
+								},
+								"items": [
+									{
+										"_type": "ELEMENT",
+										"name": {
+											"_type": "DV_TEXT",
+											"value": "Risk factor"
+										},
+										"value": {
+											"_type": "DV_TEXT",
+											"value": "Lorem ipsum"
+										},
+										"archetype_node_id": "at0013"
+									},
+									{
+										"_type": "ELEMENT",
+										"name": {
+											"_type": "DV_TEXT",
+											"value": "Presence"
+										},
+										"value": {
+											"_type": "DV_CODED_TEXT",
+											"value": "Present",
+											"defining_code": {
+												"_type": "CODE_PHRASE",
+												"terminology_id": {
+													"_type": "TERMINOLOGY_ID",
+													"value": "local"
+												},
+												"code_string": "at0018"
+											}
+										},
+										"archetype_node_id": "at0017"
+									}
+								],
+								"archetype_node_id": "at0016",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "f8a1e7f4-cd80-35bd-bf60-b504ab4ae31b"
+								}
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "d65c3035-63b4-36cd-b56e-9f8ee49d7f14"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-EVALUATION.health_risk.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "bc203cd5-5c24-3297-903f-39bcec0af39f"
+					}
+				}
+			],
+			"archetype_node_id": "openEHR-EHR-SECTION.adhoc.v1",
+			"uid": {
+				"_type": "HIER_OBJECT_ID",
+				"value": "50e2a510-1f13-3307-91cc-709d7ee414ae"
+			}
+		},
+		{
+			"_type": "OBSERVATION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Lab Results"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1"
+				},
+				"template_id": {
+					"value": "MCS.CovidCare.DailySheet.v0.2"
+				},
+				"rm_version": "1.0.4"
+			},
+			"language": {
+				"_type": "CODE_PHRASE",
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "ISO_639-1"
+				},
+				"code_string": "en"
+			},
+			"encoding": {
+				"_type": "CODE_PHRASE",
+				"terminology_id": {
+					"_type": "TERMINOLOGY_ID",
+					"value": "IANA_character-sets"
+				},
+				"code_string": "ISO-10646-UTF-1"
+			},
+			"workflow_id": {
+				"_type": "OBJECT_REF",
+				"namespace": "unknown",
+				"type": "ANY",
+				"id": {
+					"_type": "GENERIC_ID",
+					"value": "688519a3-db06-336e-a153-3a741dc4cf66",
+					"scheme": "scheme"
+				}
+			},
+			"subject": {
+				"_type": "PARTY_SELF"
+			},
+			"provider": {
+				"_type": "PARTY_SELF"
+			},
+			"guideline_id": {
+				"_type": "OBJECT_REF",
+				"namespace": "unknown",
+				"type": "ANY",
+				"id": {
+					"_type": "GENERIC_ID",
+					"value": "405e17f5-3534-3da5-91d9-ad12c187b3e0",
+					"scheme": "scheme"
+				}
+			},
+			"data": {
+				"name": {
+					"_type": "DV_TEXT",
+					"value": "Event Series"
+				},
+				"origin": {
+					"_type": "DV_DATE_TIME",
+					"value": "2022-02-03T04:05:06.000"
+				},
+				"period": {
+					"_type": "DV_DURATION",
+					"value": "PT0S"
+				},
+				"duration": {
+					"_type": "DV_DURATION",
+					"value": "PT0S"
+				},
+				"events": [
+					{
+						"_type": "INTERVAL_EVENT",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Any event"
+						},
+						"time": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"data": {
+							"_type": "ITEM_TREE",
+							"name": {
+								"_type": "DV_TEXT",
+								"value": "Tree"
+							},
+							"items": [
+								{
+									"_type": "ELEMENT",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Test name"
+									},
+									"value": {
+										"_type": "DV_TEXT",
+										"value": "Lorem ipsum"
+									},
+									"archetype_node_id": "at0005"
+								},
+								{
+									"_type": "CLUSTER",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Fasting Glucose"
+									},
+									"archetype_details": {
+										"archetype_id": {
+											"value": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1"
+										},
+										"template_id": {
+											"value": "MCS.CovidCare.DailySheet.v0.2"
+										},
+										"rm_version": "1.0.4"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte name"
+											},
+											"value": {
+												"_type": "DV_CODED_TEXT",
+												"value": "No example for termínology 'LOINC' available",
+												"defining_code": {
+													"_type": "CODE_PHRASE",
+													"terminology_id": {
+														"_type": "TERMINOLOGY_ID",
+														"value": "LOINC"
+													},
+													"code_string": "42"
+												}
+											},
+											"archetype_node_id": "at0024"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte result"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "mg/dl",
+												"magnitude": 42.0
+											},
+											"archetype_node_id": "at0001"
+										}
+									],
+									"archetype_node_id": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "08582535-5291-34bf-90b3-3f1e3683d0b4"
+									}
+								},
+								{
+									"_type": "CLUSTER",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Postprandial Blood Sugar"
+									},
+									"archetype_details": {
+										"archetype_id": {
+											"value": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1"
+										},
+										"template_id": {
+											"value": "MCS.CovidCare.DailySheet.v0.2"
+										},
+										"rm_version": "1.0.4"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte name"
+											},
+											"value": {
+												"_type": "DV_CODED_TEXT",
+												"value": "No example for termínology 'LOINC' available",
+												"defining_code": {
+													"_type": "CODE_PHRASE",
+													"terminology_id": {
+														"_type": "TERMINOLOGY_ID",
+														"value": "LOINC"
+													},
+													"code_string": "42"
+												}
+											},
+											"archetype_node_id": "at0024"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte result"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "mg/dl",
+												"magnitude": 42.0
+											},
+											"archetype_node_id": "at0001"
+										}
+									],
+									"archetype_node_id": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "3866892b-5938-387e-b8f9-172b24b4cea2"
+									}
+								},
+								{
+									"_type": "CLUSTER",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "CRP"
+									},
+									"archetype_details": {
+										"archetype_id": {
+											"value": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1"
+										},
+										"template_id": {
+											"value": "MCS.CovidCare.DailySheet.v0.2"
+										},
+										"rm_version": "1.0.4"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte name"
+											},
+											"value": {
+												"_type": "DV_CODED_TEXT",
+												"value": "No example for termínology 'LOINC' available",
+												"defining_code": {
+													"_type": "CODE_PHRASE",
+													"terminology_id": {
+														"_type": "TERMINOLOGY_ID",
+														"value": "LOINC"
+													},
+													"code_string": "42"
+												}
+											},
+											"archetype_node_id": "at0024"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte result"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "mg/L",
+												"magnitude": 42.0
+											},
+											"archetype_node_id": "at0001"
+										}
+									],
+									"archetype_node_id": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "f057c89b-f333-39fd-90e0-eac4780c1fdf"
+									}
+								},
+								{
+									"_type": "CLUSTER",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Total WBC"
+									},
+									"archetype_details": {
+										"archetype_id": {
+											"value": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1"
+										},
+										"template_id": {
+											"value": "MCS.CovidCare.DailySheet.v0.2"
+										},
+										"rm_version": "1.0.4"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte name"
+											},
+											"value": {
+												"_type": "DV_CODED_TEXT",
+												"value": "No example for termínology 'LOINC' available",
+												"defining_code": {
+													"_type": "CODE_PHRASE",
+													"terminology_id": {
+														"_type": "TERMINOLOGY_ID",
+														"value": "LOINC"
+													},
+													"code_string": "42"
+												}
+											},
+											"archetype_node_id": "at0024"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte result"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "1/mm3",
+												"magnitude": 42.0
+											},
+											"archetype_node_id": "at0001"
+										}
+									],
+									"archetype_node_id": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "a571095f-4664-350b-816f-f607ed199afe"
+									}
+								},
+								{
+									"_type": "CLUSTER",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "D-Dimer"
+									},
+									"archetype_details": {
+										"archetype_id": {
+											"value": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1"
+										},
+										"template_id": {
+											"value": "MCS.CovidCare.DailySheet.v0.2"
+										},
+										"rm_version": "1.0.4"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte name"
+											},
+											"value": {
+												"_type": "DV_CODED_TEXT",
+												"value": "No example for termínology 'LOINC' available",
+												"defining_code": {
+													"_type": "CODE_PHRASE",
+													"terminology_id": {
+														"_type": "TERMINOLOGY_ID",
+														"value": "LOINC"
+													},
+													"code_string": "42"
+												}
+											},
+											"archetype_node_id": "at0024"
+										},
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Analyte result"
+											},
+											"value": {
+												"_type": "DV_QUANTITY",
+												"units": "ug/ml",
+												"magnitude": 42.0
+											},
+											"archetype_node_id": "at0001"
+										}
+									],
+									"archetype_node_id": "openEHR-EHR-CLUSTER.laboratory_test_analyte.v1",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "c8a73627-1709-34d3-93ee-ad05bcf986ef"
+									}
+								}
+							],
+							"archetype_node_id": "at0003",
+							"uid": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "ae95b859-6b62-3b6b-984d-526f5a31bb56"
+							}
+						},
+						"width": {
+							"_type": "DV_DURATION",
+							"value": "PT42H"
+						},
+						"math_function": {
+							"_type": "DV_CODED_TEXT",
+							"value": "minimum",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "145"
+							}
+						},
+						"archetype_node_id": "at0002",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "e943f455-2b2e-3ed9-9d8f-ea5069c8de31"
+						}
+					}
+				],
+				"archetype_node_id": "at0001",
+				"uid": {
+					"_type": "HIER_OBJECT_ID",
+					"value": "b6b14845-acd4-31ca-abbf-ede5cc10d19b"
+				}
+			},
+			"archetype_node_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+			"uid": {
+				"_type": "HIER_OBJECT_ID",
+				"value": "e12c2d39-ee8b-3d4b-82dc-1fa52f4e9c30"
+			}
+		},
+		{
+			"_type": "SECTION",
+			"name": {
+				"_type": "DV_TEXT",
+				"value": "Management"
+			},
+			"archetype_details": {
+				"archetype_id": {
+					"value": "openEHR-EHR-SECTION.adhoc.v1"
+				},
+				"template_id": {
+					"value": "MCS.CovidCare.DailySheet.v0.2"
+				},
+				"rm_version": "1.0.4"
+			},
+			"items": [
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Dexamethasone"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.medication.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "e3fa971b-e6ee-3175-9fae-22ec16b143d0",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "fe16bc29-d10f-3e67-b4bd-0ccf000ae179",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Medication item"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0020"
+							}
+						],
+						"archetype_node_id": "at0017",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "6b862a33-e8e2-3215-85e4-53076fb5fafd"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Prescription awaiting authorisation",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0145"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "6fa4d98f-b67a-30a4-992f-3ab31708f16b"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.medication.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "185b2610-ba04-3609-82d1-82eafb299be9"
+					}
+				},
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Enoxaparin"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.medication.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "d1767338-1fc1-32d2-878c-5b736e55621e",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "4d3f048e-b808-3d18-9d3c-f47014ba2612",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Medication item"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0020"
+							}
+						],
+						"archetype_node_id": "at0017",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "dfe78ec2-62df-303d-8bea-1a5ce0b33598"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Prescription awaiting authorisation",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0145"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "7d65bb24-58a3-3687-ae77-41b7bc796097"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.medication.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "8e4943b5-573e-3005-aa4a-e2d4496deeaf"
+					}
+				},
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Tab Paracetamol"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.medication.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "1403a72b-a592-3da7-8daa-020c89408f0a",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "0e56e4ac-6c9d-3a95-8d5d-c0702de39e8f",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Medication item"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0020"
+							}
+						],
+						"archetype_node_id": "at0017",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "7ed99b2e-8156-312c-b179-c2c95cb84ed6"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Prescription awaiting authorisation",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0145"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "c57b69eb-dcba-3bc8-907f-c3835215dd50"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.medication.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "5f92c6a1-1f3e-3e38-8644-61ea366e8f3f"
+					}
+				},
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Tab Co-Amoxyclav"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.medication.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "30d2bb19-8b7e-3d75-912b-48cddc7c477e",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "a4f226dd-1cda-370f-b4c5-c910587e7019",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Medication item"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0020"
+							}
+						],
+						"archetype_node_id": "at0017",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "8a5eb4fd-b25e-3477-8282-8ee452a85a58"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Prescription awaiting authorisation",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0145"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "6fdf99bd-11b3-3a60-8cec-ccc4b38115dd"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.medication.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "d292618d-579e-3f03-b4a2-96bd0f9cc745"
+					}
+				},
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Budesonide Puffs"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.medication.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "9a30aaaa-6d82-31c9-b3d7-589dde211b38",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "6384d647-bba2-343d-ad49-41afd9a3586b",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Medication item"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0020"
+							}
+						],
+						"archetype_node_id": "at0017",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "da6ff93d-8ff7-3893-a0f3-5fcb020b7b3a"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Prescription awaiting authorisation",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0145"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "122b44e2-e751-3a4c-8341-94581efab5e4"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.medication.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "f185ad50-3ad8-3844-b73e-7b6a67c47cd9"
+					}
+				},
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Steam Inhalation"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.procedure.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "8a22bc16-d9e6-303d-9172-182ff0a4c0e0",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "12e5a04a-16c4-313f-b81f-f523e6ca62a1",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Procedure name"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0002"
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "69d5fce5-9d4f-30c0-a204-64ca684897f9"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Procedure request sent",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0007"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "cf23eefe-0e83-3772-91d5-c7609b361c4b"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.procedure.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "c25736af-5966-369d-ba65-c1b6eeebb063"
+					}
+				},
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Deep Breathing Exercises"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.procedure.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "1cb05407-6446-3e2a-9b10-2c0eca86cdc8",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "a8df578f-f6b1-3f11-81d2-e62ec055bffc",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Procedure name"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0002"
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "d4230c2e-c39e-31e0-bebc-87a6a4e943b9"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Procedure request sent",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0007"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "3ddc1705-741c-38c3-a23f-836ddc6db9f7"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.procedure.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "baa6216b-0cc2-3b53-8adb-4f29aa585399"
+					}
+				},
+				{
+					"_type": "ACTION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Oxygen Therapy"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-ACTION.procedure.v1"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "b0cbf881-f1df-361e-bf98-14672cb52a4c",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "0649238d-1f0f-3f74-b06b-39822856aacd",
+							"scheme": "scheme"
+						}
+					},
+					"time": {
+						"_type": "DV_DATE_TIME",
+						"value": "2022-02-03T04:05:06.000"
+					},
+					"description": {
+						"_type": "ITEM_TREE",
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "Tree"
+						},
+						"items": [
+							{
+								"_type": "ELEMENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Procedure name"
+								},
+								"value": {
+									"_type": "DV_CODED_TEXT",
+									"value": "adenocarcinoma of lung",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "SNOMED-CT"
+										},
+										"code_string": "254626006"
+									}
+								},
+								"archetype_node_id": "at0002"
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "64434839-8b63-30ca-b491-83e939a762c5"
+						}
+					},
+					"ism_transition": {
+						"_type": "ISM_TRANSITION",
+						"current_state": {
+							"_type": "DV_CODED_TEXT",
+							"value": "planned",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "526"
+							}
+						},
+						"transition": {
+							"_type": "DV_CODED_TEXT",
+							"value": "restore",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "openehr"
+								},
+								"code_string": "538"
+							}
+						},
+						"careflow_step": {
+							"_type": "DV_CODED_TEXT",
+							"value": "Procedure request sent",
+							"defining_code": {
+								"_type": "CODE_PHRASE",
+								"terminology_id": {
+									"_type": "TERMINOLOGY_ID",
+									"value": "local"
+								},
+								"code_string": "at0007"
+							}
+						}
+					},
+					"instruction_details": {
+						"_type": "INSTRUCTION_DETAILS",
+						"instruction_id": {
+							"_type": "LOCATABLE_REF",
+							"namespace": "unknown",
+							"type": "INSTRUCTION",
+							"id": {
+								"_type": "HIER_OBJECT_ID",
+								"value": "58a4701c-feca-3be3-8aec-e501343f49bc"
+							},
+							"path": ""
+						},
+						"activity_id": "activities[at0001]"
+					},
+					"archetype_node_id": "openEHR-EHR-ACTION.procedure.v1",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "45f1432d-0e59-31b1-a0a3-92cb02abc60b"
+					}
+				},
+				{
+					"_type": "OBSERVATION",
+					"name": {
+						"_type": "DV_TEXT",
+						"value": "Other regular medication"
+					},
+					"archetype_details": {
+						"archetype_id": {
+							"value": "openEHR-EHR-OBSERVATION.medication_statement.v0"
+						},
+						"template_id": {
+							"value": "MCS.CovidCare.DailySheet.v0.2"
+						},
+						"rm_version": "1.0.4"
+					},
+					"language": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "ISO_639-1"
+						},
+						"code_string": "en"
+					},
+					"encoding": {
+						"_type": "CODE_PHRASE",
+						"terminology_id": {
+							"_type": "TERMINOLOGY_ID",
+							"value": "IANA_character-sets"
+						},
+						"code_string": "ISO-10646-UTF-1"
+					},
+					"workflow_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "b275ddd9-48a3-3651-9196-5ddb2a9fe1f4",
+							"scheme": "scheme"
+						}
+					},
+					"subject": {
+						"_type": "PARTY_SELF"
+					},
+					"provider": {
+						"_type": "PARTY_SELF"
+					},
+					"guideline_id": {
+						"_type": "OBJECT_REF",
+						"namespace": "unknown",
+						"type": "ANY",
+						"id": {
+							"_type": "GENERIC_ID",
+							"value": "f9ffb349-66e0-39d0-be66-6c41858e13d5",
+							"scheme": "scheme"
+						}
+					},
+					"data": {
+						"name": {
+							"_type": "DV_TEXT",
+							"value": "History"
+						},
+						"origin": {
+							"_type": "DV_DATE_TIME",
+							"value": "2022-02-03T04:05:06.000"
+						},
+						"period": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"duration": {
+							"_type": "DV_DURATION",
+							"value": "PT0S"
+						},
+						"events": [
+							{
+								"_type": "INTERVAL_EVENT",
+								"name": {
+									"_type": "DV_TEXT",
+									"value": "Any event"
+								},
+								"time": {
+									"_type": "DV_DATE_TIME",
+									"value": "2022-02-03T04:05:06.000"
+								},
+								"data": {
+									"_type": "ITEM_TREE",
+									"name": {
+										"_type": "DV_TEXT",
+										"value": "Tree"
+									},
+									"items": [
+										{
+											"_type": "ELEMENT",
+											"name": {
+												"_type": "DV_TEXT",
+												"value": "Medication item name"
+											},
+											"value": {
+												"_type": "DV_TEXT",
+												"value": "Lorem ipsum"
+											},
+											"archetype_node_id": "at0006"
+										}
+									],
+									"archetype_node_id": "at0003",
+									"uid": {
+										"_type": "HIER_OBJECT_ID",
+										"value": "45069d15-4ff9-3f9b-87c2-44481b1872a1"
+									}
+								},
+								"width": {
+									"_type": "DV_DURATION",
+									"value": "PT42H"
+								},
+								"math_function": {
+									"_type": "DV_CODED_TEXT",
+									"value": "minimum",
+									"defining_code": {
+										"_type": "CODE_PHRASE",
+										"terminology_id": {
+											"_type": "TERMINOLOGY_ID",
+											"value": "openehr"
+										},
+										"code_string": "145"
+									}
+								},
+								"archetype_node_id": "at0002",
+								"uid": {
+									"_type": "HIER_OBJECT_ID",
+									"value": "eec9b471-77ba-355d-89f5-2ebde05a326d"
+								}
+							}
+						],
+						"archetype_node_id": "at0001",
+						"uid": {
+							"_type": "HIER_OBJECT_ID",
+							"value": "11452944-8af1-3321-96ab-77d79c8a8a32"
+						}
+					},
+					"archetype_node_id": "openEHR-EHR-OBSERVATION.medication_statement.v0",
+					"uid": {
+						"_type": "HIER_OBJECT_ID",
+						"value": "f7c1abe0-b2f5-3421-bb1e-751a2abfac3f"
+					}
+				}
+			],
+			"archetype_node_id": "openEHR-EHR-SECTION.adhoc.v1",
+			"uid": {
+				"_type": "HIER_OBJECT_ID",
+				"value": "fda60e21-8bd6-3bf7-9d1d-dc64b67095db"
+			}
+		}
+	],
+	"archetype_node_id": "openEHR-EHR-COMPOSITION.encounter.v1",
+	"uid": {
+		"_type": "HIER_OBJECT_ID",
+		"value": "60506a97-c96d-311d-8ac6-87882a186ac7"
+	}
+}
+

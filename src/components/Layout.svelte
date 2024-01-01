@@ -16,6 +16,7 @@
             ><sl-icon name="house-door" slot="prefix" />Home</sl-button
           >
         </Link>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <sl-button
           type="text"
           on:click={() => {

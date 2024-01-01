@@ -1,15 +1,15 @@
 <script lang="ts" >
   import "medblocks-ui/dist/medblocks";
   import { onMount } from "svelte";
-  import { fhir, openehr  } from "../fhir";
+  import { fhir, openehr } from "../fhir";
   import { Link, navigate } from "svelte-routing";
+  import type { login } from "../auth";
 
-  let data = {};
+  let data: any = {};
   let form;
   let loading = false;
-  export let id;
-  export let ehrId;
-  export let resp;
+  export let id = undefined;
+  export let ehrId = undefined;
 
   onMount(async () => {
     if (id) {
@@ -17,6 +17,7 @@
       console.log(r.data);
       console.log(form.parse(r.data));
       data = form.parse(r.data);
+      console.log(r.data.id)
     }
   });
   const handleSubmit = async (e: any) => {
@@ -32,7 +33,8 @@
       if (resp.status == 201) {
       ehrId = resp.data.id;
         }
-      const respEHR = await openehr.put(`/ehr/${ehrId}`);
+      const respEHR = await openehr.put(`/openehr/v1/ehr/${ehrId}`);
+      console.log(ehrId);
       loading = false;
     }
     navigate("/", { replace: true });
@@ -51,12 +53,12 @@
   on:mb-submit={handleSubmit}
 >
   <div class="field">
-    <mb-input class="hidden"  path="resourceType" data="Patient" />
+    <mb-context class="hidden"  path="resourceType" bind="Patient" />
   </div>
   <br>
-  <div class="field">
-    <label for="" class="font-bold">Patient information</label>
-  </div>
+  <!-- <div class="field"> -->
+  <!--   <label for="" class="font-bold">Patient information</label>  -->
+  <!-- </div>  -->
   <div class="field">
     <mb-checkbox type="boolean" path="active" label="Active" />
   </div>
@@ -66,6 +68,7 @@
       <mb-option value="driving" label="Driving License" />
       <mb-option value="nin" label="National Identity Number" />
       <mb-option value="voter" label="Voter ID" />
+      <mb-option value ="insuranceId" label="Insurance ID" />
     </mb-select>
   </div>
   <div class="field">
@@ -150,7 +153,15 @@
   </div>
   <br>
   <div class="field">
-    <mb-input label="Address" textarea path="address[0].text" placeholder="Full Address"/>
+    <mb-input textarea path="address[0].text" placeholder="Full Address"/>
+  </div>
+  <br>
+  <div class="field" >
+    <mb-input type="Address" path="address[0].line[0]" placeholder="Line 1" />
+  </div>
+  <br>
+  <div class="field" >
+    <mb-input type="Address" path="address[0].line[1]" placeholder="Line 2" />
   </div>
   <br>
   <div class="field">
@@ -197,7 +208,7 @@
   <br>
   <div class="field">
     <mb-select
-      label="Attendant relationship"
+      placeholder="Attendant relationship"
       path="contact[0].relationship[0]"
       datatype="CodableConcept"
     >
@@ -213,7 +224,6 @@
       <mb-option value="other" label="Other" />
     </mb-select>
   </div>
-  <br>
   <div class="field">
     <mb-context type="ContactPoint" path="contact[0].telecom[0].system" bind="phone">
   </div>

@@ -1,9 +1,9 @@
-:8080 {
-    root * /usr/share/caddy
-    file_server
-    try_files {path} /index.html
-    templates {
-        mime text/javascript application/javascript
-        between %% %%
-    }
+{
+    email abiodun.msulaiman@gmail.com
+    acme_ca https://acme-v02.api.letsencrypt.org/directory
+}
+
+localhost {
+    reverse_proxy /ehrbase* localhost:8081
+    reverse_proxy /fhir* localhost:8091
 }

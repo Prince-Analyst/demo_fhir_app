@@ -7,6 +7,7 @@
   $: stepInt = parseInt(step);
   console.log(step + 1);
   export let ehrId: string;
+  export let component: string;
   const steps = [
     {
       component: Donation,
