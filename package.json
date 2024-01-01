@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@macfja/svelte-oauth2": "^1.1.0",
-    "axios": "^1.3.2",
+    "axios": "^1.6.0",
     "bootstrap": "^5.2.3",
     "buffer": "^6.0.3",
     "chart.js": "^4.2.1",
