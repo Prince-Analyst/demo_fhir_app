@@ -119,7 +119,84 @@
                           Edit
                         </sl-button>
                       </Link>
-                      
+                  
+
+  {#if practitioner}
+    {#if practitioner?.length > 0}
+      <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4">
+        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+          <table class="min-w-full leading-normal">
+            <tbody>
+              {#each proxyList as Practitioner}
+                <tr>
+                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <div>
+                      <p class="text-gray-500 uppercase">
+                        {Practitioner.proxy.shortUid}
+                      </p>
+                      <p
+                        class="whitespace-no-wrap font-bold text-blue-500 hover:text-blue-800"
+                      >
+                        <Link to={`/clinical/${Practitioner.resource.id}`}>
+                          {Practitioner.proxy.name}
+                        </Link>
+                      </p>
+                    </div>
+                  </td>
+                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <p class="text-gray-900 whitespace-no-wrap">
+                      {Practitioner.proxy.age},
+                      <span class="capitalize">{Practitioner.proxy.gender}</span>
+                    </p>
+                  </td>
+
+                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <span
+                      class="relative inline-block px-3 py-1 font-semibold leading-tight"
+                    >
+                      {#if covidRes[Practitioner.resource.id] === "Positive"}
+                        <span
+                          aria-hidden="true"
+                          class="absolute inset-0 bg-red-400  opacity-50 rounded-full"
+                        />
+                        <span class="relative text-green-900"> covid +ve </span>
+                      {:else if covidRes[Practitioner.resource.id] === "Negative"}
+                        <span
+                          aria-hidden="true"
+                          class="absolute inset-0 bg-gray-400  opacity-50 rounded-full"
+                        />
+                        <span class="relative text-gray-700"> covid -ve </span>
+                      {:else if covidRes[Practitioner.resource.id] === "Sample given"}
+                        <span
+                          aria-hidden="true"
+                          class="absolute inset-0 bg-yellow-200  opacity-50 rounded-full"
+                        />
+                        <span class="relative text-gray-700">pending</span>
+                      {/if}
+                    </span>
+                  </td>
+                  <td
+                    class=" py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell"
+                  >
+                    <p class="text-gray-900 whitespace-no-wrap">
+                      Updated <sl-relative-time
+                        date={Practitioner.resource.meta.lastUpdated}
+                      />
+                    </p>
+                  </td>
+                  <td class="py-5 border-b border-gray-200 bg-white text-sm">
+                    <div class="flex flex-wrap gap-3 justify-center">
+                      <Link
+                        to={`clinical/${Practitioner.resource.id}/${action.segment}`}
+                      >
+                        <sl-button type="neutral"> {action.name} </sl-button>
+                      </Link>
+                      <Link to={`Practitioner/${Practitioner.resource.id}`}>
+                        <sl-button>
+                          <sl-icon name="pencil-fill" slot="prefix" />
+                          Edit
+                        </sl-button>
+                      </Link>
                       <!-- svelte-ignore a11y-click-events-have-key-events -->
                       <sl-button
                         on:click={() => {
