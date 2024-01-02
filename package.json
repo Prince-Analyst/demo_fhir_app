@@ -15,7 +15,7 @@
     "autoprefixer": "^10.4.14",
     "es-dev-server": "^2.1.0",
     "http-proxy-middleware": "^2.0.6",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.31",
     "rollup-plugin-copy": "^3.4.0",
     "svelte": "^3.54.0",
     "svelte-check": "^2.10.0",
